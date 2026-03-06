@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@export var acceleration : float = 2000.0
-var drag : float = 1000.0
+@export var acceleration : float = 4000.0
+var drag : float = 3000.0
 var wishDir : Vector2 = Vector2.ZERO
 var maxSpeed : float = 500.0
 
