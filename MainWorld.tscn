@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://chrx13ummoytr"]
-
-[ext_resource type="PackedScene" uid="uid://dopujk04ltt6d" path="res://character/character.tscn" id="1_fqhjb"]
-
-[node name="Node2D" type="Node2D" unique_id=1937000729]
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1987632420]
-
-[node name="Node2D" parent="." unique_id=1793507303 instance=ExtResource("1_fqhjb")]
