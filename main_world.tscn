@@ -62,7 +62,6 @@ position = Vector2(-313, -162)
 
 [node name="Sprite" parent="BasePlant" index="0" unique_id=1713877530]
 sprite_frames = SubResource("SpriteFrames_3etub")
-animation = &"stage0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BasePlant/Interactable" parent_id_path=PackedInt32Array(629364572, 825575324) index="0" unique_id=1479467512]
 shape = SubResource("RectangleShape2D_3etub")

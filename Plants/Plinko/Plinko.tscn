@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://be4ptkje88wa3" path="res://Plants/base_plant.tscn" id="1_v8jk2"]
 [ext_resource type="Texture2D" uid="uid://dyb8b67u8aaqo" path="res://Plants/Plinko/Sprites/PlaceholderPlinko.png" id="2_m7c7k"]
 [ext_resource type="Script" uid="uid://b8c32klluytyp" path="res://Plants/Plinko/plinko.gd" id="2_u4uv3"]
+[ext_resource type="Texture2D" uid="uid://chnu528uov0n" path="res://icon.svg" id="4_ngji5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u4uv3"]
 atlas = ExtResource("2_m7c7k")
@@ -40,7 +41,7 @@ region = Rect2(144, 0, 144, 144)
 atlas = ExtResource("2_m7c7k")
 region = Rect2(288, 0, 144, 144)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_gscgs"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ngji5"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
@@ -86,14 +87,24 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="BasePlant" unique_id=629364572 instance=ExtResource("1_v8jk2")]
+[node name="BasePlant" unique_id=629364572 node_paths=PackedStringArray("plinkoBallSpawnPoint", "plinkoBall") instance=ExtResource("1_v8jk2")]
 script = ExtResource("2_u4uv3")
+timeToFall = 1.0
+plinkoBallSpawnPoint = NodePath("Plinko Spawn Point")
+plinkoBall = NodePath("Sprite2D")
 isByStages = true
-growTime = null
-growGoal = null
 
 [node name="Sprite" parent="." index="0" unique_id=1713877530]
-sprite_frames = SubResource("SpriteFrames_gscgs")
+sprite_frames = SubResource("SpriteFrames_ngji5")
 animation = &"stage0"
 autoplay = "stage0"
-frame_progress = 0.54614234
+frame_progress = 0.093451865
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="2" unique_id=1074542110]
+position = Vector2(0, -31)
+scale = Vector2(0.140625, 0.140625)
+texture = ExtResource("4_ngji5")
+
+[node name="Plinko Spawn Point" type="Marker2D" parent="." index="3" unique_id=1181432343]
+position = Vector2(0, -31)
+gizmo_extents = 18.1
