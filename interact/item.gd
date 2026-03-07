@@ -1,0 +1,22 @@
+extends RigidBody2D
+
+@export var pickable: Pickable
+
+func _ready() -> void:
+	pickable.WasPickedUp.connect(_on_was_picked_up)
+	pickable.WasDropped.connect(_on_was_dropped)
+
+func _on_was_picked_up() -> void:
+	set_deferred("freeze", true)
+	pickable.set_deferred("monitorable", false)
+	pickable.set_deferred("monitoring", false)
+	#freeze = true
+	#pickable.monitorable = false
+	#pickable.monitoring = false
+
+func _on_was_dropped() -> void:
+	freeze = false
+	pickable.monitorable = true
+	pickable.monitoring = true
+	#pickable.set_deferred("monitorable", true)
+	#pickable.set_deferred("monitoring", true)

@@ -13,12 +13,11 @@ func start_holding(obj: Pickable) -> void:
 		print(name, " can't pick up object. Already holding one!")
 		return
 	
-	print(name, "is picking up ", obj.name, " with owner ", owner.name)
-	obj.owner.reparent(objectHoldPoint)
-	obj.owner.position = Vector2.ZERO
+	print(owner.name, " is picking up ", obj.name)
 	currentHoldedObject = obj
-	obj.be_picked_up(self) # Don't like calling this here
-	picked_up_object.emit(currentHoldedObject)
+	
+	call_deferred("pick_up", obj)
+
 
 func drop() -> Pickable:
 	if currentHoldedObject == null:
@@ -27,10 +26,10 @@ func drop() -> Pickable:
 	
 	var obj = currentHoldedObject
 	
-	currentHoldedObject = null
 	obj.owner.reparent(get_tree().current_scene)
 	move_to_drop_point()
 	dropped_object.emit(obj)
+	currentHoldedObject = null
 	return obj
 
 func move_to_drop_point() -> void:
@@ -40,6 +39,10 @@ func move_to_drop_point() -> void:
 	
 	if objectDropPoint:
 		currentHoldedObject.owner.global_position = objectDropPoint.global_position
+
+func take_item(interactor: InteractReceiver):
+	if is_holding():
+		place(interactor.objectHolder)
 
 func place(objectHolder: ObjectHolder) -> Pickable:
 	var obj = drop()
@@ -55,6 +58,13 @@ func throw(dir: Vector2) -> Pickable:
 	obj.throw(dir)
 	
 	return obj
+
+func pick_up(obj: Pickable):
+	obj.be_picked_up(self) # Don't like calling this here
+	obj.owner.reparent(objectHoldPoint)
+	obj.owner.position = Vector2.ZERO
+	obj.owner.rotation = 0
+	picked_up_object.emit(currentHoldedObject)
 
 func is_holding() -> bool:
 	return currentHoldedObject != null;

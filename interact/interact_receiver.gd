@@ -1,6 +1,8 @@
 extends Area2D
 class_name InteractReceiver
 
+signal interactableInRange(interactable: Interactable)
+
 @export var objectHolder: ObjectHolder
 
 @export_group("Throwing")
@@ -9,21 +11,25 @@ class_name InteractReceiver
 @export var maxThrowChargeTime: float = 1.5
 var currentThrowForce: float
 var throwForcePerSecond: float
+var isThrowing: bool = false
 
 var selectedInteractable: Interactable
 
 var interact_interval: float = 0.5
 
 func try_to_interact() -> void:
-	print("Trying to interact")
+	if isThrowing:
+		return
+	
+	print(owner.name + " Trying to interact")
 	if objectHolder != null:
 		if objectHolder.is_holding():
 			objectHolder.drop()
 			return
 	
 	if selectedInteractable:
-		print("Interacting")
-		selectedInteractable.interact(owner) # TODO: maybe not owner? I guess it can work
+		print(owner.name + " Interacting")
+		selectedInteractable.interact(self) # TODO: maybe not owner? I guess it can work
 
 func _ready() -> void:
 	reset_throw_force()
@@ -35,6 +41,7 @@ func _ready() -> void:
 func update_selected_interactable(area: Area2D) -> void:
 	if area is Interactable:
 		selectedInteractable = area
+		interactableInRange.emit(selectedInteractable)
 
 func clear_selected_interactable(area: Area2D) -> void:
 	# one interactable exited, but we may have more still in range
@@ -48,12 +55,15 @@ func _get_interactable_in_area() -> Interactable:
 	return null
 
 func start_throw(delta: float):
+	isThrowing = true
 	objectHolder.move_to_drop_point()
 	currentThrowForce += throwForcePerSecond * delta
 	currentThrowForce = clampf(currentThrowForce, minThrowForce, maxThrowForce)
 
 func stop_throw():
+	isThrowing = false
 	if objectHolder:
+		print(owner.name, " throwing object ")
 		objectHolder.throw(Vector2.from_angle(global_rotation) * currentThrowForce)
 	reset_throw_force()
 

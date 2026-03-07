@@ -1,7 +1,7 @@
 class_name Interactable extends Area2D
 
-signal wasInteracted(interactor: Character)
+signal wasInteracted(interactor: InteractReceiver)
 
-func interact(interactor: Character) -> void:
+func interact(interactor: InteractReceiver) -> void:
 	wasInteracted.emit(interactor)
-	print(interactor.name, " interacted with me")
+	print(interactor.owner.name, " interacted with ", name)

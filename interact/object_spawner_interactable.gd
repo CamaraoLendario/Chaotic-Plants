@@ -3,7 +3,7 @@ extends Interactable
 @export var spawnScene: PackedScene
 @export var objectHolder: ObjectHolder
 
-func interact(interactor: Character) -> void:
+func interact(interactor: InteractReceiver) -> void:
 	if objectHolder.is_holding():
 		var otherObjectHolder: ObjectHolder = interactor.objectHolder
 		objectHolder.place(otherObjectHolder)
