@@ -2,9 +2,14 @@
 
 [ext_resource type="Script" uid="uid://w0bpjmca2sr" path="res://character/character.gd" id="1_pjt0s"]
 [ext_resource type="Script" uid="uid://cyx4c3n3hm0kb" path="res://character/input_handler.gd" id="2_wa5vi"]
+[ext_resource type="Script" uid="uid://b3owvnlpfrkpo" path="res://interact/interact_receiver.gd" id="3_ugqs2"]
+[ext_resource type="Script" uid="uid://ck4gyskvum46o" path="res://interact/object_holder.gd" id="4_hx151"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfnr8"]
 size = Vector2(20, 58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hx151"]
+size = Vector2(40, 56)
 
 [node name="Node2D" type="CharacterBody2D" unique_id=1793507303]
 script = ExtResource("1_pjt0s")
@@ -18,5 +23,28 @@ offset_right = 10.0
 position = Vector2(0, -29)
 shape = SubResource("RectangleShape2D_wfnr8")
 
-[node name="InputHandler" type="Node" parent="." unique_id=371800208]
+[node name="InputHandler" type="Node" parent="." unique_id=371800208 node_paths=PackedStringArray("interactReceiver")]
 script = ExtResource("2_wa5vi")
+interactReceiver = NodePath("../InteractReceiver")
+
+[node name="InteractReceiver" type="Area2D" parent="." unique_id=2013713238 node_paths=PackedStringArray("objectHolder")]
+position = Vector2(0, -29)
+script = ExtResource("3_ugqs2")
+objectHolder = NodePath("../ObjectHolder")
+metadata/_custom_type_script = "uid://b3owvnlpfrkpo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractReceiver" unique_id=1154653871]
+position = Vector2(28, 1)
+shape = SubResource("RectangleShape2D_hx151")
+
+[node name="ObjectHolder" type="Node2D" parent="." unique_id=1553028554 node_paths=PackedStringArray("objectHoldPoint", "objectDropPoint")]
+script = ExtResource("4_hx151")
+objectHoldPoint = NodePath("../ObjectHoldPoint")
+objectDropPoint = NodePath("ObjectDropPoint")
+metadata/_custom_type_script = "uid://ck4gyskvum46o"
+
+[node name="ObjectDropPoint" type="Node2D" parent="ObjectHolder" unique_id=1168386878]
+position = Vector2(28, -28)
+
+[node name="ObjectHoldPoint" type="Marker2D" parent="." unique_id=1753229882]
+position = Vector2(0, -80)

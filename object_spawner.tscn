@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bq3gnd6nxn01p"]
+
+[ext_resource type="Script" uid="uid://c8hm08oi2rkfh" path="res://interact/object_spawner_interactable.gd" id="1_3djwi"]
+[ext_resource type="Script" uid="uid://ck4gyskvum46o" path="res://interact/object_holder.gd" id="2_f20pw"]
+[ext_resource type="PackedScene" uid="uid://c4ei3qax5i842" path="res://proto_object.tscn" id="2_n53fd"]
+[ext_resource type="Texture2D" uid="uid://chnu528uov0n" path="res://icon.svg" id="3_n53fd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jhinc"]
+size = Vector2(128, 128)
+
+[node name="ObjectSpawner" type="Area2D" unique_id=1063420533 node_paths=PackedStringArray("objectHolder")]
+script = ExtResource("1_3djwi")
+spawnScene = ExtResource("2_n53fd")
+objectHolder = NodePath("ObjectHolder")
+metadata/_custom_type_script = "uid://cvc5atuup46p2"
+
+[node name="ObjectHolder" type="Node2D" parent="." unique_id=771054364 node_paths=PackedStringArray("objectHoldPoint")]
+script = ExtResource("2_f20pw")
+objectHoldPoint = NodePath("ObjectHoldPoint")
+metadata/_custom_type_script = "uid://ck4gyskvum46o"
+
+[node name="ObjectHoldPoint" type="Marker2D" parent="ObjectHolder" unique_id=745123367]
+position = Vector2(0, -104)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1752078076]
+texture = ExtResource("3_n53fd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=141009244]
+shape = SubResource("RectangleShape2D_jhinc")
+
+[node name="Label" type="Label" parent="." unique_id=1309990035]
+offset_left = -56.0
+offset_top = 64.0
+offset_right = 67.0
+offset_bottom = 87.0
+text = "Object Spawner"
