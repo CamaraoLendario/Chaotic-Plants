@@ -1,11 +1,22 @@
 extends AnimatedSprite2D
 
+@export var character: Character
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	play("Idle")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _process(_delta: float) -> void:
+	var lookingLeft : bool = character.wishDir.x < 0
+	
+	if (character.velocity.length() < character.maxSpeed*0.05 and character.wishDir == Vector2.ZERO):
+		play("Idle")
+	## TODO: Decide if this is necessary, cold also just be a turning animation
+	#elif (character.wishDir.x * character.velocity.x < 0):
+		#play("ChangingMoveDir")
+		#lookingLeft = !lookingLeft
+	else:
+		play("Moving")
+	
+	flip_h = lookingLeft
