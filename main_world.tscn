@@ -1,11 +1,18 @@
 [gd_scene format=3 uid="uid://chrx13ummoytr"]
 
+[ext_resource type="Script" uid="uid://r5uwf3yaolik" path="res://game_state/game_controller.gd" id="1_3etub"]
 [ext_resource type="PackedScene" uid="uid://dopujk04ltt6d" path="res://character/character.tscn" id="1_itk02"]
 [ext_resource type="PackedScene" uid="uid://bq3gnd6nxn01p" path="res://object_spawner.tscn" id="2_uoqbt"]
-[ext_resource type="PackedScene" uid="uid://boeg2lf46fjjr" path="res://Plants/Cry Baby/cry_baby.tscn" id="4_3etub"]
+[ext_resource type="Resource" uid="uid://4andksvgn7yo" path="res://game_state/levels/level0Data.tres" id="2_uue8y"]
+[ext_resource type="Script" uid="uid://d1p357dnn4txx" path="res://time_label.gd" id="5_uue8y"]
 [ext_resource type="PackedScene" uid="uid://ulelhqvpd2il" path="res://Plants/plant_item_receiver.tscn" id="5_whfra"]
+[ext_resource type="Script" uid="uid://do6arsnvfb00a" path="res://request_list_view.gd" id="7_7ktct"]
+[ext_resource type="PackedScene" uid="uid://c7hl623304u1e" path="res://game_state/views/request_view.tscn" id="7_aac4l"]
 
-[node name="Node2D" type="Node2D" unique_id=1937000729 groups=["World"]]
+[node name="Node2D" type="Node2D" unique_id=1937000729 node_paths=PackedStringArray("plantSpawners")]
+script = ExtResource("1_3etub")
+levelData = ExtResource("2_uue8y")
+plantSpawners = [NodePath("PlantSpawner1"), NodePath("PlantSpawner2"), NodePath("PlantSpawner3")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1987632420]
 
@@ -13,10 +20,42 @@
 position = Vector2(-237, 12)
 
 [node name="ObjectSpawner" parent="." unique_id=1063420533 instance=ExtResource("2_uoqbt")]
-position = Vector2(472, 0)
+position = Vector2(-480, -176)
 
 [node name="PlantItemReceiver" parent="." unique_id=1216653505 instance=ExtResource("5_whfra")]
 position = Vector2(-344, 200)
 
-[node name="Cry Baby" parent="." unique_id=629364572 instance=ExtResource("4_3etub")]
-position = Vector2(196, -171)
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1207220588]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1974404092 node_paths=PackedStringArray("gameController")]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+script = ExtResource("5_uue8y")
+gameController = NodePath("../..")
+
+[node name="RequestListView" type="HBoxContainer" parent="CanvasLayer" unique_id=1699568799 node_paths=PackedStringArray("gameController")]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 16.0
+offset_top = 20.0
+offset_right = -16.0
+offset_bottom = 135.00003
+grow_horizontal = 2
+script = ExtResource("7_7ktct")
+gameController = NodePath("../..")
+requestViewScene = ExtResource("7_aac4l")
+
+[node name="PlantSpawner1" parent="." unique_id=682720887 instance=ExtResource("2_uoqbt")]
+position = Vector2(464, 248)
+
+[node name="PlantSpawner2" parent="." unique_id=24623778 instance=ExtResource("2_uoqbt")]
+position = Vector2(464, 32)
+
+[node name="PlantSpawner3" parent="." unique_id=408865084 instance=ExtResource("2_uoqbt")]
+position = Vector2(464, -200)
+
+[connection signal="spawnedObject" from="PlantSpawner1" to="." method="on_plant_spawned"]
+[connection signal="spawnedObject" from="PlantSpawner2" to="." method="on_plant_spawned"]
+[connection signal="spawnedObject" from="PlantSpawner3" to="." method="on_plant_spawned"]

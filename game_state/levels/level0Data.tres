@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://4andksvgn7yo"]
+
+[ext_resource type="Script" uid="uid://dslo03u4ehh3c" path="res://game_state/levels/plant_request.gd" id="1_82x0u"]
+[ext_resource type="Resource" uid="uid://rp5urjcqcj6r" path="res://Plants/data/base_plant.tres" id="2_b5mtq"]
+[ext_resource type="Script" uid="uid://c1m01xcb18u38" path="res://game_state/levels/level_data.gd" id="2_wguby"]
+
+[sub_resource type="Resource" id="Resource_wguby"]
+script = ExtResource("1_82x0u")
+requestTime = 0.05
+plantData = ExtResource("2_b5mtq")
+metadata/_custom_type_script = "uid://dslo03u4ehh3c"
+
+[sub_resource type="Resource" id="Resource_b5mtq"]
+script = ExtResource("1_82x0u")
+requestTime = 0.51
+plantData = ExtResource("2_b5mtq")
+metadata/_custom_type_script = "uid://dslo03u4ehh3c"
+
+[sub_resource type="Resource" id="Resource_4ehky"]
+script = ExtResource("1_82x0u")
+requestTime = 0.75
+plantData = ExtResource("2_b5mtq")
+metadata/_custom_type_script = "uid://dslo03u4ehh3c"
+
+[resource]
+script = ExtResource("2_wguby")
+requests = Array[ExtResource("1_82x0u")]([SubResource("Resource_wguby"), SubResource("Resource_b5mtq"), SubResource("Resource_4ehky")])
+metadata/_custom_type_script = "uid://c1m01xcb18u38"
