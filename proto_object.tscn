@@ -8,6 +8,7 @@ size = Vector2(32, 32)
 
 [node name="ProtoObject" type="RigidBody2D" unique_id=794916380]
 gravity_scale = 0.0
+linear_damp = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1409405554]
 modulate = Color(1, 0, 0, 1)

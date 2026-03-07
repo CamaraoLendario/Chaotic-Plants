@@ -39,5 +39,11 @@ func place(objectHolder: ObjectHolder) -> Pickable:
 	objectHolder.start_holding(obj)
 	return obj
 
+func throw(dir: Vector2) -> Pickable:
+	var obj = drop()
+	obj.throw(dir)
+	
+	return obj
+
 func is_holding() -> bool:
 	return currentHoldedObject != null;
