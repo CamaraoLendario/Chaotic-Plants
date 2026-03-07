@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://w0bpjmca2sr" path="res://character/character.gd" id="1_pjt0s"]
 [ext_resource type="Script" uid="uid://cyx4c3n3hm0kb" path="res://character/input_handler.gd" id="2_wa5vi"]
-[ext_resource type="Script" uid="uid://b3owvnlpfrkpo" path="res://interact/interact_receiver.gd" id="3_ugqs2"]
-[ext_resource type="Script" uid="uid://ck4gyskvum46o" path="res://interact/object_holder.gd" id="4_hx151"]
 [ext_resource type="Texture2D" uid="uid://b5q66cqeq8ns0" path="res://character/Sprite/spritesheet-characters-default.png" id="3_hx151"]
-[ext_resource type="Script" uid="uid://bhydcfunpkj7m" path="res://character/character_animation.gd" id="4_0rvpn"]
+[ext_resource type="Script" uid="uid://b3owvnlpfrkpo" path="res://interact/interact_receiver.gd" id="3_ugqs2"]
+[ext_resource type="Script" path="res://character/character_animation.gd" id="4_0rvpn"]
+[ext_resource type="Script" uid="uid://ck4gyskvum46o" path="res://interact/object_holder.gd" id="4_hx151"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfnr8"]
 size = Vector2(86, 105)
@@ -13,9 +13,6 @@ size = Vector2(86, 105)
 [sub_resource type="AtlasTexture" id="AtlasTexture_o6jyn"]
 atlas = ExtResource("3_hx151")
 region = Rect2(387, 516, 128, 128)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hx151"]
-size = Vector2(40, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tgjim"]
 atlas = ExtResource("3_hx151")
@@ -59,8 +56,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="character" type="CharacterBody2D" unique_id=1793507303]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hx151"]
+size = Vector2(84, 104)
+
+[node name="character" type="CharacterBody2D" unique_id=1793507303 node_paths=PackedStringArray("anchor", "objectHolder", "interactReceiver")]
 script = ExtResource("1_pjt0s")
+anchor = NodePath("Anchor")
+objectHolder = NodePath("Anchor/ObjectHolder")
+interactReceiver = NodePath("Anchor/InteractReceiver")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=955575041]
 position = Vector2(0, -52.5)
@@ -68,29 +71,10 @@ shape = SubResource("RectangleShape2D_wfnr8")
 
 [node name="InputHandler" type="Node" parent="." unique_id=371800208 node_paths=PackedStringArray("interactReceiver")]
 script = ExtResource("2_wa5vi")
-interactReceiver = NodePath("../InteractReceiver")
-
-[node name="InteractReceiver" type="Area2D" parent="." unique_id=2013713238 node_paths=PackedStringArray("objectHolder")]
-position = Vector2(0, -29)
-script = ExtResource("3_ugqs2")
-objectHolder = NodePath("../ObjectHolder")
-metadata/_custom_type_script = "uid://b3owvnlpfrkpo"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractReceiver" unique_id=1154653871]
-position = Vector2(28, 1)
-shape = SubResource("RectangleShape2D_hx151")
-
-[node name="ObjectHolder" type="Node2D" parent="." unique_id=1553028554 node_paths=PackedStringArray("objectHoldPoint", "objectDropPoint")]
-script = ExtResource("4_hx151")
-objectHoldPoint = NodePath("../ObjectHoldPoint")
-objectDropPoint = NodePath("ObjectDropPoint")
-metadata/_custom_type_script = "uid://ck4gyskvum46o"
-
-[node name="ObjectDropPoint" type="Node2D" parent="ObjectHolder" unique_id=1168386878]
-position = Vector2(28, -28)
+interactReceiver = NodePath("../Anchor/InteractReceiver")
 
 [node name="ObjectHoldPoint" type="Marker2D" parent="." unique_id=1753229882]
-position = Vector2(0, -80)
+position = Vector2(0, -144)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1146572227 node_paths=PackedStringArray("character")]
 position = Vector2(0, -64)
@@ -99,3 +83,24 @@ animation = &"Idle"
 frame_progress = 0.67625856
 script = ExtResource("4_0rvpn")
 character = NodePath("..")
+
+[node name="Anchor" type="Node2D" parent="." unique_id=1949543552]
+position = Vector2(0, -52)
+
+[node name="ObjectHolder" type="Node2D" parent="Anchor" unique_id=1553028554 node_paths=PackedStringArray("objectHoldPoint", "objectDropPoint")]
+script = ExtResource("4_hx151")
+objectHoldPoint = NodePath("../../ObjectHoldPoint")
+objectDropPoint = NodePath("ObjectDropPoint")
+metadata/_custom_type_script = "uid://ck4gyskvum46o"
+
+[node name="ObjectDropPoint" type="Node2D" parent="Anchor/ObjectHolder" unique_id=1168386878]
+position = Vector2(88, 0)
+
+[node name="InteractReceiver" type="Area2D" parent="Anchor" unique_id=2013713238 node_paths=PackedStringArray("objectHolder")]
+position = Vector2(88, 0)
+script = ExtResource("3_ugqs2")
+objectHolder = NodePath("../ObjectHolder")
+metadata/_custom_type_script = "uid://b3owvnlpfrkpo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor/InteractReceiver" unique_id=1154653871]
+shape = SubResource("RectangleShape2D_hx151")

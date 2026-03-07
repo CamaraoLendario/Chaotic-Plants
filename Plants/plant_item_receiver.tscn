@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://ulelhqvpd2il"]
+
+[ext_resource type="Script" uid="uid://ck4gyskvum46o" path="res://interact/object_holder.gd" id="1_6fs5n"]
+[ext_resource type="Script" uid="uid://b3owvnlpfrkpo" path="res://interact/interact_receiver.gd" id="2_eqv4n"]
+[ext_resource type="Script" uid="uid://b7af4a7l84e3p" path="res://Plants/object_receiver.gd" id="2_u1vm2"]
+[ext_resource type="Texture2D" uid="uid://chnu528uov0n" path="res://icon.svg" id="3_u1vm2"]
+[ext_resource type="Script" uid="uid://cvc5atuup46p2" path="res://interact/interactable.gd" id="5_2gh58"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eqv4n"]
+size = Vector2(128, 128)
+
+[node name="PlantItemReceiver" type="Node2D" unique_id=1216653505 node_paths=PackedStringArray("interactReceiver", "objectHolder")]
+script = ExtResource("2_u1vm2")
+interactReceiver = NodePath("InteractReceiver")
+objectHolder = NodePath("ObjectHolder")
+
+[node name="InteractReceiver" type="Area2D" parent="." unique_id=415589104 node_paths=PackedStringArray("objectHolder")]
+script = ExtResource("2_eqv4n")
+objectHolder = NodePath("../ObjectHolder")
+metadata/_custom_type_script = "uid://b3owvnlpfrkpo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractReceiver" unique_id=1706021188]
+shape = SubResource("RectangleShape2D_eqv4n")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1764025952]
+modulate = Color(0.0025875166, 0.002044355, 0, 1)
+texture = ExtResource("3_u1vm2")
+
+[node name="Label" type="Label" parent="." unique_id=2084353703]
+offset_left = -53.0
+offset_top = 64.0
+offset_right = 53.0
+offset_bottom = 87.0
+text = "Item Receiver"
+
+[node name="ObjectHolder" type="Node2D" parent="." unique_id=1250314402 node_paths=PackedStringArray("objectHoldPoint")]
+script = ExtResource("1_6fs5n")
+objectHoldPoint = NodePath("ObjectHoldPoint")
+metadata/_custom_type_script = "uid://ck4gyskvum46o"
+
+[node name="ObjectHoldPoint" type="Node2D" parent="ObjectHolder" unique_id=3916998]
+
+[node name="Interactable" type="Area2D" parent="." unique_id=1378610717]
+script = ExtResource("5_2gh58")
+metadata/_custom_type_script = "uid://cvc5atuup46p2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1960998831]
+shape = SubResource("RectangleShape2D_eqv4n")
+
+[connection signal="wasInteracted" from="Interactable" to="ObjectHolder" method="take_item"]

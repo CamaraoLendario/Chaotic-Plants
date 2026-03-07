@@ -1,12 +1,21 @@
 extends Node
 class_name InputHandler
 
-@onready var main: CharacterBody2D = get_parent(); 
+@onready var main: Character = get_parent(); 
 @export var interactReceiver: InteractReceiver
 
 func _process(delta: float) -> void:
 	main.wishDir = Input.get_vector("Left", "Right", "Up", "Down");
 	
+	if get_viewport().get_camera_2d():
+		var mouseScreenPos = get_viewport().get_camera_2d().get_global_mouse_position()
+		main.aimDir = (owner as Node2D).global_position.direction_to(mouseScreenPos)
+	
+	if Input.is_action_pressed("Throw"):
+		interactReceiver.start_throw(delta)
+	
+	if Input.is_action_just_released("Throw"):
+		interactReceiver.stop_throw()
 
 func _input(event: InputEvent) -> void:
 	if (event is InputEventMouse): return;
