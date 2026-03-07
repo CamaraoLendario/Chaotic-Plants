@@ -40,4 +40,4 @@ func _physics_process(delta: float) -> void:
 func check_grow_progress():
 	sprite.animation = "stage" +  str(int(GrowProgress)-1)
 	if (growProgress >= growGoal):
-		isGrown = true
+		isGrown = true	

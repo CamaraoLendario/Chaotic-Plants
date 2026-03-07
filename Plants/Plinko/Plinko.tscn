@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://psh2ymdga6o6"]
+
+[ext_resource type="PackedScene" uid="uid://be4ptkje88wa3" path="res://Plants/base_plant.tscn" id="1_v8jk2"]
+[ext_resource type="Texture2D" uid="uid://dyb8b67u8aaqo" path="res://Plants/Plinko/Sprites/PlaceholderPlinko.png" id="2_m7c7k"]
+[ext_resource type="Script" uid="uid://b8c32klluytyp" path="res://Plants/Plinko/plinko.gd" id="2_u4uv3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4uv3"]
+atlas = ExtResource("2_m7c7k")
+region = Rect2(0, 288, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axcl7"]
+atlas = ExtResource("2_m7c7k")
+region = Rect2(144, 288, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asd6n"]
+atlas = ExtResource("2_m7c7k")
+region = Rect2(288, 288, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ud1dy"]
+atlas = ExtResource("2_m7c7k")
+region = Rect2(0, 144, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbmk6"]
+atlas = ExtResource("2_m7c7k")
+region = Rect2(144, 144, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5dmf"]
+atlas = ExtResource("2_m7c7k")
+region = Rect2(288, 144, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03u3m"]
+atlas = ExtResource("2_m7c7k")
+region = Rect2(0, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqjv7"]
+atlas = ExtResource("2_m7c7k")
+region = Rect2(144, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kosq2"]
+atlas = ExtResource("2_m7c7k")
+region = Rect2(288, 0, 144, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gscgs"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4uv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axcl7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asd6n")
+}],
+"loop": true,
+"name": &"stage0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ud1dy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbmk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5dmf")
+}],
+"loop": true,
+"name": &"stage1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03u3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqjv7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kosq2")
+}],
+"loop": true,
+"name": &"stage2",
+"speed": 5.0
+}]
+
+[node name="BasePlant" unique_id=629364572 instance=ExtResource("1_v8jk2")]
+script = ExtResource("2_u4uv3")
+isByStages = true
+growTime = null
+growGoal = null
+
+[node name="Sprite" parent="." index="0" unique_id=1713877530]
+sprite_frames = SubResource("SpriteFrames_gscgs")
+animation = &"stage0"
+autoplay = "stage0"
+frame_progress = 0.54614234
