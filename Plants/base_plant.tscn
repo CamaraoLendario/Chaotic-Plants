@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://be4ptkje88wa3"]
+
+[ext_resource type="Script" uid="uid://ghwal8eoqf4r" path="res://Plants/base_plant.gd" id="1_ha1yr"]
+[ext_resource type="Script" uid="uid://cvc5atuup46p2" path="res://interact/interactable.gd" id="2_87s3t"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_87s3t"]
+resource_local_to_scene = true
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"stage0",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"stage1",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"stage2",
+"speed": 5.0
+}]
+
+[node name="BasePlant" type="Node2D" unique_id=629364572 node_paths=PackedStringArray("interactable", "sprite")]
+script = ExtResource("1_ha1yr")
+interactable = NodePath("Interactable")
+sprite = NodePath("Sprite")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1713877530]
+sprite_frames = SubResource("SpriteFrames_87s3t")
+animation = &"stage2"
+
+[node name="Interactable" type="Area2D" parent="." unique_id=825575324]
+script = ExtResource("2_87s3t")
+metadata/_custom_type_script = "uid://cvc5atuup46p2"
