@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ghwal8eoqf4r" path="res://Plants/base_plant.gd" id="1_ha1yr"]
 [ext_resource type="Script" uid="uid://cvc5atuup46p2" path="res://interact/interactable.gd" id="2_87s3t"]
+[ext_resource type="Script" uid="uid://d5sfdadk20ij" path="res://interact/pickable.gd" id="3_evnqr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_87s3t"]
 resource_local_to_scene = true
@@ -34,3 +35,7 @@ animation = &"stage2"
 [node name="Interactable" type="Area2D" parent="." unique_id=825575324]
 script = ExtResource("2_87s3t")
 metadata/_custom_type_script = "uid://cvc5atuup46p2"
+
+[node name="Pickable" type="Area2D" parent="." unique_id=1570847046]
+script = ExtResource("3_evnqr")
+metadata/_custom_type_script = "uid://d5sfdadk20ij"
