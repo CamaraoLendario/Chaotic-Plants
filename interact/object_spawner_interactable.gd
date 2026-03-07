@@ -3,10 +3,9 @@ extends Interactable
 @export var spawnScene: PackedScene
 @export var objectHolder: ObjectHolder
 
-@warning_ignore("unused_parameter")
-func interact(interactor: Node2D) -> void:
+func interact(interactor: Character) -> void:
 	if objectHolder.is_holding():
-		var otherObjectHolder: ObjectHolder = interactor.get_node("ObjectHolder")
+		var otherObjectHolder: ObjectHolder = interactor.objectHolder
 		objectHolder.place(otherObjectHolder)
 	else:
 		var spawn = spawnScene.instantiate()

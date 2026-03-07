@@ -29,10 +29,17 @@ func drop() -> Pickable:
 	
 	currentHoldedObject = null
 	obj.owner.reparent(get_tree().current_scene)
-	if objectDropPoint:
-		obj.owner.global_position = objectDropPoint.global_position
+	move_to_drop_point()
 	dropped_object.emit(obj)
 	return obj
+
+func move_to_drop_point() -> void:
+	if currentHoldedObject == null:
+		print(name, " can't move. Not holding anything!")
+		return
+	
+	if objectDropPoint:
+		currentHoldedObject.owner.global_position = objectDropPoint.global_position
 
 func place(objectHolder: ObjectHolder) -> Pickable:
 	var obj = drop()
@@ -40,6 +47,10 @@ func place(objectHolder: ObjectHolder) -> Pickable:
 	return obj
 
 func throw(dir: Vector2) -> Pickable:
+	if currentHoldedObject == null:
+		print(name, " can't throw. Not holding anything!")
+		return
+	
 	var obj = drop()
 	obj.throw(dir)
 	

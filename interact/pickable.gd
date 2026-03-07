@@ -4,8 +4,8 @@ class_name Pickable
 var isBeingHeld: bool = false
 var curObjectHolder: ObjectHolder
 
-func interact(interactor: Node2D) -> void:
-	var objectHolder: ObjectHolder = interactor.get_node("ObjectHolder")
+func interact(interactor: Character) -> void:
+	var objectHolder: ObjectHolder = interactor.objectHolder
 	if objectHolder:
 		objectHolder.start_holding(self)
 		
