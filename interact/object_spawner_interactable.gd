@@ -9,6 +9,6 @@ func interact(interactor: Node2D) -> void:
 		var otherObjectHolder: ObjectHolder = interactor.get_node("ObjectHolder")
 		objectHolder.place(otherObjectHolder)
 	else:
-		var spawn: Pickable = spawnScene.instantiate()
+		var spawn = spawnScene.instantiate()
 		add_child(spawn)
-		objectHolder.start_holding(spawn)
+		objectHolder.start_holding(spawn.get_node("Pickable"))

@@ -13,8 +13,9 @@ func start_holding(obj: Pickable) -> void:
 		print(name, " can't pick up object. Already holding one!")
 		return
 	
-	obj.reparent(objectHoldPoint)
-	obj.position = Vector2.ZERO
+	print(name, "is picking up ", obj.name, " with owner ", owner.name)
+	obj.owner.reparent(objectHoldPoint)
+	obj.owner.position = Vector2.ZERO
 	currentHoldedObject = obj
 	obj.be_picked_up(self) # Don't like calling this here
 	picked_up_object.emit(currentHoldedObject)
@@ -27,9 +28,9 @@ func drop() -> Pickable:
 	var obj = currentHoldedObject
 	
 	currentHoldedObject = null
-	obj.reparent(get_tree().current_scene)
+	obj.owner.reparent(get_tree().current_scene)
 	if objectDropPoint:
-		obj.global_position = objectDropPoint.global_position
+		obj.owner.global_position = objectDropPoint.global_position
 	dropped_object.emit(obj)
 	return obj
 

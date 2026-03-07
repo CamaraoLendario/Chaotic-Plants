@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://c4ei3qax5i842"]
 
-[ext_resource type="Script" path="res://interact/pickable.gd" id="1_2iui2"]
+[ext_resource type="Script" uid="uid://lmpotdepes13" path="res://interact/pickable.gd" id="1_2iui2"]
 [ext_resource type="Texture2D" uid="uid://chnu528uov0n" path="res://icon.svg" id="1_86ad0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2iui2"]
 size = Vector2(32, 32)
 
-[node name="ProtoObject" type="Area2D" unique_id=2128682454]
-script = ExtResource("1_2iui2")
+[node name="ProtoObject" type="RigidBody2D" unique_id=794916380]
+gravity_scale = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1409405554]
 modulate = Color(1, 0, 0, 1)
@@ -21,5 +21,12 @@ offset_right = 33.0
 offset_bottom = -25.0
 text = "Pickable"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=616815555]
+[node name="Pickable" type="Area2D" parent="." unique_id=991664864]
+script = ExtResource("1_2iui2")
+metadata/_custom_type_script = "uid://lmpotdepes13"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickable" unique_id=616815555]
+shape = SubResource("RectangleShape2D_2iui2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1593412178]
 shape = SubResource("RectangleShape2D_2iui2")
