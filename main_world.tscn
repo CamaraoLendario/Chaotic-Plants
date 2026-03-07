@@ -7,16 +7,17 @@
 [ext_resource type="Script" uid="uid://d1p357dnn4txx" path="res://time_label.gd" id="5_uue8y"]
 [ext_resource type="PackedScene" uid="uid://ulelhqvpd2il" path="res://Plants/plant_item_receiver.tscn" id="5_whfra"]
 
-[node name="Node2D" type="Node2D" unique_id=1937000729]
+[node name="Node2D" type="Node2D" unique_id=1937000729 node_paths=PackedStringArray("plantSpawners")]
 script = ExtResource("1_3etub")
 levelData = ExtResource("2_uue8y")
+plantSpawners = [NodePath("PlantSpawner1"), NodePath("PlantSpawner2"), NodePath("PlantSpawner3")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1987632420]
 
 [node name="Node2D" parent="." unique_id=1793507303 instance=ExtResource("1_itk02")]
 
 [node name="ObjectSpawner" parent="." unique_id=1063420533 instance=ExtResource("2_uoqbt")]
-position = Vector2(472, 0)
+position = Vector2(-480, -176)
 
 [node name="PlantItemReceiver" parent="." unique_id=1216653505 instance=ExtResource("5_whfra")]
 position = Vector2(-344, 200)
@@ -30,3 +31,12 @@ offset_bottom = 23.0
 grow_horizontal = 2
 script = ExtResource("5_uue8y")
 gameController = NodePath("../..")
+
+[node name="PlantSpawner1" parent="." unique_id=682720887 instance=ExtResource("2_uoqbt")]
+position = Vector2(464, 248)
+
+[node name="PlantSpawner2" parent="." unique_id=24623778 instance=ExtResource("2_uoqbt")]
+position = Vector2(464, 32)
+
+[node name="PlantSpawner3" parent="." unique_id=408865084 instance=ExtResource("2_uoqbt")]
+position = Vector2(464, -200)
