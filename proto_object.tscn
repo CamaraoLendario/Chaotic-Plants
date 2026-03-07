@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c4ei3qax5i842"]
 
-[ext_resource type="Script" uid="uid://lmpotdepes13" path="res://interact/Pickable.gd" id="1_2iui2"]
+[ext_resource type="Script" path="res://interact/pickable.gd" id="1_2iui2"]
 [ext_resource type="Texture2D" uid="uid://chnu528uov0n" path="res://icon.svg" id="1_86ad0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2iui2"]

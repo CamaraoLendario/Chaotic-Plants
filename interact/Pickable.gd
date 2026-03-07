@@ -7,14 +7,14 @@ var curObjectHolder: ObjectHolder
 func interact(interactor: Node2D) -> void:
 	var objectHolder: ObjectHolder = interactor.get_node("ObjectHolder")
 	if objectHolder:
-		objectHolder.start_holding(self)
+		objectHolder.start_holding(self )
 		
 
 func be_picked_up(objectHolder: ObjectHolder) -> void:
 	if !can_be_interacted():
 		return
 		
-	objectHolder.start_holding(self)
+	objectHolder.start_holding(self )
 	isBeingHolded = true
 	curObjectHolder = objectHolder
 	objectHolder.dropped_object.connect(_on_was_dropped)
