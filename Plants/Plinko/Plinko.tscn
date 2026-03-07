@@ -87,24 +87,61 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="BasePlant" unique_id=629364572 node_paths=PackedStringArray("plinkoBallSpawnPoint", "plinkoBall") instance=ExtResource("1_v8jk2")]
+[node name="BasePlant" unique_id=629364572 node_paths=PackedStringArray("plinkoBallSpawnPoint", "plinkoBall", "markers") instance=ExtResource("1_v8jk2")]
 script = ExtResource("2_u4uv3")
 timeToFall = 1.0
-plinkoBallSpawnPoint = NodePath("Plinko Spawn Point")
+plinkoBallSpawnPoint = NodePath("PlinkoSpawnPoint")
 plinkoBall = NodePath("Sprite2D")
+markers = NodePath("Markers")
 isByStages = true
 
 [node name="Sprite" parent="." index="0" unique_id=1713877530]
+scale = Vector2(10, 10)
 sprite_frames = SubResource("SpriteFrames_ngji5")
 animation = &"stage0"
 autoplay = "stage0"
-frame_progress = 0.093451865
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="2" unique_id=1074542110]
-position = Vector2(0, -31)
-scale = Vector2(0.140625, 0.140625)
+position = Vector2(473, 152)
+scale = Vector2(0.67187506, 0.67187506)
 texture = ExtResource("4_ngji5")
+offset = Vector2(0, -63.435)
 
-[node name="Plinko Spawn Point" type="Marker2D" parent="." index="3" unique_id=1181432343]
-position = Vector2(0, -31)
+[node name="PlinkoSpawnPoint" type="Marker2D" parent="." index="3" unique_id=1181432343]
+position = Vector2(0, -411)
 gizmo_extents = 18.1
+
+[node name="Markers" type="Node" parent="." index="4" unique_id=361450743]
+
+[node name="Level2" type="Node" parent="Markers" index="0" unique_id=603571342]
+
+[node name="PlinkoDropDistanceFinder" type="Marker2D" parent="Markers/Level2" index="0" unique_id=1660731092]
+position = Vector2(-189, -233)
+
+[node name="PlinkoDropDistanceFinder2" type="Marker2D" parent="Markers/Level2" index="1" unique_id=1775677888]
+position = Vector2(156, -214)
+
+[node name="Level3" type="Node" parent="Markers" index="1" unique_id=800380062]
+
+[node name="PlinkoDropDistanceFinder" type="Marker2D" parent="Markers/Level3" index="0" unique_id=713510982]
+position = Vector2(-324, -12)
+
+[node name="PlinkoDropDistanceFinder2" type="Marker2D" parent="Markers/Level3" index="1" unique_id=2040265269]
+position = Vector2(-2, -21)
+
+[node name="PlinkoDropDistanceFinder3" type="Marker2D" parent="Markers/Level3" index="2" unique_id=1786076345]
+position = Vector2(291, -21)
+
+[node name="Level4" type="Node" parent="Markers" index="2" unique_id=2022285333]
+
+[node name="PlinkoDropDistanceFinder" type="Marker2D" parent="Markers/Level4" index="0" unique_id=1506297321]
+position = Vector2(-487, 151)
+
+[node name="PlinkoDropDistanceFinder2" type="Marker2D" parent="Markers/Level4" index="1" unique_id=643514548]
+position = Vector2(-165, 142)
+
+[node name="PlinkoDropDistanceFinder3" type="Marker2D" parent="Markers/Level4" index="2" unique_id=1815881043]
+position = Vector2(128, 142)
+
+[node name="PlinkoDropDistanceFinder4" type="Marker2D" parent="Markers/Level4" index="3" unique_id=79482694]
+position = Vector2(473, 152)
