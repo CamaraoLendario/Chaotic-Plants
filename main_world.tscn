@@ -1,50 +1,9 @@
 [gd_scene format=3 uid="uid://chrx13ummoytr"]
 
 [ext_resource type="PackedScene" uid="uid://dopujk04ltt6d" path="res://character/character.tscn" id="1_itk02"]
-[ext_resource type="PackedScene" uid="uid://bq3gnd6nxn01p" path="res://object_spawner.tscn" id="2_uoqbt"]
+[ext_resource type="PackedScene" path="res://object_spawner.tscn" id="2_uoqbt"]
 [ext_resource type="PackedScene" uid="uid://be4ptkje88wa3" path="res://Plants/base_plant.tscn" id="3_43o5b"]
-[ext_resource type="Texture2D" uid="uid://chnu528uov0n" path="res://icon.svg" id="4_3etub"]
-[ext_resource type="PackedScene" uid="uid://ulelhqvpd2il" path="res://Plants/plant_item_receiver.tscn" id="5_whfra"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_whfra"]
-atlas = ExtResource("4_3etub")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uue8y"]
-atlas = ExtResource("4_3etub")
-region = Rect2(32, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aac4l"]
-atlas = ExtResource("4_3etub")
-region = Rect2(96, 96, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_whfra"]
-resource_local_to_scene = true
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_whfra")
-}],
-"loop": true,
-"name": &"stage0",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uue8y")
-}],
-"loop": true,
-"name": &"stage1",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aac4l")
-}],
-"loop": true,
-"name": &"stage2",
-"speed": 5.0
-}]
+[ext_resource type="PackedScene" path="res://Plants/plant_item_receiver.tscn" id="5_whfra"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3etub"]
 size = Vector2(32, 32)
@@ -62,7 +21,7 @@ position = Vector2(472, 0)
 position = Vector2(-313, -162)
 
 [node name="Sprite" parent="BasePlant" index="0" unique_id=1713877530]
-sprite_frames = SubResource("SpriteFrames_3etub")
+animation = &"stage0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BasePlant/Interactable" parent_id_path=PackedInt32Array(629364572, 825575324) index="0" unique_id=1479467512]
 shape = SubResource("RectangleShape2D_3etub")
