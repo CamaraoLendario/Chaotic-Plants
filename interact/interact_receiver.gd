@@ -11,7 +11,7 @@ func try_to_interact() -> void:
 	print("Trying to interact")
 	if objectHolder != null:
 		if objectHolder.is_holding():
-			objectHolder.drop()
+			objectHolder.throw(Vector2.RIGHT * 1000)
 			return
 	
 	if selectedInteractable:
