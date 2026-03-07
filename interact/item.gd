@@ -1,4 +1,5 @@
 extends RigidBody2D
+class_name  ProtoObject
 
 @export var pickable: Pickable
 

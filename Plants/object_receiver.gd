@@ -1,5 +1,8 @@
 extends Node2D
+class_name  PlantItemReceiver
+
 signal picked_up_object(obj: Pickable)
+signal dropped_object(obj: Pickable)
 
 @export var interactReceiver: InteractReceiver
 @export var objectHolder: ObjectHolder
@@ -7,10 +10,17 @@ signal picked_up_object(obj: Pickable)
 func _enter_tree() -> void:
 	interactReceiver.interactableInRange.connect(_on_interactable_in_range)
 	objectHolder.picked_up_object.connect(_on_picked_up_object)
+	objectHolder.dropped_object.connect(_on_dropped_object)
 
 func _on_interactable_in_range(interactable: Interactable):
 	if interactable is Pickable:
 		interactable.interact(interactReceiver)
 
 func _on_picked_up_object(obj: Pickable):
-	picked_up_object.emit(picked_up_object)
+	picked_up_object.emit(obj)
+
+func _on_dropped_object(obj: Pickable):
+	dropped_object.emit(obj)
+
+func get_held_object() -> Pickable:
+	return objectHolder.objectHoldPoint.getchild(0) as Pickable 

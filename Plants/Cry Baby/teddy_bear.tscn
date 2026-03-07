@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://8eryyeve3m57"]
+
+[ext_resource type="PackedScene" uid="uid://c4ei3qax5i842" path="res://proto_object.tscn" id="1_o350w"]
+[ext_resource type="Script" uid="uid://q7622vvqmi5n" path="res://Plants/Cry Baby/teddy_bear.gd" id="2_8op5b"]
+[ext_resource type="Texture2D" uid="uid://dq1og1no3bn0n" path="res://Plants/Cry Baby/Sprites/Teddy0.png" id="3_plrn6"]
+[ext_resource type="Texture2D" uid="uid://dax75lenmnnhs" path="res://Plants/Cry Baby/Sprites/Teddy1.png" id="4_r8138"]
+[ext_resource type="Texture2D" uid="uid://dmeqsi1ctp0o0" path="res://Plants/Cry Baby/Sprites/Teddy2.png" id="5_xpcq6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcxt6"]
+atlas = ExtResource("3_plrn6")
+region = Rect2(0, 0, 59, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q34yb"]
+atlas = ExtResource("4_r8138")
+region = Rect2(0, 0, 59, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lysis"]
+atlas = ExtResource("5_xpcq6")
+region = Rect2(0, 0, 59, 70)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wblkq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcxt6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q34yb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lysis")
+}],
+"loop": true,
+"name": &"TeddyBears",
+"speed": 5.0
+}]
+
+[node name="ProtoObject" unique_id=794916380 node_paths=PackedStringArray("sprite") instance=ExtResource("1_o350w")]
+script = ExtResource("2_8op5b")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="Sprite2D" parent="." index="0" unique_id=1409405554]
+visible = false
+modulate = Color(1, 1, 1, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=1976670365]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_wblkq")
+animation = &"TeddyBears"

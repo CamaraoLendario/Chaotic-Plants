@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://boeg2lf46fjjr"]
+
+[ext_resource type="PackedScene" uid="uid://be4ptkje88wa3" path="res://Plants/base_plant.tscn" id="1_kl575"]
+[ext_resource type="Texture2D" uid="uid://cglnwvhgtug5d" path="res://Plants/Cry Baby/Sprites/CryBabySketch.png" id="2_jprbr"]
+[ext_resource type="Script" uid="uid://dcb0yk42253op" path="res://Plants/Cry Baby/cry_baby.gd" id="2_lwu54"]
+[ext_resource type="PackedScene" uid="uid://8eryyeve3m57" path="res://Plants/Cry Baby/teddy_bear.tscn" id="3_ef3al"]
+[ext_resource type="PackedScene" uid="uid://ulelhqvpd2il" path="res://Plants/plant_item_receiver.tscn" id="4_h34sp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwu54"]
+atlas = ExtResource("2_jprbr")
+region = Rect2(0, 0, 198, 215)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h34sp"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwu54")
+}],
+"loop": true,
+"name": &"stage0",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"stage1",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"stage2",
+"speed": 5.0
+}]
+
+[node name="Cry Baby" unique_id=629364572 node_paths=PackedStringArray("itemReceiver") instance=ExtResource("1_kl575")]
+script = ExtResource("2_lwu54")
+itemReceiver = NodePath("PlantItemReceiver")
+teddyBearScene = ExtResource("3_ef3al")
+growTime = 15.0
+
+[node name="Sprite" parent="." index="0" unique_id=1713877530]
+sprite_frames = SubResource("SpriteFrames_h34sp")
+animation = &"stage0"
+
+[node name="PlantItemReceiver" parent="." index="2" unique_id=1216653505 instance=ExtResource("4_h34sp")]
