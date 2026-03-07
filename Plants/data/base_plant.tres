@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PlantData" format=3 uid="uid://rp5urjcqcj6r"]
+
+[ext_resource type="Texture2D" uid="uid://chnu528uov0n" path="res://icon.svg" id="1_0myfn"]
+[ext_resource type="Script" uid="uid://ci4rkla7atypy" path="res://Plants/plant_data.gd" id="1_3gqo8"]
+[ext_resource type="PackedScene" uid="uid://be4ptkje88wa3" path="res://Plants/base_plant.tscn" id="2_x4bpm"]
+
+[resource]
+script = ExtResource("1_3gqo8")
+scene = ExtResource("2_x4bpm")
+name = "Base Plant"
+image = ExtResource("1_0myfn")
+metadata/_custom_type_script = "uid://ci4rkla7atypy"

@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://chrx13ummoytr"]
 
+[ext_resource type="Script" uid="uid://r5uwf3yaolik" path="res://game_state/game_controller.gd" id="1_3etub"]
 [ext_resource type="PackedScene" uid="uid://dopujk04ltt6d" path="res://character/character.tscn" id="1_itk02"]
-[ext_resource type="PackedScene" path="res://object_spawner.tscn" id="2_uoqbt"]
-[ext_resource type="PackedScene" path="res://Plants/plant_item_receiver.tscn" id="5_whfra"]
+[ext_resource type="PackedScene" uid="uid://bq3gnd6nxn01p" path="res://object_spawner.tscn" id="2_uoqbt"]
+[ext_resource type="Resource" uid="uid://4andksvgn7yo" path="res://game_state/levels/level0Data.tres" id="2_uue8y"]
+[ext_resource type="Script" uid="uid://d1p357dnn4txx" path="res://time_label.gd" id="5_uue8y"]
+[ext_resource type="PackedScene" uid="uid://ulelhqvpd2il" path="res://Plants/plant_item_receiver.tscn" id="5_whfra"]
 
 [node name="Node2D" type="Node2D" unique_id=1937000729]
+script = ExtResource("1_3etub")
+levelData = ExtResource("2_uue8y")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1987632420]
 
@@ -15,3 +20,13 @@ position = Vector2(472, 0)
 
 [node name="PlantItemReceiver" parent="." unique_id=1216653505 instance=ExtResource("5_whfra")]
 position = Vector2(-344, 200)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1207220588]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1974404092 node_paths=PackedStringArray("gameController")]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+script = ExtResource("5_uue8y")
+gameController = NodePath("../..")
