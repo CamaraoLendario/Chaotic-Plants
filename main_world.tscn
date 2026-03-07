@@ -6,6 +6,8 @@
 [ext_resource type="Resource" uid="uid://4andksvgn7yo" path="res://game_state/levels/level0Data.tres" id="2_uue8y"]
 [ext_resource type="Script" uid="uid://d1p357dnn4txx" path="res://time_label.gd" id="5_uue8y"]
 [ext_resource type="PackedScene" uid="uid://ulelhqvpd2il" path="res://Plants/plant_item_receiver.tscn" id="5_whfra"]
+[ext_resource type="Script" uid="uid://do6arsnvfb00a" path="res://request_list_view.gd" id="7_7ktct"]
+[ext_resource type="PackedScene" uid="uid://c7hl623304u1e" path="res://game_state/views/request_view.tscn" id="7_aac4l"]
 
 [node name="Node2D" type="Node2D" unique_id=1937000729 node_paths=PackedStringArray("plantSpawners")]
 script = ExtResource("1_3etub")
@@ -32,6 +34,18 @@ grow_horizontal = 2
 script = ExtResource("5_uue8y")
 gameController = NodePath("../..")
 
+[node name="RequestListView" type="HBoxContainer" parent="CanvasLayer" unique_id=1699568799 node_paths=PackedStringArray("gameController")]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 16.0
+offset_top = 20.0
+offset_right = -16.0
+offset_bottom = 135.00003
+grow_horizontal = 2
+script = ExtResource("7_7ktct")
+gameController = NodePath("../..")
+requestViewScene = ExtResource("7_aac4l")
+
 [node name="PlantSpawner1" parent="." unique_id=682720887 instance=ExtResource("2_uoqbt")]
 position = Vector2(464, 248)
 
@@ -40,3 +54,7 @@ position = Vector2(464, 32)
 
 [node name="PlantSpawner3" parent="." unique_id=408865084 instance=ExtResource("2_uoqbt")]
 position = Vector2(464, -200)
+
+[connection signal="spawnedObject" from="PlantSpawner1" to="." method="on_plant_spawned"]
+[connection signal="spawnedObject" from="PlantSpawner2" to="." method="on_plant_spawned"]
+[connection signal="spawnedObject" from="PlantSpawner3" to="." method="on_plant_spawned"]

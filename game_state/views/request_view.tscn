@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://c7hl623304u1e"]
+
+[ext_resource type="Script" uid="uid://wnayajr2d2yl" path="res://game_state/views/request_view.gd" id="1_p57c3"]
+
+[node name="RequestView" type="PanelContainer" unique_id=1899248003 node_paths=PackedStringArray("plant_name", "plant_progress", "plant_needs")]
+script = ExtResource("1_p57c3")
+plant_name = NodePath("MarginContainer/VBoxContainer/PlantName")
+plant_progress = NodePath("MarginContainer/VBoxContainer/PlantProgress")
+plant_needs = NodePath("MarginContainer/VBoxContainer/PlantNeeds")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1812483167]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1713083977]
+layout_mode = 2
+
+[node name="PlantName" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1931171732]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Cry Baby"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlantProgress" type="ProgressBar" parent="MarginContainer/VBoxContainer" unique_id=951499993]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+show_percentage = false
+
+[node name="PlantNeeds" type="Label" parent="MarginContainer/VBoxContainer" unique_id=680437829]
+layout_mode = 2
+text = "CRY CRY CRY CRY"
+horizontal_alignment = 1
+vertical_alignment = 1

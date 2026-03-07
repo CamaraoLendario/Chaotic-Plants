@@ -3,6 +3,7 @@ class_name GameController
 
 signal levelSelected(levelData: LevelData)
 signal newRequestArrived(request: PlantRequest)
+signal newPlantSpawned(plant: Plant)
 
 @export var gameTime: float = 60 # 300 = 5 minutes
 @export var levelData: LevelData
@@ -56,3 +57,6 @@ func next_request() -> PlantRequest:
 
 func get_elapsed_time() -> float:
 	return timeElapsed
+
+func on_plant_spawned(obj: Node2D):
+	newPlantSpawned.emit(obj)
