@@ -45,5 +45,6 @@ script = ExtResource("2_87s3t")
 metadata/_custom_type_script = "uid://cvc5atuup46p2"
 
 [node name="Pickable" type="Area2D" parent="." unique_id=1570847046]
+collision_layer = 2
 script = ExtResource("3_evnqr")
 metadata/_custom_type_script = "uid://d5sfdadk20ij"

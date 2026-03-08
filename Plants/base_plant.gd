@@ -22,6 +22,7 @@ var IsPlanted: bool:
 		(material as ShaderMaterial).set_shader_parameter("animate", value)
 
 var isPlanted: bool = false
+var data: PlantData
 var isGrown : bool = false
 var GrowProgress : float: ## How far the plant is in the growing progress. from 0 to growGoal
 	get():
@@ -34,6 +35,11 @@ var growProgress: float = 1
 
 func _ready() -> void:
 	interactable.wasInteracted.connect(on_interacted)
+	if data == null:
+		printerr("Plant ", name, " does not have data set. Null errors will occur!")
+
+func set_data(plantData: PlantData):
+	data = plantData
 
 func grow():
 	if (isGrown): return

@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://wnayajr2d2yl" path="res://game_state/views/request_view.gd" id="1_p57c3"]
 
-[node name="RequestView" type="PanelContainer" unique_id=1899248003 node_paths=PackedStringArray("plant_name", "plant_progress", "plant_needs")]
+[node name="RequestView" type="PanelContainer" unique_id=1899248003 node_paths=PackedStringArray("plant_name", "request_progress", "plant_needs")]
 script = ExtResource("1_p57c3")
 plant_name = NodePath("MarginContainer/VBoxContainer/PlantName")
-plant_progress = NodePath("MarginContainer/VBoxContainer/PlantProgress")
+request_progress = NodePath("MarginContainer/VBoxContainer/PlantProgress")
 plant_needs = NodePath("MarginContainer/VBoxContainer/PlantNeeds")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1812483167]
