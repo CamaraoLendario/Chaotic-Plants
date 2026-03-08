@@ -23,4 +23,5 @@ func _on_dropped_object(obj: Pickable):
 	dropped_object.emit(obj)
 
 func get_held_object() -> Pickable:
-	return objectHolder.objectHoldPoint.getchild(0) as Pickable 
+	if (!objectHolder.objectHoldPoint.get_child_count() > 0): return null
+	return objectHolder.objectHoldPoint.get_child(0) as Pickable 

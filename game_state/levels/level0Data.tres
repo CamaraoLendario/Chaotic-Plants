@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://4andksvgn7yo"]
 
 [ext_resource type="Script" uid="uid://dslo03u4ehh3c" path="res://game_state/levels/plant_request.gd" id="1_82x0u"]
-[ext_resource type="Resource" uid="uid://rp5urjcqcj6r" path="res://Plants/data/base_plant.tres" id="2_b5mtq"]
+[ext_resource type="Resource" uid="uid://bmaj6ow1amnm2" path="res://Plants/data/cry_baby_plant.tres" id="2_b5mtq"]
 [ext_resource type="Script" uid="uid://c1m01xcb18u38" path="res://game_state/levels/level_data.gd" id="2_wguby"]
 
 [sub_resource type="Resource" id="Resource_wguby"]

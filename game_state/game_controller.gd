@@ -33,6 +33,7 @@ func _process(delta: float) -> void:
 
 func handle_request(request: PlantRequest):
 	var spawner = get_available_spawner()
+	if(spawner == null): return ## TODO: Arranjar esta merda
 	spawner.spawn(request.plantData.scene)
 
 func get_available_spawner() -> ObjectSpawner:

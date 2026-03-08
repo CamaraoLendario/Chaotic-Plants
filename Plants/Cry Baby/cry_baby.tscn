@@ -10,7 +10,7 @@
 atlas = ExtResource("2_jprbr")
 region = Rect2(0, 0, 198, 215)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_h34sp"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ef3al"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
@@ -38,8 +38,10 @@ itemReceiver = NodePath("PlantItemReceiver")
 teddyBearScene = ExtResource("3_ef3al")
 growTime = 15.0
 
-[node name="Sprite" parent="." index="0" unique_id=1713877530]
-sprite_frames = SubResource("SpriteFrames_h34sp")
-animation = &"stage0"
+[node name="PlantItemReceiver" parent="." index="0" unique_id=1216653505 instance=ExtResource("4_h34sp")]
+scale = Vector2(0.25, 0.25)
 
-[node name="PlantItemReceiver" parent="." index="2" unique_id=1216653505 instance=ExtResource("4_h34sp")]
+[node name="Sprite" parent="." index="1" unique_id=1713877530]
+scale = Vector2(0.16161616, 0.15813954)
+sprite_frames = SubResource("SpriteFrames_ef3al")
+animation = &"stage0"
