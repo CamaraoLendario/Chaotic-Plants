@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PlantData" format=3 uid="uid://bfqe2xfeq24xp"]
+
+[ext_resource type="Texture2D" uid="uid://cglnwvhgtug5d" path="res://Plants/Cry Baby/Sprites/CryBabySketch.png" id="1_a34yl"]
+[ext_resource type="Script" uid="uid://ci4rkla7atypy" path="res://Plants/plant_data.gd" id="1_wy708"]
+[ext_resource type="PackedScene" uid="uid://boeg2lf46fjjr" path="res://Plants/Cry Baby/cry_baby.tscn" id="2_2wqca"]
+
+[resource]
+script = ExtResource("1_wy708")
+scene = ExtResource("2_2wqca")
+name = "Cry Baby"
+image = ExtResource("1_a34yl")
+metadata/_custom_type_script = "uid://ci4rkla7atypy"

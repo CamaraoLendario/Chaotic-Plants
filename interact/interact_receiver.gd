@@ -13,6 +13,7 @@ var currentThrowForce: float
 var throwForcePerSecond: float
 var isThrowing: bool = false
 
+var filters: Array[InteractFilter]
 var selectedInteractable: Interactable
 
 var interact_interval: float = 0.5
@@ -39,7 +40,7 @@ func _ready() -> void:
 	area_exited.connect(clear_selected_interactable)
 
 func update_selected_interactable(area: Area2D) -> void:
-	if area is Interactable:
+	if area is Interactable and check_filter_allows(area.owner):
 		selectedInteractable = area
 		interactableInRange.emit(selectedInteractable)
 
@@ -50,7 +51,7 @@ func clear_selected_interactable(area: Area2D) -> void:
 func _get_interactable_in_area() -> Interactable:
 	var areas = get_overlapping_areas()
 	for area in areas:
-		if area is Interactable:
+		if area is Interactable and check_filter_allows(area.owner):
 			return area
 	return null
 
@@ -69,3 +70,10 @@ func stop_throw():
 
 func reset_throw_force():
 	currentThrowForce = minThrowForce
+
+func check_filter_allows(obj) -> bool:
+	if (filters.is_empty()):
+		return true
+	for filter in filters:
+		if (filter.is_allowed(obj)): return true
+	return false

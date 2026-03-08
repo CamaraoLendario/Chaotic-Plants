@@ -6,6 +6,11 @@ signal dropped_object(obj: Pickable)
 
 @export var interactReceiver: InteractReceiver
 @export var objectHolder: ObjectHolder
+@export var filters: Array[InteractFilter]:
+	get():
+		return interactReceiver.filters
+	set(value):
+		interactReceiver.filters = value
 
 func _ready() -> void:
 	interactReceiver.interactableInRange.connect(_on_interactable_in_range)
