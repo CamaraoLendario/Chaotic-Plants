@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c8sd75wxygh6a"]
+
+[ext_resource type="PackedScene" uid="uid://c4ei3qax5i842" path="res://proto_object.tscn" id="1_mplku"]
+[ext_resource type="Script" uid="uid://bmh78dre6wkak" path="res://Plants/seed.gd" id="2_l71ud"]
+
+[node name="ProtoObject" unique_id=794916380 instance=ExtResource("1_mplku")]
+script = ExtResource("2_l71ud")
+
+[node name="Label" parent="." index="1" unique_id=2048095712]
+text = "Seed"
+horizontal_alignment = 1
