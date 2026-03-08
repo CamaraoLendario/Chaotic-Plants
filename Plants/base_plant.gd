@@ -12,6 +12,16 @@ signal grew (growStage : int)
 @export var interactable : Interactable
 @export var sprite: AnimatedSprite2D
 
+var isGrowing: bool = true
+
+var IsPlanted: bool:
+	get():
+		return isPlanted
+	set(value):
+		isPlanted = value
+		(material as ShaderMaterial).set_shader_parameter("animate", value)
+
+var isPlanted: bool = false
 var isGrown : bool = false
 var GrowProgress : float: ## How far the plant is in the growing progress. from 0 to growGoal
 	get():
@@ -34,7 +44,7 @@ func on_interacted(_interactor: Node2D):
 	print("I was interacted with")
 
 func _physics_process(delta: float) -> void:
-	if (!isByStages and GrowProgress < growGoal):
+	if (!isByStages and GrowProgress < growGoal and isPlanted and isGrowing):
 		GrowProgress += (delta / growTime) * growGoal
 
 func check_grow_progress():
