@@ -7,3 +7,6 @@ func _ready() -> void:
 	super._ready()
 	self.name = plantData.name + " seed"
 	$Label.text = name
+
+func get_plant() -> Plant:
+	return plantData.scene.instantiate()

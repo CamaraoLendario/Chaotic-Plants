@@ -23,10 +23,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="BasePlant" type="Node2D" unique_id=629364572 node_paths=PackedStringArray("interactable", "sprite")]
+[node name="BasePlant" type="Node2D" unique_id=629364572 node_paths=PackedStringArray("sprite", "interactable", "pickable")]
 script = ExtResource("1_ha1yr")
-interactable = NodePath("Interactable")
 sprite = NodePath("Sprite")
+interactable = NodePath("Interactable")
+pickable = NodePath("Pickable")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1713877530]
 sprite_frames = SubResource("SpriteFrames_87s3t")

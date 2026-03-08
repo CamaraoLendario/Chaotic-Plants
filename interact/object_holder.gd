@@ -18,7 +18,6 @@ func start_holding(obj: Pickable) -> void:
 	
 	call_deferred("pick_up", obj)
 
-
 func drop() -> Pickable:
 	if currentHoldedObject == null:
 		print(name, " can't drop. Not holding anything!")

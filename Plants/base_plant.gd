@@ -9,8 +9,9 @@ signal grew (growStage : int)
 @export var growTime : float = 1 ## Time to grow in seconds
 @export var growGoal : int = 3 ## How many stages the plant has
 @export_group("Nodes")
-@export var interactable : Interactable
 @export var sprite: AnimatedSprite2D
+@export var interactable : Interactable
+@export var pickable: Pickable
 
 var isGrown : bool = false
 var GrowProgress : float: ## How far the plant is in the growing progress. from 0 to growGoal
