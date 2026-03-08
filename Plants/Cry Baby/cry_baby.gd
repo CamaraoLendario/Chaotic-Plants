@@ -8,7 +8,15 @@ class_name CryBaby
 var beAnnoyingTimeInterval: float = 1
 var ownedTeddyBears: Array[TeddyBear]
 
-var isCrying: bool = true
+var IsCrying: bool:
+	get():
+		return _isCrying
+	set(value):
+		_isCrying = value
+		if (_isCrying): modulate = Color.BLUE
+		else: modulate = Color.WHITE
+	
+var _isCrying: bool = true
 
 var WantedTeddyBear: int:
 	get():
@@ -29,10 +37,13 @@ var _heldTeddyBear = -1
 func _ready() -> void:
 	super._ready()
 	
+	
+	
+	modulate = Color.BLUE
 	itemReceiver.picked_up_object.connect(update_held_item)
 	itemReceiver.dropped_object.connect(update_held_item)
 	
-	AddBeAnnoyingTimer()
+	#AddBeAnnoyingTimer()
 	SpawnTeddyBears()
 
 func AddBeAnnoyingTimer():
@@ -48,20 +59,21 @@ func be_annoying():
 		WantedTeddyBear = possibleTeddyBears[randi_range(0, 1)]
 
 func update_held_item(_obj: Pickable):
-	var currentHeldObject = itemReceiver.get_held_object()
+	var currentHeldObject = _obj.owner
+	print(self, " held item updated. new object: ", currentHeldObject)
 	if (currentHeldObject is TeddyBear):
 		var newTeddyBear = currentHeldObject as TeddyBear
-		WantedTeddyBear = newTeddyBear.representedBear
+		HeldTeddyBear = newTeddyBear.representedBear
 		
 		if (newTeddyBear.ownerBaby != self):
 			trade_teddy_bears(newTeddyBear)
-		
-	else: WantedTeddyBear = -1
+	
+	else: HeldTeddyBear = -1
 
 func checkIsCrying():
 	if (WantedTeddyBear == HeldTeddyBear):
-		isCrying = false
-	else: isCrying = true
+		IsCrying = false
+	else: IsCrying = true
 
 func SpawnTeddyBears():
 	for i in 3: #aparentemente isto faz 0, 1, 2
@@ -81,9 +93,10 @@ func trade_teddy_bears(teddyBear: TeddyBear):
 	var otherBear = tradingWith.ownedTeddyBears[bearIdx]
 	
 	ownedTeddyBears[bearIdx] = otherBear
+	otherBear.ownerBaby = self
 	tradingWith.ownedTeddyBears[bearIdx] = teddyBear
+	teddyBear.ownerBaby = tradingWith
 
-
-func _exit_tree() -> void:
-	for teddyBear in ownedTeddyBears:
-		teddyBear.queue_free()
+func remove_bears() -> void:
+	for i in 3:
+		ownedTeddyBears[2-i].queue_free()

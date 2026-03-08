@@ -7,7 +7,7 @@ signal dropped_object(obj: Pickable)
 @export var interactReceiver: InteractReceiver
 @export var objectHolder: ObjectHolder
 
-func _enter_tree() -> void:
+func _ready() -> void:
 	interactReceiver.interactableInRange.connect(_on_interactable_in_range)
 	objectHolder.picked_up_object.connect(_on_picked_up_object)
 	objectHolder.dropped_object.connect(_on_dropped_object)
@@ -22,6 +22,6 @@ func _on_picked_up_object(obj: Pickable):
 func _on_dropped_object(obj: Pickable):
 	dropped_object.emit(obj)
 
-func get_held_object() -> Pickable:
+func get_held_object():
 	if (!objectHolder.objectHoldPoint.get_child_count() > 0): return null
-	return objectHolder.objectHoldPoint.get_child(0) as Pickable 
+	return objectHolder.objectHoldPoint.get_child(0) 
