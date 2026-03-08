@@ -2,18 +2,25 @@ extends PanelContainer
 class_name RequestView
 
 @export var plant_name: Label
-@export var plant_progress: ProgressBar
+@export var request_progress: ProgressBar
 @export var plant_needs: Label
 
-var plant: Plant
+var request: PlantRequest
 
-func set_plant(plant: Plant):
-	self.plant = plant
+func set_request(request: PlantRequest):
+	self.request = request
 	
-	plant_name.text = plant.name #TODO: fix this, use plantData (put field in Plant script)
-	plant_progress.max_value = plant.growGoal
-	plant_progress.value = plant.GrowProgress
+	plant_name.text = request.plantData.name
+	request_progress.max_value = request.requestDuration
+	request_progress.min_value = 0
+	request_progress.value = 0
+	
+	request.requestFulfilled.connect(_on_request_fulfilled)
 
 func _process(delta: float) -> void:
-	if plant:
-		plant_progress.value = plant.GrowProgress
+	if request:
+		request_progress.value = request_progress.value + delta
+
+func _on_request_fulfilled() -> void:
+	# TODO: play animations?
+	queue_free()

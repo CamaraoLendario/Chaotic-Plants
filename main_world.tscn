@@ -4,15 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://dopujk04ltt6d" path="res://character/character.tscn" id="1_itk02"]
 [ext_resource type="PackedScene" uid="uid://bq3gnd6nxn01p" path="res://object_spawner.tscn" id="2_uoqbt"]
 [ext_resource type="Resource" uid="uid://4andksvgn7yo" path="res://game_state/levels/level0Data.tres" id="2_uue8y"]
-[ext_resource type="Script" path="res://time_label.gd" id="5_uue8y"]
+[ext_resource type="Script" uid="uid://d1p357dnn4txx" path="res://time_label.gd" id="5_uue8y"]
 [ext_resource type="PackedScene" uid="uid://ulelhqvpd2il" path="res://Plants/plant_item_receiver.tscn" id="5_whfra"]
-[ext_resource type="Script" path="res://request_list_view.gd" id="7_7ktct"]
+[ext_resource type="Script" uid="uid://do6arsnvfb00a" path="res://request_list_view.gd" id="7_7ktct"]
 [ext_resource type="PackedScene" uid="uid://c7hl623304u1e" path="res://game_state/views/request_view.tscn" id="7_aac4l"]
+[ext_resource type="PackedScene" uid="uid://tc83aw2jaip5" path="res://interact/delivery.tscn" id="9_uks48"]
 
-[node name="Node2D" type="Node2D" unique_id=1937000729 node_paths=PackedStringArray("plantSpawners") groups=["World"]]
+[node name="Node2D" type="Node2D" unique_id=1937000729 node_paths=PackedStringArray("plantSpawners", "delivery") groups=["World"]]
 script = ExtResource("1_3etub")
 levelData = ExtResource("2_uue8y")
 plantSpawners = [NodePath("PlantSpawner1"), NodePath("PlantSpawner2"), NodePath("PlantSpawner3")]
+delivery = NodePath("Delivery")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1987632420]
 
@@ -55,6 +57,8 @@ position = Vector2(464, 32)
 
 [node name="PlantSpawner3" parent="." unique_id=408865084 instance=ExtResource("2_uoqbt")]
 position = Vector2(464, -200)
+
+[node name="Delivery" parent="." unique_id=1179291177 instance=ExtResource("9_uks48")]
 
 [connection signal="spawnedObject" from="PlantSpawner1" to="." method="on_plant_spawned"]
 [connection signal="spawnedObject" from="PlantSpawner2" to="." method="on_plant_spawned"]
