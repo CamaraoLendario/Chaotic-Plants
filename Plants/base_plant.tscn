@@ -33,7 +33,7 @@ animations = [{
 [node name="BasePlant" type="Node2D" unique_id=629364572 node_paths=PackedStringArray("interactable", "sprite")]
 material = SubResource("ShaderMaterial_gwtbr")
 script = ExtResource("1_ha1yr")
-interactable = NodePath("Interactable")
+interactable = NodePath("")
 sprite = NodePath("Sprite")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1713877530]
@@ -41,11 +41,10 @@ use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_87s3t")
 animation = &"stage2"
 
-[node name="Interactable" type="Area2D" parent="." unique_id=825575324]
+[node name="Interactable" type="Area2D" parent="." unique_id=1060280475]
 script = ExtResource("2_87s3t")
 metadata/_custom_type_script = "uid://cvc5atuup46p2"
 
-[node name="Pickable" type="Area2D" parent="." unique_id=1570847046]
-collision_layer = 2
+[node name="Pickable" type="Area2D" parent="." unique_id=927396171]
 script = ExtResource("3_evnqr")
 metadata/_custom_type_script = "uid://d5sfdadk20ij"

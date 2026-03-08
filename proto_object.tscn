@@ -25,11 +25,12 @@ offset_right = 33.0
 offset_bottom = -25.0
 text = "Pickable"
 
-[node name="Pickable" type="Area2D" parent="." unique_id=991664864]
-script = ExtResource("1_2iui2")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickable" unique_id=616815555]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1593412178]
 shape = SubResource("RectangleShape2D_2iui2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1593412178]
+[node name="Pickable" type="Area2D" parent="." unique_id=1491887492]
+script = ExtResource("1_2iui2")
+metadata/_custom_type_script = "uid://d5sfdadk20ij"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickable" unique_id=1340029393]
 shape = SubResource("RectangleShape2D_2iui2")

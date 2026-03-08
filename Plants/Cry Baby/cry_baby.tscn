@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://8eryyeve3m57" path="res://Plants/Cry Baby/teddy_bear.tscn" id="3_ef3al"]
 [ext_resource type="PackedScene" uid="uid://ulelhqvpd2il" path="res://Plants/plant_item_receiver.tscn" id="4_h34sp"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ly2n0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nfd76"]
 resource_local_to_scene = true
 shader = ExtResource("2_nfd76")
 shader_parameter/startTime = 0.0
@@ -17,7 +17,7 @@ shader_parameter/animate = false
 atlas = ExtResource("2_jprbr")
 region = Rect2(0, 0, 198, 215)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_r0fhf"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ly2n0"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
@@ -39,20 +39,27 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Cry Baby" unique_id=629364572 node_paths=PackedStringArray("itemReceiver") instance=ExtResource("1_kl575")]
-material = SubResource("ShaderMaterial_ly2n0")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nfd76"]
+size = Vector2(32, 32)
+
+[node name="Cry Baby" unique_id=629364572 node_paths=PackedStringArray("itemReceiver", "interactable") instance=ExtResource("1_kl575")]
+material = SubResource("ShaderMaterial_nfd76")
 script = ExtResource("2_lwu54")
 itemReceiver = NodePath("PlantItemReceiver")
 teddyBearScene = ExtResource("3_ef3al")
 growTime = 15.0
+interactable = NodePath("Interactable")
 
 [node name="PlantItemReceiver" parent="." index="0" unique_id=1216653505 instance=ExtResource("4_h34sp")]
 scale = Vector2(0.25, 0.25)
 
 [node name="Sprite" parent="." index="1" unique_id=1713877530]
 scale = Vector2(0.16161616, 0.15813954)
-sprite_frames = SubResource("SpriteFrames_r0fhf")
+sprite_frames = SubResource("SpriteFrames_ly2n0")
 animation = &"stage0"
 
-[node name="Pickable" parent="." index="3" unique_id=1570847046]
-collision_layer = 1
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" parent_id_path=PackedInt32Array(1060280475) index="0" unique_id=1005480637]
+shape = SubResource("RectangleShape2D_nfd76")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickable" parent_id_path=PackedInt32Array(927396171) index="0" unique_id=1978025035]
+shape = SubResource("RectangleShape2D_nfd76")

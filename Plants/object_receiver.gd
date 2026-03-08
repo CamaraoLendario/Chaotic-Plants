@@ -18,8 +18,9 @@ func _ready() -> void:
 	objectHolder.dropped_object.connect(_on_dropped_object)
 
 func _on_interactable_in_range(interactable: Interactable):
-	if interactable is Pickable:
-		interactable.interact(interactReceiver)
+#	if interactable is Pickable:
+#		interactable.interact(interactReceiver)
+	pass
 
 func _on_picked_up_object(obj: Pickable):
 	picked_up_object.emit(obj)

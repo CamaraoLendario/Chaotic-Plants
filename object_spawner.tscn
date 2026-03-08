@@ -4,15 +4,16 @@
 [ext_resource type="Script" uid="uid://ck4gyskvum46o" path="res://interact/object_holder.gd" id="2_f20pw"]
 [ext_resource type="PackedScene" uid="uid://c4ei3qax5i842" path="res://proto_object.tscn" id="2_n53fd"]
 [ext_resource type="Texture2D" uid="uid://chnu528uov0n" path="res://icon.svg" id="3_n53fd"]
+[ext_resource type="Script" uid="uid://cvc5atuup46p2" path="res://interact/interactable.gd" id="5_n53fd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jhinc"]
 size = Vector2(128, 128)
 
-[node name="ObjectSpawner" type="Area2D" unique_id=1063420533 node_paths=PackedStringArray("objectHolder")]
+[node name="ObjectSpawner" type="Node2D" unique_id=850861519 node_paths=PackedStringArray("objectHolder", "interactable")]
 script = ExtResource("1_3djwi")
 spawnScene = ExtResource("2_n53fd")
 objectHolder = NodePath("ObjectHolder")
-metadata/_custom_type_script = "uid://cvc5atuup46p2"
+interactable = NodePath("Interactable")
 
 [node name="ObjectHolder" type="Node2D" parent="." unique_id=771054364 node_paths=PackedStringArray("objectHoldPoint")]
 script = ExtResource("2_f20pw")
@@ -25,12 +26,16 @@ position = Vector2(0, -104)
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1752078076]
 texture = ExtResource("3_n53fd")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=141009244]
-shape = SubResource("RectangleShape2D_jhinc")
-
 [node name="Label" type="Label" parent="." unique_id=1309990035]
 offset_left = -56.0
 offset_top = 64.0
 offset_right = 67.0
 offset_bottom = 87.0
 text = "Object Spawner"
+
+[node name="Interactable" type="Area2D" parent="." unique_id=1030117249]
+script = ExtResource("5_n53fd")
+metadata/_custom_type_script = "uid://cvc5atuup46p2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=705518261]
+shape = SubResource("RectangleShape2D_jhinc")

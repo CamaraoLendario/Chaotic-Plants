@@ -46,5 +46,3 @@ metadata/_custom_type_script = "uid://cvc5atuup46p2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1960998831]
 shape = SubResource("RectangleShape2D_eqv4n")
-
-[connection signal="wasInteracted" from="Interactable" to="ObjectHolder" method="take_item"]

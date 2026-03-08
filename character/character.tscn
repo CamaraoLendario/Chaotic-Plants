@@ -3,9 +3,11 @@
 [ext_resource type="Script" uid="uid://w0bpjmca2sr" path="res://character/character.gd" id="1_pjt0s"]
 [ext_resource type="Script" uid="uid://cyx4c3n3hm0kb" path="res://character/input_handler.gd" id="2_wa5vi"]
 [ext_resource type="Texture2D" uid="uid://b5q66cqeq8ns0" path="res://character/Sprite/spritesheet-characters-default.png" id="3_hx151"]
-[ext_resource type="Script" uid="uid://b3owvnlpfrkpo" path="res://interact/interact_receiver.gd" id="3_ugqs2"]
-[ext_resource type="Script" uid="uid://bhydcfunpkj7m" path="res://character/character_animation.gd" id="4_0rvpn"]
+[ext_resource type="Script" path="res://character/character_animation.gd" id="4_0rvpn"]
 [ext_resource type="Script" uid="uid://ck4gyskvum46o" path="res://interact/object_holder.gd" id="4_hx151"]
+[ext_resource type="Script" path="res://interact/interactor.gd" id="6_wy5t8"]
+[ext_resource type="Script" path="res://interact/picker.gd" id="7_dy06j"]
+[ext_resource type="Script" path="res://interact/thrower.gd" id="8_wy5t8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfnr8"]
 size = Vector2(86, 105)
@@ -59,23 +61,21 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hx151"]
 size = Vector2(84, 104)
 
-[node name="character" type="CharacterBody2D" unique_id=1793507303 node_paths=PackedStringArray("anchor", "objectHolder", "interactReceiver")]
+[node name="character" type="CharacterBody2D" unique_id=1793507303 node_paths=PackedStringArray("anchor", "objectHolder")]
 script = ExtResource("1_pjt0s")
 anchor = NodePath("Anchor")
-objectHolder = NodePath("Anchor/ObjectHolder")
-interactReceiver = NodePath("Anchor/InteractReceiver")
+objectHolder = NodePath("Anchor/Picker/ObjectHolder")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=955575041]
 position = Vector2(0, -52.5)
 shape = SubResource("RectangleShape2D_wfnr8")
 
-[node name="InputHandler" type="Node" parent="." unique_id=371800208 node_paths=PackedStringArray("interactReceiver", "anchor")]
+[node name="InputHandler" type="Node" parent="." unique_id=371800208 node_paths=PackedStringArray("interactor", "picker", "thrower", "anchor")]
 script = ExtResource("2_wa5vi")
-interactReceiver = NodePath("../Anchor/InteractReceiver")
+interactor = NodePath("../Anchor/Interactor")
+picker = NodePath("../Anchor/Picker")
+thrower = NodePath("../Anchor/Thrower")
 anchor = NodePath("../Anchor")
-
-[node name="ObjectHoldPoint" type="Marker2D" parent="." unique_id=1753229882]
-position = Vector2(0, -144)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1146572227 node_paths=PackedStringArray("character")]
 position = Vector2(0, -64)
@@ -88,20 +88,36 @@ character = NodePath("..")
 [node name="Anchor" type="Node2D" parent="." unique_id=1949543552]
 position = Vector2(0, -52)
 
-[node name="ObjectHolder" type="Node2D" parent="Anchor" unique_id=1553028554 node_paths=PackedStringArray("objectHoldPoint", "objectDropPoint")]
+[node name="Interactor" type="Area2D" parent="Anchor" unique_id=196431020]
+script = ExtResource("6_wy5t8")
+metadata/_custom_type_script = "uid://bm7xfnyxmwbd6"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor/Interactor" unique_id=1154653871]
+position = Vector2(88, 0)
+shape = SubResource("RectangleShape2D_hx151")
+
+[node name="Picker" type="Area2D" parent="Anchor" unique_id=525664322 node_paths=PackedStringArray("objectHolder")]
+script = ExtResource("7_dy06j")
+objectHolder = NodePath("ObjectHolder")
+metadata/_custom_type_script = "uid://w85o2n1ed2rq"
+
+[node name="ObjectHolder" type="Node2D" parent="Anchor/Picker" unique_id=1553028554 node_paths=PackedStringArray("objectHoldPoint", "objectDropPoint")]
 script = ExtResource("4_hx151")
-objectHoldPoint = NodePath("../../ObjectHoldPoint")
+objectHoldPoint = NodePath("ObjectHoldPoint")
 objectDropPoint = NodePath("ObjectDropPoint")
 metadata/_custom_type_script = "uid://ck4gyskvum46o"
 
-[node name="ObjectDropPoint" type="Node2D" parent="Anchor/ObjectHolder" unique_id=1168386878]
+[node name="ObjectDropPoint" type="Node2D" parent="Anchor/Picker/ObjectHolder" unique_id=1168386878]
 position = Vector2(88, 0)
 
-[node name="InteractReceiver" type="Area2D" parent="Anchor" unique_id=2013713238 node_paths=PackedStringArray("objectHolder")]
+[node name="ObjectHoldPoint" type="Marker2D" parent="Anchor/Picker/ObjectHolder" unique_id=1753229882]
 position = Vector2(88, 0)
-script = ExtResource("3_ugqs2")
-objectHolder = NodePath("../ObjectHolder")
-metadata/_custom_type_script = "uid://b3owvnlpfrkpo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor/InteractReceiver" unique_id=1154653871]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor/Picker" unique_id=803047688]
+position = Vector2(88, 0)
 shape = SubResource("RectangleShape2D_hx151")
+
+[node name="Thrower" type="Node2D" parent="Anchor" unique_id=126903160 node_paths=PackedStringArray("picker")]
+script = ExtResource("8_wy5t8")
+picker = NodePath("../Picker")
+metadata/_custom_type_script = "uid://bj01y5jar2hfw"
