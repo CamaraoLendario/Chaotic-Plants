@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://chu0pp2vx3h86" path="res://Plants/steamy/steamy.gd" id="2_tdr66"]
 [ext_resource type="Texture2D" uid="uid://80x8gpkb8n4v" path="res://Plants/steamy/SteamyDone.png" id="3_l15f6"]
 [ext_resource type="PackedScene" uid="uid://ulelhqvpd2il" path="res://Plants/plant_item_receiver.tscn" id="5_x7xwt"]
+[ext_resource type="Script" uid="uid://dl70irp36vey5" path="res://interact/Filters/InteractFilter.gd" id="6_8xx8s"]
+[ext_resource type="Script" uid="uid://3dtjai4t28oj" path="res://interact/Filters/water_bucket_filter.gd" id="7_abo70"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a58qj"]
 atlas = ExtResource("2_a58qj")
@@ -18,7 +20,7 @@ region = Rect2(0, 0, 183, 186)
 atlas = ExtResource("3_l15f6")
 region = Rect2(0, 0, 176, 200)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_a58qj"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_8xx8s"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
@@ -46,13 +48,28 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Steamy" unique_id=629364572 node_paths=PackedStringArray("itemReceiver") instance=ExtResource("1_8aytf")]
+[sub_resource type="Resource" id="Resource_qrxx1"]
+script = ExtResource("7_abo70")
+metadata/_custom_type_script = "uid://3dtjai4t28oj"
+
+[node name="Steamy" unique_id=629364572 node_paths=PackedStringArray("itemReceiver", "progressBar") instance=ExtResource("1_8aytf")]
 script = ExtResource("2_tdr66")
 itemReceiver = NodePath("PlantItemReceiver")
+progressBar = NodePath("ProgressBar")
 
 [node name="Sprite" parent="." index="0" unique_id=1713877530]
 scale = Vector2(0.25, 0.25)
-sprite_frames = SubResource("SpriteFrames_a58qj")
+sprite_frames = SubResource("SpriteFrames_8xx8s")
 animation = &"stage0"
 
 [node name="PlantItemReceiver" parent="." index="3" unique_id=1216653505 instance=ExtResource("5_x7xwt")]
+filters = Array[ExtResource("6_8xx8s")]([SubResource("Resource_qrxx1")])
+
+[node name="ProgressBar" type="ProgressBar" parent="." index="4" unique_id=311369693]
+offset_left = -101.0
+offset_top = -126.0
+offset_right = -75.0
+offset_bottom = 43.0
+max_value = 1.0
+step = 0.001
+fill_mode = 3
