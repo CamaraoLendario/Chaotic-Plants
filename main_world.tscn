@@ -9,6 +9,14 @@
 [ext_resource type="Script" uid="uid://do6arsnvfb00a" path="res://request_list_view.gd" id="7_7ktct"]
 [ext_resource type="PackedScene" uid="uid://c7hl623304u1e" path="res://game_state/views/request_view.tscn" id="7_aac4l"]
 [ext_resource type="PackedScene" uid="uid://tc83aw2jaip5" path="res://interact/delivery.tscn" id="9_uks48"]
+[ext_resource type="PackedScene" uid="uid://psh2ymdga6o6" path="res://Plants/Plinko/Plinko.tscn" id="10_ko8m6"]
+[ext_resource type="Shader" uid="uid://bvni52b27fb52" path="res://Plants/base_plant.gdshader" id="11_ko8m6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8i6ae"]
+resource_local_to_scene = true
+shader = ExtResource("11_ko8m6")
+shader_parameter/startTime = 0.0
+shader_parameter/animate = false
 
 [node name="Node2D" type="Node2D" unique_id=1937000729 node_paths=PackedStringArray("plantSpawners", "delivery") groups=["World"]]
 script = ExtResource("1_3etub")
@@ -59,6 +67,10 @@ position = Vector2(464, 32)
 position = Vector2(464, -200)
 
 [node name="Delivery" parent="." unique_id=1179291177 instance=ExtResource("9_uks48")]
+
+[node name="BasePlant" parent="." unique_id=629364572 instance=ExtResource("10_ko8m6")]
+material = SubResource("ShaderMaterial_8i6ae")
+position = Vector2(153, -139)
 
 [connection signal="spawnedObject" from="PlantSpawner1" to="." method="on_plant_spawned"]
 [connection signal="spawnedObject" from="PlantSpawner2" to="." method="on_plant_spawned"]

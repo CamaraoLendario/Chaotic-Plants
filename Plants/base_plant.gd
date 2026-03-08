@@ -31,7 +31,7 @@ var GrowProgress : float: ## How far the plant is in the growing progress. from 
 	set(value):
 		growProgress = value
 		check_grow_progress()
-var growProgress: float = 1
+var growProgress: float = 0
 
 
 func _ready() -> void:
@@ -44,7 +44,7 @@ func set_data(plantData: PlantData):
 	data = plantData
 
 func grow():
-	if (isGrown): return
+	if (isGrown or GrowProgress >= growGoal): return
 	GrowProgress += 1
 	grew.emit()
 
@@ -52,10 +52,10 @@ func on_interacted(_interactor: Node2D):
 	print("I was interacted with")
 
 func _physics_process(delta: float) -> void:
-	if (!isByStages and GrowProgress < growGoal and isPlanted and isGrowing):
+	if (!isByStages and GrowProgress < growGoal-1 and isGrowing):
 		GrowProgress += (delta / growTime) * growGoal
 
 func check_grow_progress():
-	sprite.animation = "stage" +  str(int(GrowProgress)-1)
-	if (growProgress >= growGoal):
+	sprite.animation = "stage" +  str(int(GrowProgress))
+	if (growProgress >= growGoal-1):
 		isGrown = true

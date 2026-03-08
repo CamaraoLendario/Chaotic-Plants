@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cyx4c3n3hm0kb" path="res://character/input_handler.gd" id="2_wa5vi"]
 [ext_resource type="Texture2D" uid="uid://b5q66cqeq8ns0" path="res://character/Sprite/spritesheet-characters-default.png" id="3_hx151"]
 [ext_resource type="Script" uid="uid://b3owvnlpfrkpo" path="res://interact/interact_receiver.gd" id="3_ugqs2"]
-[ext_resource type="Script" path="res://character/character_animation.gd" id="4_0rvpn"]
+[ext_resource type="Script" uid="uid://bhydcfunpkj7m" path="res://character/character_animation.gd" id="4_0rvpn"]
 [ext_resource type="Script" uid="uid://ck4gyskvum46o" path="res://interact/object_holder.gd" id="4_hx151"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfnr8"]
@@ -69,9 +69,10 @@ interactReceiver = NodePath("Anchor/InteractReceiver")
 position = Vector2(0, -52.5)
 shape = SubResource("RectangleShape2D_wfnr8")
 
-[node name="InputHandler" type="Node" parent="." unique_id=371800208 node_paths=PackedStringArray("interactReceiver")]
+[node name="InputHandler" type="Node" parent="." unique_id=371800208 node_paths=PackedStringArray("interactReceiver", "anchor")]
 script = ExtResource("2_wa5vi")
 interactReceiver = NodePath("../Anchor/InteractReceiver")
+anchor = NodePath("../Anchor")
 
 [node name="ObjectHoldPoint" type="Marker2D" parent="." unique_id=1753229882]
 position = Vector2(0, -144)

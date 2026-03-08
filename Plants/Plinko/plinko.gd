@@ -22,8 +22,11 @@ var rewardTable = [ ## I give up, hardcoding this
 
 var isBallDropping
 
+func _ready() -> void:
+	super._ready()
+
 func on_interacted(interactor: Node2D):
-	if interactor is not Character:
+	if interactor.owner is not Character:
 		return
 	
 	tryDropBall()

@@ -11,7 +11,7 @@ var steamMeter: float: # goes from 0 to 1
 
 var direction: int = 1
 var timer: Timer = Timer.new()
-var directionChangeInterval: float = 3
+var directionChangeInterval: float = 1.5
 
 @export_category("Node")
 @export var itemReceiver: PlantItemReceiver
@@ -20,27 +20,28 @@ var directionChangeInterval: float = 3
 func _ready() -> void:
 	super._ready()
 	
-	timer.start(directionChangeInterval)
+	add_child(timer)
 	timer.one_shot = true
 	timer.timeout.connect(directionChange)
+	timer.start(directionChangeInterval)
 	
 	itemReceiver.picked_up_object.connect(itemreceived)
 
 func _process(delta: float) -> void:
-	steamMeter += direction * delta / 6
+	steamMeter += direction * delta / 20
 	clamp(steamMeter, 0, 1)
 
 func _physics_process(delta: float) -> void:
-	# TODO: 
-	# isto é estúpido, temos de ter um bool na planta
-	# a dizer se pode ou não crescer
-	if (steamMeter < max and steamMeter > min):
-		super._physics_process(delta) 
+	isGrowing = (steamMeter < max and steamMeter > min)
+	super._physics_process(delta)
+	if (isGrowing): print(growProgress)
 
 func directionChange():
+	print("changing direction...")
 	timer.start(directionChangeInterval)
 	
 	if (randf() < 0.75):
+		print("succeded")
 		direction *= -1
 
 func add_water():
