@@ -103,7 +103,7 @@ script = ExtResource("2_u4uv3")
 timeToFall = 1.0
 plinkoBallSpawnPoint = NodePath("PlinkoSpawnPoint")
 plinkoBall = NodePath("Ball")
-markers = NodePath("")
+markers = NodePath("Markers")
 isByStages = true
 
 [node name="Sprite" parent="." index="0" unique_id=1713877530]
