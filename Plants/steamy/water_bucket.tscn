@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cl48nnwb65guv"]
+
+[ext_resource type="PackedScene" uid="uid://c4ei3qax5i842" path="res://proto_object.tscn" id="1_stp0t"]
+[ext_resource type="Script" uid="uid://cggko14aigf3r" path="res://Plants/steamy/water_bucket.gd" id="2_vhjcy"]
+
+[node name="water_bucket" unique_id=794916380 instance=ExtResource("1_stp0t")]
+script = ExtResource("2_vhjcy")

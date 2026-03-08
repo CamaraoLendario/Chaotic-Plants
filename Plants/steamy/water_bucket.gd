@@ -1,0 +1,2 @@
+extends ProtoObject
+class_name WaterBucket

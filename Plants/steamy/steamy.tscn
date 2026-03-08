@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dygk3vngr7bt"]
+
+[ext_resource type="PackedScene" uid="uid://be4ptkje88wa3" path="res://Plants/base_plant.tscn" id="1_8aytf"]
+[ext_resource type="Texture2D" uid="uid://uf8nm2xoea25" path="res://Plants/steamy/Steamy.png" id="2_a58qj"]
+[ext_resource type="Script" uid="uid://chu0pp2vx3h86" path="res://Plants/steamy/steamy.gd" id="2_tdr66"]
+[ext_resource type="Texture2D" uid="uid://80x8gpkb8n4v" path="res://Plants/steamy/SteamyDone.png" id="3_l15f6"]
+[ext_resource type="PackedScene" uid="uid://ulelhqvpd2il" path="res://Plants/plant_item_receiver.tscn" id="5_x7xwt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a58qj"]
+atlas = ExtResource("2_a58qj")
+region = Rect2(0, 0, 183, 186)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdr66"]
+atlas = ExtResource("2_a58qj")
+region = Rect2(0, 0, 183, 186)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7xwt"]
+atlas = ExtResource("3_l15f6")
+region = Rect2(0, 0, 176, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a58qj"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a58qj")
+}],
+"loop": true,
+"name": &"stage0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tdr66")
+}],
+"loop": true,
+"name": &"stage1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7xwt")
+}],
+"loop": true,
+"name": &"stage2",
+"speed": 5.0
+}]
+
+[node name="Steamy" unique_id=629364572 node_paths=PackedStringArray("itemReceiver") instance=ExtResource("1_8aytf")]
+script = ExtResource("2_tdr66")
+itemReceiver = NodePath("PlantItemReceiver")
+
+[node name="Sprite" parent="." index="0" unique_id=1713877530]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_a58qj")
+animation = &"stage0"
+
+[node name="PlantItemReceiver" parent="." index="3" unique_id=1216653505 instance=ExtResource("5_x7xwt")]
