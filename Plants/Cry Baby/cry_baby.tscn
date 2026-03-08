@@ -3,14 +3,21 @@
 [ext_resource type="PackedScene" uid="uid://be4ptkje88wa3" path="res://Plants/base_plant.tscn" id="1_kl575"]
 [ext_resource type="Texture2D" uid="uid://cglnwvhgtug5d" path="res://Plants/Cry Baby/Sprites/CryBabySketch.png" id="2_jprbr"]
 [ext_resource type="Script" uid="uid://dcb0yk42253op" path="res://Plants/Cry Baby/cry_baby.gd" id="2_lwu54"]
+[ext_resource type="Shader" uid="uid://bvni52b27fb52" path="res://Plants/base_plant.gdshader" id="2_nfd76"]
 [ext_resource type="PackedScene" uid="uid://8eryyeve3m57" path="res://Plants/Cry Baby/teddy_bear.tscn" id="3_ef3al"]
 [ext_resource type="PackedScene" uid="uid://ulelhqvpd2il" path="res://Plants/plant_item_receiver.tscn" id="4_h34sp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ly2n0"]
+resource_local_to_scene = true
+shader = ExtResource("2_nfd76")
+shader_parameter/startTime = 0.0
+shader_parameter/animate = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lwu54"]
 atlas = ExtResource("2_jprbr")
 region = Rect2(0, 0, 198, 215)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ef3al"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_r0fhf"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
@@ -33,6 +40,7 @@ animations = [{
 }]
 
 [node name="Cry Baby" unique_id=629364572 node_paths=PackedStringArray("itemReceiver") instance=ExtResource("1_kl575")]
+material = SubResource("ShaderMaterial_ly2n0")
 script = ExtResource("2_lwu54")
 itemReceiver = NodePath("PlantItemReceiver")
 teddyBearScene = ExtResource("3_ef3al")
@@ -43,5 +51,8 @@ scale = Vector2(0.25, 0.25)
 
 [node name="Sprite" parent="." index="1" unique_id=1713877530]
 scale = Vector2(0.16161616, 0.15813954)
-sprite_frames = SubResource("SpriteFrames_ef3al")
+sprite_frames = SubResource("SpriteFrames_r0fhf")
 animation = &"stage0"
+
+[node name="Pickable" parent="." index="3" unique_id=1570847046]
+collision_layer = 1

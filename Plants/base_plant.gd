@@ -20,6 +20,7 @@ var IsPlanted: bool:
 	set(value):
 		isPlanted = value
 		(material as ShaderMaterial).set_shader_parameter("animate", value)
+		
 
 var isPlanted: bool = false
 var data: PlantData
@@ -37,6 +38,7 @@ func _ready() -> void:
 	interactable.wasInteracted.connect(on_interacted)
 	if data == null:
 		printerr("Plant ", name, " does not have data set. Null errors will occur!")
+	(material as ShaderMaterial).set_shader_parameter("startTime", randf()*2*PI) ## doesnt really get any time, but this is simpler and does the same effect
 
 func set_data(plantData: PlantData):
 	data = plantData

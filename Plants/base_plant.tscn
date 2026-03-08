@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://d5sfdadk20ij" path="res://interact/pickable.gd" id="3_evnqr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gwtbr"]
+resource_local_to_scene = true
 shader = ExtResource("1_51v42")
 shader_parameter/startTime = 0.0
 shader_parameter/animate = false
