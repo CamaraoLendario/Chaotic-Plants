@@ -60,6 +60,11 @@ Throw={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_2="Plants"
+2d_physics/layer_3="Items"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

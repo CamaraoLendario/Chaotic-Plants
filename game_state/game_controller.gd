@@ -5,11 +5,18 @@ signal levelSelected(levelData: LevelData)
 signal newRequestArrived(request: PlantRequest)
 signal newPlantSpawned(plant: Plant)
 
+signal requestFulfilled(request: PlantRequest, plant: Plant)
+signal wrongPlantDelivered(plant: Plant)
+
 @export var gameTime: float = 60 # 300 = 5 minutes
 @export var levelData: LevelData
 
 @export_group("References")
-@export var plantSpawners: Array[ObjectSpawner]
+@export var plantSpawners: Array[ObjectSpawner] #TODO: remove spawners
+@export var delivery: Delivery
+
+
+var activeRequests: Array[PlantRequest]
 
 var requestIndex: int = -1
 var timeElapsed: float = 0
@@ -17,6 +24,8 @@ var nextRequestTime: float
 
 func _ready() -> void:
 	setup_next_request_time()
+	
+	delivery.plant_delivered.connect(_on_delivery)
 
 func _process(delta: float) -> void:
 	timeElapsed += delta
@@ -32,10 +41,9 @@ func _process(delta: float) -> void:
 			pass
 
 func handle_request(request: PlantRequest):
-	var spawner = get_available_spawner()
-	if(spawner == null): return ## TODO: Arranjar esta merda
-	spawner.spawn(request.plantData.scene)
+	activeRequests.append(request)
 
+# deprecated
 func get_available_spawner() -> ObjectSpawner:
 	for spawner in plantSpawners:
 		if spawner.can_spawn():
@@ -59,5 +67,25 @@ func next_request() -> PlantRequest:
 func get_elapsed_time() -> float:
 	return timeElapsed
 
+func _on_delivery(plant: Plant):
+	for request in activeRequests:
+		#TODO: check if plant is grown etc etc
+		if request.plantData == plant.data:
+			_fulfill_request(request, plant)
+			return
+	_signal_failed_request(plant)
+
+func _fulfill_request(request: PlantRequest, plant: Plant):
+	requestFulfilled.emit(request, plant)
+	activeRequests.erase(request)
+	print("request fulfilled!")
+	request.requestFulfilled.emit()
+	plant.call_deferred("queue_free")
+
+func _signal_failed_request(plant: Plant):
+	print("delivery failed!")
+	plant.call_deferred("queue_free")
+
+#deprecated
 func on_plant_spawned(obj: Node2D):
-	newPlantSpawned.emit(obj)
+	pass
