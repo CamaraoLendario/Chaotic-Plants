@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://cq4iumvocybcl"]
+[gd_scene format=3 uid="uid://bj1p35tx6o770"]
 
 [ext_resource type="PackedScene" uid="uid://dopujk04ltt6d" path="res://character/character.tscn" id="1_tewtn"]
-[ext_resource type="PackedScene" path="res://Map/map.tscn" id="1_tjivk"]
+[ext_resource type="PackedScene" uid="uid://c6fl0jwao178t" path="res://Map/map.tscn" id="1_tjivk"]
 [ext_resource type="Script" uid="uid://r5uwf3yaolik" path="res://game_state/game_controller.gd" id="1_xdjt8"]
 [ext_resource type="PackedScene" uid="uid://c017ejda8kl87" path="res://Plants/seed_provider.tscn" id="2_0gepa"]
 [ext_resource type="Resource" uid="uid://4andksvgn7yo" path="res://game_state/levels/level0Data.tres" id="2_nv1kf"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://do6arsnvfb00a" path="res://request_list_view.gd" id="18_30cgy"]
 [ext_resource type="PackedScene" uid="uid://c7hl623304u1e" path="res://game_state/views/request_view.tscn" id="19_ugm1s"]
 [ext_resource type="PackedScene" uid="uid://xb3su83dk73f" path="res://menus/pause_menu.tscn" id="20_2frtd"]
+[ext_resource type="PackedScene" uid="uid://bq3gnd6nxn01p" path="res://object_spawner.tscn" id="20_ngqs5"]
 
 [node name="MainMain" type="Node2D" unique_id=1864495549 node_paths=PackedStringArray("delivery") groups=["World"]]
 script = ExtResource("1_xdjt8")
@@ -212,6 +213,22 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 24
 text = "Continue"
 
+[node name="ObjectSpawner" parent="." unique_id=1014296936 instance=ExtResource("20_ngqs5")]
+position = Vector2(192, 340)
+scale = Vector2(0.36, 0.36)
+spawnScene = ExtResource("14_j6xwl")
+
+[node name="ObjectHoldPoint" parent="ObjectSpawner/ObjectHolder" parent_id_path=PackedInt32Array(1014296936, 771054364) index="0" unique_id=745123367]
+position = Vector2(96, -72)
+
+[node name="Label" parent="ObjectSpawner" index="2" unique_id=1309990035]
+offset_left = -222.22221
+offset_top = -166.66664
+offset_right = 276.77777
+offset_bottom = -78.66664
+theme_override_font_sizes/font_size = 64
+text = "Bucket Spawner"
+
 [connection signal="gameLost" from="." to="CanvasLayer/GameLost" method="show"]
 [connection signal="gameWon" from="." to="CanvasLayer/GameWon" method="show"]
 [connection signal="pressed" from="CanvasLayer/GameLost/MarginContainer/VBoxContainer/Button" to="." method="change_to_menu_scene"]
@@ -222,3 +239,4 @@ text = "Continue"
 [editable path="SteamySeedProvider"]
 [editable path="FireSeedProvider"]
 [editable path="Delivery"]
+[editable path="ObjectSpawner"]
