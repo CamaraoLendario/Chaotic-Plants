@@ -54,7 +54,6 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
-	print(growProgress)
 
 func AddBeAnnoyingTimer():
 	be_annoying_timer.one_shot = true

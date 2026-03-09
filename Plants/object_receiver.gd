@@ -16,16 +16,14 @@ func _process(delta: float) -> void:
 	#TODO: costly but it should work
 	try_to_pick_up()
 
-
 func _on_picked_up_object(obj: Pickable):
 	picked_up_object.emit(obj)
 
 func _on_dropped_object(obj: Pickable):
 	dropped_object.emit(obj)
 
-func try_to_pick_up():
-	if picker.has_target(): 
-		picker.pick_up_pickable()
+func try_to_pick_up(pickable: Pickable = null):
+	return picker.pick_up_pickable(pickable)
 
 func drop() -> Pickable:
 	return picker.drop_pickable()

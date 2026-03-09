@@ -19,8 +19,8 @@ func hold_object(pickable: Pickable):
 
 func drop_object():
 	if is_holding():
-		move_to_drop_point()
 		currentHoldedObject.WasPickedUp.disconnect(_on_pickable_was_picked)
+		move_to_drop_point()
 		currentHoldedObject = null
 
 func drop_and_free():

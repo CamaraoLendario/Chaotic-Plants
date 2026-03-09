@@ -6,21 +6,27 @@
 [ext_resource type="Resource" uid="uid://4andksvgn7yo" path="res://game_state/levels/level0Data.tres" id="2_uue8y"]
 [ext_resource type="Texture2D" uid="uid://61kd8uwvwfj1" path="res://Map/MapBackground.png" id="3_bqrff"]
 [ext_resource type="Script" uid="uid://d1p357dnn4txx" path="res://time_label.gd" id="5_uue8y"]
-[ext_resource type="PackedScene" uid="uid://cl48nnwb65guv" path="res://Plants/steamy/water_bucket.tscn" id="5_v7yd6"]
 [ext_resource type="PackedScene" uid="uid://ulelhqvpd2il" path="res://Plants/plant_item_receiver.tscn" id="5_whfra"]
+[ext_resource type="PackedScene" uid="uid://c8sd75wxygh6a" path="res://Plants/Seed.tscn" id="6_bqrff"]
 [ext_resource type="Script" uid="uid://do6arsnvfb00a" path="res://request_list_view.gd" id="7_7ktct"]
 [ext_resource type="PackedScene" uid="uid://c7hl623304u1e" path="res://game_state/views/request_view.tscn" id="7_aac4l"]
 [ext_resource type="PackedScene" uid="uid://tc83aw2jaip5" path="res://interact/delivery.tscn" id="9_uks48"]
 [ext_resource type="Shader" uid="uid://bvni52b27fb52" path="res://Plants/base_plant.gdshader" id="11_ko8m6"]
 [ext_resource type="PackedScene" uid="uid://dygk3vngr7bt" path="res://Plants/steamy/steamy.tscn" id="13_v7yd6"]
+[ext_resource type="Script" uid="uid://dl70irp36vey5" path="res://interact/Filters/InteractFilter.gd" id="14_fc1ei"]
 [ext_resource type="Texture2D" uid="uid://uf8nm2xoea25" path="res://Plants/steamy/Steamy.png" id="15_ju1fa"]
+[ext_resource type="Script" uid="uid://3dtjai4t28oj" path="res://interact/Filters/water_bucket_filter.gd" id="15_vo8r4"]
+[ext_resource type="PackedScene" uid="uid://cmtqujxfgqtjl" path="res://Plants/pot.tscn" id="16_bqrff"]
 [ext_resource type="Texture2D" uid="uid://80x8gpkb8n4v" path="res://Plants/steamy/SteamyDone.png" id="16_fc1ei"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xftef"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fc1ei"]
 resource_local_to_scene = true
 shader = ExtResource("11_ko8m6")
 shader_parameter/startTime = 0.0
 shader_parameter/animate = false
+
+[sub_resource type="Resource" id="Resource_qrxx1"]
+script = ExtResource("15_vo8r4")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a58qj"]
 atlas = ExtResource("15_ju1fa")
@@ -34,7 +40,7 @@ region = Rect2(0, 0, 183, 186)
 atlas = ExtResource("16_fc1ei")
 region = Rect2(0, 0, 176, 200)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_bqrff"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_vo8r4"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
@@ -78,7 +84,7 @@ position = Vector2(-237, 12)
 
 [node name="ObjectSpawner" parent="." unique_id=1063420533 instance=ExtResource("2_uoqbt")]
 position = Vector2(-480, -176)
-spawnScene = ExtResource("5_v7yd6")
+spawnScene = ExtResource("6_bqrff")
 
 [node name="PlantItemReceiver" parent="." unique_id=1216653505 instance=ExtResource("5_whfra")]
 position = Vector2(-344, 200)
@@ -117,14 +123,26 @@ position = Vector2(464, -200)
 [node name="Delivery" parent="." unique_id=1179291177 instance=ExtResource("9_uks48")]
 
 [node name="Steamy" parent="." unique_id=1634396651 instance=ExtResource("13_v7yd6")]
-material = SubResource("ShaderMaterial_xftef")
+material = SubResource("ShaderMaterial_fc1ei")
 position = Vector2(-329, -272)
 
-[node name="Sprite" parent="Steamy" index="1" unique_id=1713877530]
-sprite_frames = SubResource("SpriteFrames_bqrff")
+[node name="PlantItemReceiver2" parent="Steamy" index="0" unique_id=1216653505]
+scale = Vector2(0.505, 0.505)
+filters = Array[ExtResource("14_fc1ei")]([SubResource("Resource_qrxx1")])
+
+[node name="PlantItemReceiver" parent="Steamy" index="1" unique_id=1216653505]
+scale = Vector2(1, 1)
+filters = Array[ExtResource("14_fc1ei")]([])
+
+[node name="Sprite" parent="Steamy" index="2" unique_id=1713877530]
+sprite_frames = SubResource("SpriteFrames_vo8r4")
+
+[node name="Pot" parent="." unique_id=313565715 instance=ExtResource("16_bqrff")]
+position = Vector2(-18, -159)
 
 [connection signal="spawnedObject" from="PlantSpawner1" to="." method="on_plant_spawned"]
 [connection signal="spawnedObject" from="PlantSpawner2" to="." method="on_plant_spawned"]
 [connection signal="spawnedObject" from="PlantSpawner3" to="." method="on_plant_spawned"]
 
 [editable path="Steamy"]
+[editable path="Steamy/PlantItemReceiver"]

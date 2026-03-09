@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://ghwal8eoqf4r" path="res://Plants/base_plant.gd" id="1_ha1yr"]
 [ext_resource type="Script" uid="uid://cvc5atuup46p2" path="res://interact/interactable.gd" id="2_87s3t"]
 [ext_resource type="Script" uid="uid://d5sfdadk20ij" path="res://interact/pickable.gd" id="3_evnqr"]
+[ext_resource type="PackedScene" uid="uid://ulelhqvpd2il" path="res://Plants/plant_item_receiver.tscn" id="3_gwtbr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gwtbr"]
 resource_local_to_scene = true
@@ -57,3 +58,10 @@ metadata/_custom_type_script = "uid://d5sfdadk20ij"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pickable" unique_id=1406097162]
 shape = SubResource("RectangleShape2D_51v42")
+
+[node name="PlantItemReceiver" parent="." unique_id=1216653505 instance=ExtResource("3_gwtbr")]
+
+[node name="ObjectHolder" parent="PlantItemReceiver/Picker" parent_id_path=PackedInt32Array(1216653505, 978685116) index="1" unique_id=1250314402]
+position = Vector2(17, 16)
+
+[editable path="PlantItemReceiver"]

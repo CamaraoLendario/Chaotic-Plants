@@ -3,12 +3,11 @@
 [ext_resource type="Script" uid="uid://ck4gyskvum46o" path="res://interact/object_holder.gd" id="1_6fs5n"]
 [ext_resource type="Script" uid="uid://b3owvnlpfrkpo" path="res://interact/interact_receiver.gd" id="2_eqv4n"]
 [ext_resource type="Script" uid="uid://b7af4a7l84e3p" path="res://Plants/object_receiver.gd" id="2_u1vm2"]
-[ext_resource type="Texture2D" uid="uid://chnu528uov0n" path="res://icon.svg" id="3_u1vm2"]
 [ext_resource type="Script" uid="uid://cvc5atuup46p2" path="res://interact/interactable.gd" id="5_2gh58"]
 [ext_resource type="Script" uid="uid://w85o2n1ed2rq" path="res://interact/picker.gd" id="6_vaqse"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eqv4n"]
-size = Vector2(128, 128)
+size = Vector2(64, 64)
 
 [node name="PlantItemReceiver" type="Node2D" unique_id=1216653505 node_paths=PackedStringArray("picker")]
 script = ExtResource("2_u1vm2")
@@ -22,10 +21,6 @@ metadata/_custom_type_script = "uid://b3owvnlpfrkpo"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractReceiver" unique_id=1706021188]
 shape = SubResource("RectangleShape2D_eqv4n")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1764025952]
-modulate = Color(0.0025875166, 0.002044355, 0, 1)
-texture = ExtResource("3_u1vm2")
 
 [node name="Label" type="Label" parent="." unique_id=2084353703]
 offset_left = -53.0
@@ -44,7 +39,6 @@ shape = SubResource("RectangleShape2D_eqv4n")
 [node name="Picker" type="Area2D" parent="." unique_id=978685116 node_paths=PackedStringArray("objectHolder")]
 script = ExtResource("6_vaqse")
 objectHolder = NodePath("ObjectHolder")
-metadata/_custom_type_script = "uid://w85o2n1ed2rq"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Picker" unique_id=662802179]
 shape = SubResource("RectangleShape2D_eqv4n")

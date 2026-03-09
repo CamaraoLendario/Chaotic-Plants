@@ -31,12 +31,25 @@ func check_filter_allows(obj) -> bool:
 		if (filter.is_allowed(obj)): return true
 	return false
 
-func pick_up_pickable():
-	if !is_holding():
-		if has_target():
-			curPickingTarget.get_picked(self)
-			objectHolder.hold_object(curPickingTarget)
-			picked_up_pickable.emit(curPickingTarget)
+#func pick_up_pickable():
+	#if !is_holding():
+		#if has_target():
+			#curPickingTarget.get_picked(self)
+			#objectHolder.hold_object(curPickingTarget)
+			#picked_up_pickable.emit(curPickingTarget)
+
+func pick_up_pickable(pickable: Pickable = null) -> bool:
+	if is_holding():
+		return false
+	if (has_target() and pickable == null and curPickingTarget != pickable):
+		pickable = curPickingTarget
+	if (pickable == null):
+		return false
+	
+	pickable.get_picked(self)
+	objectHolder.hold_object(pickable)
+	picked_up_pickable.emit(pickable)
+	return true
 
 func drop_pickable() -> Pickable:
 	if is_holding():

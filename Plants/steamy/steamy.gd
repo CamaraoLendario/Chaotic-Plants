@@ -37,11 +37,9 @@ func _physics_process(delta: float) -> void:
 	#if (isGrowing): print(growProgress)
 
 func directionChange():
-	print("changing direction...")
 	timer.start(directionChangeInterval)
 	
 	if (randf() < 0.75):
-		print("succeded")
 		direction *= -1
 
 func add_water():
