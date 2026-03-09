@@ -1,4 +1,5 @@
 extends Node
+class_name RunawayAI
 
 @export var minDistanceToPlayer = 100
 @export var rotationDegreesVariance = 15
