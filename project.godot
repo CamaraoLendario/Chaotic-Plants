@@ -15,6 +15,11 @@ run/main_scene="uid://bap8m7lddbrd7"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_height"
+
 [dotnet]
 
 project/assembly_name="ChaoticPlants"

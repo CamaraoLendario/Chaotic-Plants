@@ -2,3 +2,16 @@
 .godot/
 /android/
 .vscode/settings.json
+Builds/Builds.zip
+Builds/index.apple-touch-icon.png
+Builds/index.apple-touch-icon.png.import
+Builds/index.audio.position.worklet.js
+Builds/index.audio.worklet.js
+Builds/index.html
+Builds/index.icon.png
+Builds/index.icon.png.import
+Builds/index.js
+Builds/index.pck
+Builds/index.png
+Builds/index.png.import
+Builds/index.wasm
