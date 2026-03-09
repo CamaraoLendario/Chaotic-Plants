@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://fiopwlo8w2nw" path="res://Plants/clumsy goober/sprites/bush3.png" id="5_evcsv"]
 [ext_resource type="Texture2D" uid="uid://7fhbj632nl24" path="res://Plants/clumsy goober/sprites/strawberry.png" id="6_wgdgx"]
 [ext_resource type="Script" uid="uid://dl70irp36vey5" path="res://interact/Filters/InteractFilter.gd" id="8_4oyuf"]
-[ext_resource type="Script" path="res://interact/Filters/StrawberryFilter.gd" id="9_qyj6f"]
+[ext_resource type="Script" uid="uid://d3jcx7l2r4nhm" path="res://interact/Filters/StrawberryFilter.gd" id="9_qyj6f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rdevq"]
 resource_local_to_scene = true
@@ -64,10 +64,10 @@ metadata/_custom_type_script = "uid://d3jcx7l2r4nhm"
 [node name="BasePlant" unique_id=629364572 node_paths=PackedStringArray("strawberryImage", "strawberrySpawn") instance=ExtResource("1_yu4a7")]
 material = SubResource("ShaderMaterial_rdevq")
 script = ExtResource("3_evcsv")
-growTime = 10.0
-stawberryScene = ExtResource("4_rdevq")
 strawberryImage = NodePath("Sprite2D")
 strawberrySpawn = NodePath("PlantItemReceiver/Picker/ObjectHolder/Marker2D")
+stawberryScene = ExtResource("4_rdevq")
+growTime = 10.0
 
 [node name="Sprite" parent="." index="0" unique_id=1713877530]
 position = Vector2(-13.000001, -47)
