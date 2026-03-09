@@ -26,11 +26,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PlantProgress" type="ProgressBar" parent="MarginContainer/VBoxContainer" unique_id=951499993]
+visible = false
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 show_percentage = false
 
 [node name="PlantNeeds" type="Label" parent="MarginContainer/VBoxContainer" unique_id=680437829]
+visible = false
 layout_mode = 2
 text = "CRY CRY CRY CRY"
 horizontal_alignment = 1

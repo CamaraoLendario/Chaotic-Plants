@@ -22,6 +22,7 @@
 
 [node name="MainMain" type="Node2D" unique_id=1864495549 node_paths=PackedStringArray("delivery") groups=["World"]]
 script = ExtResource("1_xdjt8")
+gameTime = 300.0
 levelData = ExtResource("2_nv1kf")
 delivery = NodePath("Delivery")
 
@@ -123,6 +124,89 @@ requestViewScene = ExtResource("19_ugm1s")
 [node name="PauseMenu" parent="CanvasLayer" unique_id=550477132 node_paths=PackedStringArray("gameController") instance=ExtResource("20_2frtd")]
 visible = false
 gameController = NodePath("../..")
+
+[node name="GameLost" type="PanelContainer" parent="CanvasLayer" unique_id=304097111]
+process_mode = 3
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.5
+offset_top = -52.5
+offset_right = 140.5
+offset_bottom = 52.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/GameLost" unique_id=1846445301]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GameLost/MarginContainer" unique_id=330596424]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/GameLost/MarginContainer/VBoxContainer" unique_id=1548299672]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "You lost!
+
+You didn't fulfill all the requests."
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/GameLost/MarginContainer/VBoxContainer" unique_id=1847767220]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Continue"
+
+[node name="GameWon" type="PanelContainer" parent="CanvasLayer" unique_id=1089072101]
+process_mode = 3
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = -52.5
+offset_right = 166.0
+offset_bottom = 52.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/GameWon" unique_id=1976748763]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GameWon/MarginContainer" unique_id=1064253834]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/GameWon/MarginContainer/VBoxContainer" unique_id=258949076]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "NICE!
+
+You were able to fulfill all the requests!"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/GameWon/MarginContainer/VBoxContainer" unique_id=1422569421]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Continue"
+
+[connection signal="gameLost" from="." to="CanvasLayer/GameLost" method="show"]
+[connection signal="gameWon" from="." to="CanvasLayer/GameWon" method="show"]
+[connection signal="pressed" from="CanvasLayer/GameLost/MarginContainer/VBoxContainer/Button" to="." method="change_to_menu_scene"]
+[connection signal="pressed" from="CanvasLayer/GameWon/MarginContainer/VBoxContainer/Button" to="." method="change_to_menu_scene"]
 
 [editable path="CrySeedProvider"]
 [editable path="MorangoSeedProvider"]
