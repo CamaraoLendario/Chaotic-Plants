@@ -4,6 +4,7 @@ class_name Character
 @export var acceleration : float = 4000.0
 @export var drag : float = 3000.0
 @export var maxSpeed : float = 500.0
+@export var litterPushForce: float = 100.0
 
 @export_group("References")
 @export var anchor: Node2D
@@ -28,5 +29,9 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
-	anchor.rotation = aimDir.angle()
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody2D:
+			c.get_collider().apply_central_impulse(-c.get_normal() * litterPushForce)
 	
+	anchor.rotation = aimDir.angle()

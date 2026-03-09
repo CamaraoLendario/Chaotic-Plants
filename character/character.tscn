@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://character/character_animation.gd" id="4_0rvpn"]
 [ext_resource type="Script" uid="uid://ck4gyskvum46o" path="res://interact/object_holder.gd" id="4_hx151"]
 [ext_resource type="Script" path="res://interact/interactor.gd" id="6_wy5t8"]
-[ext_resource type="Script" path="res://interact/picker.gd" id="7_dy06j"]
+[ext_resource type="Script" uid="uid://w85o2n1ed2rq" path="res://interact/picker.gd" id="7_dy06j"]
 [ext_resource type="Script" path="res://interact/thrower.gd" id="8_wy5t8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfnr8"]
@@ -61,7 +61,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hx151"]
 size = Vector2(84, 104)
 
-[node name="character" type="CharacterBody2D" unique_id=1793507303 node_paths=PackedStringArray("anchor", "objectHolder")]
+[node name="character" type="CharacterBody2D" unique_id=1793507303 node_paths=PackedStringArray("anchor", "objectHolder") groups=["Player"]]
+motion_mode = 1
 script = ExtResource("1_pjt0s")
 anchor = NodePath("Anchor")
 objectHolder = NodePath("Anchor/Picker/ObjectHolder")
@@ -70,7 +71,7 @@ objectHolder = NodePath("Anchor/Picker/ObjectHolder")
 position = Vector2(0, -52.5)
 shape = SubResource("RectangleShape2D_wfnr8")
 
-[node name="InputHandler" type="Node" parent="." unique_id=371800208 node_paths=PackedStringArray("interactor", "picker", "thrower", "anchor")]
+[node name="InputHandler" type="Node" parent="." unique_id=371800208 node_paths=PackedStringArray("interactor", "picker", "thrower", "anchor") groups=["Player"]]
 script = ExtResource("2_wa5vi")
 interactor = NodePath("../Anchor/Interactor")
 picker = NodePath("../Anchor/Picker")
