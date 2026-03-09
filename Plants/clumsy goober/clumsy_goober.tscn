@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://cej3k5yxlvvk7"]
+
+[ext_resource type="PackedScene" uid="uid://be4ptkje88wa3" path="res://Plants/base_plant.tscn" id="1_yu4a7"]
+[ext_resource type="Shader" uid="uid://bvni52b27fb52" path="res://Plants/base_plant.gdshader" id="2_dsrkm"]
+[ext_resource type="Script" uid="uid://ba3tkw6ehirab" path="res://Plants/clumsy goober/clumsy_goober.gd" id="3_evcsv"]
+[ext_resource type="Texture2D" uid="uid://dniq2mrvtbn7e" path="res://Plants/clumsy goober/sprites/bush1.png" id="3_n531e"]
+[ext_resource type="PackedScene" uid="uid://bcmea4aa2xtrn" path="res://Plants/strawberry/strawberry.tscn" id="4_rdevq"]
+[ext_resource type="Texture2D" uid="uid://dfofr8dey7fct" path="res://Plants/clumsy goober/sprites/bush2.png" id="4_wgdgx"]
+[ext_resource type="Texture2D" uid="uid://fiopwlo8w2nw" path="res://Plants/clumsy goober/sprites/bush3.png" id="5_evcsv"]
+[ext_resource type="Texture2D" uid="uid://7fhbj632nl24" path="res://Plants/clumsy goober/sprites/strawberry.png" id="6_wgdgx"]
+[ext_resource type="Script" uid="uid://dl70irp36vey5" path="res://interact/Filters/InteractFilter.gd" id="8_4oyuf"]
+[ext_resource type="Script" uid="uid://d3jcx7l2r4nhm" path="res://interact/Filters/StrawberryFilter.gd" id="9_qyj6f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qyj6f"]
+resource_local_to_scene = true
+shader = ExtResource("2_dsrkm")
+shader_parameter/startTime = 0.0
+shader_parameter/animate = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oyuf"]
+atlas = ExtResource("3_n531e")
+region = Rect2(0, 0, 1920, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyj6f"]
+atlas = ExtResource("4_wgdgx")
+region = Rect2(0, 0, 1920, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdevq"]
+atlas = ExtResource("5_evcsv")
+region = Rect2(0, 0, 1920, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rdevq"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4oyuf")
+}],
+"loop": true,
+"name": &"stage0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyj6f")
+}],
+"loop": true,
+"name": &"stage1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdevq")
+}],
+"loop": true,
+"name": &"stage2",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_rdevq"]
+script = ExtResource("9_qyj6f")
+metadata/_custom_type_script = "uid://d3jcx7l2r4nhm"
+
+[node name="BasePlant" unique_id=629364572 node_paths=PackedStringArray("strawberryImage", "strawberrySpawn") instance=ExtResource("1_yu4a7")]
+material = SubResource("ShaderMaterial_qyj6f")
+script = ExtResource("3_evcsv")
+strawberryImage = NodePath("Sprite2D")
+strawberrySpawn = NodePath("PlantItemReceiver/Picker/ObjectHolder/Marker2D")
+stawberryScene = ExtResource("4_rdevq")
+growTime = 10.0
+
+[node name="Sprite" parent="." index="0" unique_id=1713877530]
+position = Vector2(-13.000001, -47)
+scale = Vector2(0.33, 0.33)
+sprite_frames = SubResource("SpriteFrames_rdevq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1" unique_id=1115819715]
+position = Vector2(-7, 42)
+scale = Vector2(0.195, 0.195)
+texture = ExtResource("6_wgdgx")
+
+[node name="Interactable" parent="." index="2" unique_id=1060280475]
+visible = false
+
+[node name="Pickable" parent="." index="3" unique_id=927396171]
+visible = false
+
+[node name="PlantItemReceiver" parent="." index="4" unique_id=1216653505]
+Filters = Array[ExtResource("8_4oyuf")]([SubResource("Resource_rdevq")])
+
+[node name="InteractReceiver" parent="PlantItemReceiver" index="0" unique_id=415589104]
+visible = false
+
+[node name="Interactable" parent="PlantItemReceiver" index="2" unique_id=1378610717]
+visible = false
+
+[node name="Picker" parent="PlantItemReceiver" index="3" unique_id=978685116]
+visible = false
+
+[editable path="PlantItemReceiver"]
