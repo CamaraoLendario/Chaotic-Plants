@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://bcmea4aa2xtrn"]
+
+[ext_resource type="Script" uid="uid://w0bpjmca2sr" path="res://character/character.gd" id="1_6cjpo"]
+[ext_resource type="Script" uid="uid://cc1c77pfsl8dh" path="res://ai/run_away_from_player_ai.gd" id="2_nimrw"]
+[ext_resource type="Texture2D" uid="uid://chnu528uov0n" path="res://icon.svg" id="3_nimrw"]
+[ext_resource type="Script" uid="uid://d5sfdadk20ij" path="res://interact/pickable.gd" id="4_cbahg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nimrw"]
+
+[node name="Strawberry" type="CharacterBody2D" unique_id=352578681 node_paths=PackedStringArray("anchor")]
+script = ExtResource("1_6cjpo")
+maxSpeed = 400.0
+anchor = NodePath("Anchor")
+metadata/_custom_type_script = "uid://w0bpjmca2sr"
+
+[node name="RunAwayAI" type="Node" parent="." unique_id=2026846440 node_paths=PackedStringArray("character", "wallChecker")]
+script = ExtResource("2_nimrw")
+minDistanceToPlayer = 300
+rotationDegreesVariance = 45
+wallAvoidance = 0.15
+character = NodePath("..")
+wallChecker = NodePath("../Anchor/RayCast2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1054295109]
+modulate = Color(1, 0, 0.16470589, 1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_nimrw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1796652580]
+shape = SubResource("CircleShape2D_nimrw")
+
+[node name="Anchor" type="Node2D" parent="." unique_id=1990168994]
+
+[node name="RayCast2D" type="RayCast2D" parent="Anchor" unique_id=281639323]
+target_position = Vector2(64, 0)
+
+[node name="Pickable" type="Area2D" parent="." unique_id=798233956]
+script = ExtResource("4_cbahg")
+metadata/_custom_type_script = "uid://d5sfdadk20ij"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickable" unique_id=1064375646]
+shape = SubResource("CircleShape2D_nimrw")
+
+[connection signal="WasDropped" from="Pickable" to="RunAwayAI" method="enable" unbinds=1]
+[connection signal="WasDropped" from="Pickable" to="CollisionShape2D" method="set_disabled" unbinds=1 binds= [false]]
+[connection signal="WasPickedUp" from="Pickable" to="RunAwayAI" method="disable" unbinds=1]
+[connection signal="WasPickedUp" from="Pickable" to="CollisionShape2D" method="set_disabled" unbinds=1 binds= [true]]

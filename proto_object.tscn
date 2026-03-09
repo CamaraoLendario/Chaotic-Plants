@@ -34,3 +34,6 @@ metadata/_custom_type_script = "uid://d5sfdadk20ij"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pickable" unique_id=1340029393]
 shape = SubResource("RectangleShape2D_2iui2")
+
+[connection signal="WasDropped" from="Pickable" to="CollisionShape2D" method="set_disabled" unbinds=1 binds= [false]]
+[connection signal="WasPickedUp" from="Pickable" to="CollisionShape2D" method="set_disabled" unbinds=1 binds= [true]]
