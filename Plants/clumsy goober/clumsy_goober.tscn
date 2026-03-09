@@ -17,24 +17,12 @@ shader = ExtResource("2_dsrkm")
 shader_parameter/startTime = 0.0
 shader_parameter/animate = false
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4oyuf"]
-atlas = ExtResource("3_n531e")
-region = Rect2(0, 0, 1920, 400)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qyj6f"]
-atlas = ExtResource("4_wgdgx")
-region = Rect2(0, 0, 1920, 400)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rdevq"]
-atlas = ExtResource("5_evcsv")
-region = Rect2(0, 0, 1920, 400)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_r8us8"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4oyuf")
+"texture": ExtResource("3_n531e")
 }],
 "loop": true,
 "name": &"stage0",
@@ -42,7 +30,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qyj6f")
+"texture": ExtResource("4_wgdgx")
 }],
 "loop": true,
 "name": &"stage1",
@@ -50,7 +38,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rdevq")
+"texture": ExtResource("5_evcsv")
 }],
 "loop": true,
 "name": &"stage2",
@@ -70,12 +58,13 @@ stawberryScene = ExtResource("4_rdevq")
 growTime = 10.0
 
 [node name="Sprite" parent="." index="0" unique_id=1713877530]
-position = Vector2(-13.000001, -47)
-scale = Vector2(0.33, 0.33)
+position = Vector2(0, -5)
+scale = Vector2(0.23, 0.23)
 sprite_frames = SubResource("SpriteFrames_r8us8")
+animation = &"stage0"
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="1" unique_id=1115819715]
-position = Vector2(-7, 42)
+position = Vector2(-6, 35)
 scale = Vector2(0.195, 0.195)
 texture = ExtResource("6_wgdgx")
 

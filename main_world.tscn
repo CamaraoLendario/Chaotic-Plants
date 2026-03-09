@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://61kd8uwvwfj1" path="res://Map/MapBackground.png" id="3_bqrff"]
 [ext_resource type="Script" uid="uid://d1p357dnn4txx" path="res://time_label.gd" id="5_uue8y"]
 [ext_resource type="PackedScene" uid="uid://ulelhqvpd2il" path="res://Plants/plant_item_receiver.tscn" id="5_whfra"]
-[ext_resource type="PackedScene" uid="uid://c8sd75wxygh6a" path="res://Plants/Seed.tscn" id="6_bqrff"]
 [ext_resource type="Script" uid="uid://do6arsnvfb00a" path="res://request_list_view.gd" id="7_7ktct"]
 [ext_resource type="PackedScene" uid="uid://c7hl623304u1e" path="res://game_state/views/request_view.tscn" id="7_aac4l"]
 [ext_resource type="PackedScene" uid="uid://3g32u0krguc" path="res://interact/delivery.tscn" id="9_uks48"]
@@ -17,8 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://uf8nm2xoea25" path="res://Plants/steamy/Steamy.png" id="15_ju1fa"]
 [ext_resource type="PackedScene" uid="uid://cmtqujxfgqtjl" path="res://Plants/pot.tscn" id="16_bqrff"]
 [ext_resource type="Texture2D" uid="uid://80x8gpkb8n4v" path="res://Plants/steamy/SteamyDone.png" id="16_fc1ei"]
+[ext_resource type="PackedScene" uid="uid://c017ejda8kl87" path="res://Plants/seed_provider.tscn" id="17_fc1ei"]
+[ext_resource type="Resource" uid="uid://dxn32rviv11v7" path="res://Plants/strawberry/strawberry_data.tres" id="18_vo8r4"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ju1fa"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o7wth"]
 resource_local_to_scene = true
 shader = ExtResource("11_ko8m6")
 shader_parameter/startTime = 0.0
@@ -36,7 +37,7 @@ region = Rect2(0, 0, 183, 186)
 atlas = ExtResource("16_fc1ei")
 region = Rect2(0, 0, 176, 200)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_fc1ei"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_72mcj"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
@@ -79,10 +80,6 @@ texture = ExtResource("3_bqrff")
 position = Vector2(-237, 12)
 motion_mode = 0
 
-[node name="ObjectSpawner" parent="." unique_id=1063420533 instance=ExtResource("2_uoqbt")]
-position = Vector2(-480, -176)
-spawnScene = ExtResource("6_bqrff")
-
 [node name="PlantItemReceiver" parent="." unique_id=1216653505 instance=ExtResource("5_whfra")]
 position = Vector2(-344, 200)
 
@@ -124,14 +121,18 @@ position = Vector2(464, -200)
 [node name="Delivery" parent="." unique_id=1179291177 instance=ExtResource("9_uks48")]
 
 [node name="Steamy" parent="." unique_id=1634396651 instance=ExtResource("13_v7yd6")]
-material = SubResource("ShaderMaterial_ju1fa")
+material = SubResource("ShaderMaterial_o7wth")
 position = Vector2(-329, -272)
 
 [node name="Sprite" parent="Steamy" index="1" unique_id=1713877530]
-sprite_frames = SubResource("SpriteFrames_fc1ei")
+sprite_frames = SubResource("SpriteFrames_72mcj")
 
 [node name="Pot" parent="." unique_id=313565715 instance=ExtResource("16_bqrff")]
 position = Vector2(-18, -159)
+
+[node name="SeedProvider" parent="." unique_id=850861519 instance=ExtResource("17_fc1ei")]
+position = Vector2(-426, -57)
+plantData = ExtResource("18_vo8r4")
 
 [connection signal="spawnedObject" from="PlantSpawner1" to="." method="on_plant_spawned"]
 [connection signal="spawnedObject" from="PlantSpawner2" to="." method="on_plant_spawned"]

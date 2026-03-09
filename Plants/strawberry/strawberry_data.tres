@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://chnu528uov0n" path="res://icon.svg" id="1_p0pln"]
 [ext_resource type="Script" uid="uid://ci4rkla7atypy" path="res://Plants/plant_data.gd" id="1_qvjkj"]
-[ext_resource type="PackedScene" uid="uid://boeg2lf46fjjr" path="res://Plants/Cry Baby/cry_baby.tscn" id="2_p0pln"]
+[ext_resource type="PackedScene" uid="uid://cej3k5yxlvvk7" path="res://Plants/clumsy goober/clumsy_goober.tscn" id="2_p0pln"]
 
 [resource]
 script = ExtResource("1_qvjkj")

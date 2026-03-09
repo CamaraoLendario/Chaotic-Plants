@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ChaoticPlants"
-run/main_scene="uid://5maqs1n31c0m"
+run/main_scene="uid://chrx13ummoytr"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

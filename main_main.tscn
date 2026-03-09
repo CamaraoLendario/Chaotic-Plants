@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://5maqs1n31c0m"]
+[gd_scene format=3 uid="uid://cq4iumvocybcl"]
 
 [ext_resource type="PackedScene" uid="uid://dopujk04ltt6d" path="res://character/character.tscn" id="1_tewtn"]
-[ext_resource type="PackedScene" uid="uid://c6fl0jwao178t" path="res://Map/map.tscn" id="1_tjivk"]
+[ext_resource type="PackedScene" path="res://Map/map.tscn" id="1_tjivk"]
 [ext_resource type="Script" uid="uid://r5uwf3yaolik" path="res://game_state/game_controller.gd" id="1_xdjt8"]
 [ext_resource type="PackedScene" uid="uid://c017ejda8kl87" path="res://Plants/seed_provider.tscn" id="2_0gepa"]
 [ext_resource type="Resource" uid="uid://4andksvgn7yo" path="res://game_state/levels/level0Data.tres" id="2_nv1kf"]
