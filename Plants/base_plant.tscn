@@ -30,11 +30,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="BasePlant" type="Node2D" unique_id=629364572 node_paths=PackedStringArray("interactable", "sprite")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_51v42"]
+size = Vector2(64, 64)
+
+[node name="BasePlant" type="Node2D" unique_id=629364572 node_paths=PackedStringArray("sprite", "interactable", "pickable")]
 material = SubResource("ShaderMaterial_gwtbr")
 script = ExtResource("1_ha1yr")
-interactable = NodePath("Interactable")
 sprite = NodePath("Sprite")
+interactable = NodePath("Interactable")
+pickable = NodePath("Pickable")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1713877530]
 use_parent_material = true
@@ -47,5 +51,10 @@ metadata/_custom_type_script = "uid://cvc5atuup46p2"
 
 [node name="Pickable" type="Area2D" parent="." unique_id=1570847046]
 collision_layer = 2
+monitoring = false
+monitorable = false
 script = ExtResource("3_evnqr")
 metadata/_custom_type_script = "uid://d5sfdadk20ij"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickable" unique_id=1406097162]
+shape = SubResource("RectangleShape2D_51v42")

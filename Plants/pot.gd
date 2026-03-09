@@ -9,4 +9,5 @@ func _ready() -> void:
 	#itemReceiver.dropped_object.connect()
 
 func on_picked_up_object(obj: Pickable):
-	var seed = obj.owner
+	var seed: Seed = obj.owner
+	

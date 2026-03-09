@@ -5,12 +5,15 @@ class_name Plant
 # Receive Item
 
 signal grew (growStage : int)
+signal finishedGrowing
 @export var isByStages : bool = false
 @export var growTime : float = 1 ## Time to grow in seconds
 @export var growGoal : int = 3 ## How many stages the plant has
-@export_group("Nodes")
-@export var interactable : Interactable
+
+@export_group("References")
 @export var sprite: AnimatedSprite2D
+@export var interactable : Interactable
+@export var pickable: Pickable
 
 var isGrowing: bool = true
 
@@ -21,8 +24,8 @@ var IsPlanted: bool:
 		isPlanted = value
 		(material as ShaderMaterial).set_shader_parameter("animate", value)
 		
-
 var isPlanted: bool = false
+
 var data: PlantData
 var isGrown : bool = false
 var GrowProgress : float: ## How far the plant is in the growing progress. from 0 to growGoal
@@ -33,12 +36,11 @@ var GrowProgress : float: ## How far the plant is in the growing progress. from 
 		check_grow_progress()
 var growProgress: float = 0
 
-
 func _ready() -> void:
 	interactable.wasInteracted.connect(on_interacted)
 	if data == null:
 		printerr("Plant ", name, " does not have data set. Null errors will occur!")
-	(material as ShaderMaterial).set_shader_parameter("startTime", randf()*2*PI) ## doesnt really get any time, but this is simpler and does the same effect
+	(material as ShaderMaterial).set_shader_parameter("startTime", randf() * 2 * PI) ## doesnt really get any time, but this is simpler and does the same effect
 
 func set_data(plantData: PlantData):
 	data = plantData
@@ -52,10 +54,15 @@ func on_interacted(_interactor: Node2D):
 	print("I was interacted with")
 
 func _physics_process(delta: float) -> void:
-	if (!isByStages and GrowProgress < growGoal-1 and isGrowing):
+	if (!isByStages and GrowProgress < growGoal-1 and isGrowing and !isGrown):
 		GrowProgress += (delta / growTime) * growGoal
 
 func check_grow_progress():
 	sprite.animation = "stage" +  str(int(GrowProgress))
 	if (growProgress >= growGoal-1):
-		isGrown = true
+		finishGrowing()
+
+func finishGrowing():
+	isGrown = true
+	pickable.activate()
+	finishedGrowing.emit()

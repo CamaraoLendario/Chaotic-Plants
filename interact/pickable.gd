@@ -40,3 +40,11 @@ func _on_was_dropped(_obj: Node2D):
 
 func can_be_interacted() -> bool:
 	return !isBeingHeld
+
+func activate():
+	monitoring = true
+	monitorable = true
+
+func deactivate():
+	monitoring = false
+	monitorable = false
