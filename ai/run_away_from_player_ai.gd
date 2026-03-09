@@ -44,8 +44,10 @@ func is_close_to_wall() -> bool:
 	return wallChecker.is_colliding()
 
 func disable():
+	print("strawberry has been disabled")
 	character.wishDir = Vector2.ZERO
 	process_mode = Node.PROCESS_MODE_DISABLED
 
 func enable():
+	print("strawberry has been enabled")
 	process_mode = Node.PROCESS_MODE_INHERIT

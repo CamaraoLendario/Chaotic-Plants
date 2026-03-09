@@ -32,7 +32,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	steamMeter += (direction * delta / 20)
 	steamMeter = clamp(steamMeter, 0, 1)
-	print(steamMeter)
 
 func _physics_process(delta: float) -> void:
 	isGrowing = (steamMeter < max and steamMeter > min)

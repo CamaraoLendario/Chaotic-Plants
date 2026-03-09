@@ -16,10 +16,12 @@ var aimDir : Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	picker.picked_up_pickable.connect(func(pickable: Pickable):
+		if (pickable.owner is Strawberry): return
 		pickable.canBePicked = false
 		)
 	
 	picker.dropped_pickable.connect(func(pickable: Pickable):
+		if (!pickable): return
 		pickable.canBePicked = true
 		)
 

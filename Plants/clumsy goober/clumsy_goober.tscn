@@ -49,11 +49,11 @@ animations = [{
 script = ExtResource("9_qyj6f")
 metadata/_custom_type_script = "uid://d3jcx7l2r4nhm"
 
-[node name="BasePlant" unique_id=629364572 node_paths=PackedStringArray("strawberryImage", "strawberrySpawn") instance=ExtResource("1_yu4a7")]
+[node name="Clumsy" unique_id=629364572 node_paths=PackedStringArray("strawberryImage", "strawberrySpawn") instance=ExtResource("1_yu4a7")]
 material = SubResource("ShaderMaterial_rdevq")
 script = ExtResource("3_evcsv")
 strawberryImage = NodePath("Sprite2D")
-strawberrySpawn = NodePath("PlantItemReceiver/Picker/ObjectHolder/Marker2D")
+strawberrySpawn = NodePath("Marker2D")
 stawberryScene = ExtResource("4_rdevq")
 growTime = 10.0
 
@@ -75,6 +75,7 @@ visible = false
 visible = false
 
 [node name="PlantItemReceiver" parent="." index="4" unique_id=1216653505]
+scale = Vector2(0.5, 0.5)
 Filters = Array[ExtResource("8_4oyuf")]([SubResource("Resource_rdevq")])
 
 [node name="InteractReceiver" parent="PlantItemReceiver" index="0" unique_id=415589104]
@@ -83,7 +84,7 @@ visible = false
 [node name="Interactable" parent="PlantItemReceiver" index="2" unique_id=1378610717]
 visible = false
 
-[node name="Picker" parent="PlantItemReceiver" index="3" unique_id=978685116]
-visible = false
+[node name="Marker2D" type="Marker2D" parent="." index="5" unique_id=1380236585]
+position = Vector2(0, 92)
 
 [editable path="PlantItemReceiver"]

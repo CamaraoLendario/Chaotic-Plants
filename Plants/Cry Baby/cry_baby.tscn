@@ -7,16 +7,18 @@
 [ext_resource type="Texture2D" uid="uid://ci82dhknnxual" path="res://assets/plants/crybaby/CRY_BABY-1.png" id="5_ly2n0"]
 [ext_resource type="Texture2D" uid="uid://dfhk78idc8xqq" path="res://assets/plants/crybaby/CRY_BABY-2.png" id="6_r0fhf"]
 [ext_resource type="Texture2D" uid="uid://bwidhgg7ope1i" path="res://assets/plants/crybaby/CRY_BABY-3.png" id="7_lowvt"]
+[ext_resource type="Script" uid="uid://dl70irp36vey5" path="res://interact/Filters/InteractFilter.gd" id="8_dn3mv"]
 [ext_resource type="AudioStream" uid="uid://fy8elpjyd4oj" path="res://assets/plants/crybaby/cry baby feliz.mp3" id="8_lowvt"]
+[ext_resource type="Script" uid="uid://cqddg1ggorjvo" path="res://interact/Filters/TeddyBearsFilter.gd" id="9_86kgo"]
 [ext_resource type="AudioStream" uid="uid://davkx6262cesw" path="res://assets/plants/crybaby/cry baby crying.mp3" id="9_dn3mv"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_86kgo"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h8rin"]
 resource_local_to_scene = true
 shader = ExtResource("2_nfd76")
 shader_parameter/startTime = 0.0
 shader_parameter/animate = false
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_h8rin"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_nfxwy"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
@@ -44,8 +46,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Resource" id="Resource_cckdo"]
+script = ExtResource("9_86kgo")
+metadata/_custom_type_script = "uid://cqddg1ggorjvo"
+
 [node name="Cry Baby" unique_id=629364572 node_paths=PackedStringArray("itemReceiver") instance=ExtResource("1_kl575")]
-material = SubResource("ShaderMaterial_86kgo")
+material = SubResource("ShaderMaterial_h8rin")
 script = ExtResource("2_lwu54")
 itemReceiver = NodePath("PlantItemReceiver")
 teddyBearScene = ExtResource("3_ef3al")
@@ -54,10 +60,13 @@ growTime = 15.0
 [node name="Sprite" parent="." index="0" unique_id=1713877530]
 position = Vector2(0, -48)
 scale = Vector2(0.4, 0.39)
-sprite_frames = SubResource("SpriteFrames_h8rin")
+sprite_frames = SubResource("SpriteFrames_nfxwy")
 animation = &"stage0"
 
-[node name="Label" parent="PlantItemReceiver" parent_id_path=PackedInt32Array(1216653505) index="1" unique_id=2084353703]
+[node name="PlantItemReceiver" parent="." index="3" unique_id=1216653505]
+Filters = Array[ExtResource("8_dn3mv")]([SubResource("Resource_cckdo")])
+
+[node name="Label" parent="PlantItemReceiver" index="1" unique_id=2084353703]
 visible = false
 
 [node name="happySound" type="AudioStreamPlayer2D" parent="." index="4" unique_id=242794773]

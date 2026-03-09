@@ -9,6 +9,15 @@
 script = ExtResource("4_pan73")
 metadata/_custom_type_script = "uid://blkjhgw6u7o1i"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ex2om"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pan73"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_63tfw"]
+size = Vector2(64, 64)
+
 [node name="Pot" type="Node2D" unique_id=313565715 node_paths=PackedStringArray("itemReceiver")]
 script = ExtResource("1_3pvev")
 itemReceiver = NodePath("PlantItemReceiver")
@@ -16,11 +25,19 @@ itemReceiver = NodePath("PlantItemReceiver")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=475030204]
 
 [node name="PlantItemReceiver" parent="." unique_id=1216653505 instance=ExtResource("2_m5gll")]
-scale = Vector2(0.5, 0.5)
 Filters = Array[ExtResource("3_ex2om")]([SubResource("Resource_ex2om")])
+
+[node name="CollisionShape2D" parent="PlantItemReceiver/InteractReceiver" parent_id_path=PackedInt32Array(1216653505, 415589104) index="0" unique_id=1706021188]
+shape = SubResource("RectangleShape2D_ex2om")
 
 [node name="Label" parent="PlantItemReceiver" index="1" unique_id=2084353703]
 visible = false
+
+[node name="CollisionShape2D" parent="PlantItemReceiver/Interactable" parent_id_path=PackedInt32Array(1216653505, 1378610717) index="0" unique_id=1960998831]
+shape = SubResource("RectangleShape2D_pan73")
+
+[node name="CollisionShape2D" parent="PlantItemReceiver/Picker" parent_id_path=PackedInt32Array(1216653505, 978685116) index="0" unique_id=662802179]
+shape = SubResource("RectangleShape2D_63tfw")
 
 [node name="ObjectHolder" parent="PlantItemReceiver/Picker" parent_id_path=PackedInt32Array(1216653505, 978685116) index="1" unique_id=1250314402]
 position = Vector2(0, 0)
