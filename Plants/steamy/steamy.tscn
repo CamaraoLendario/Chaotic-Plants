@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://3dtjai4t28oj" path="res://interact/Filters/water_bucket_filter.gd" id="7_abo70"]
 [ext_resource type="Texture2D" uid="uid://cpkk2hgd6ep4j" path="res://assets/plants/steamy/steamy-2.png" id="8_qrxx1"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s82at"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qrxx1"]
 resource_local_to_scene = true
 shader = ExtResource("2_abo70")
 shader_parameter/startTime = 0.0
@@ -20,7 +20,7 @@ shader_parameter/animate = false
 script = ExtResource("7_abo70")
 metadata/_custom_type_script = "uid://3dtjai4t28oj"
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_kqen7"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_s82at"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
@@ -49,7 +49,7 @@ animations = [{
 }]
 
 [node name="Steamy" unique_id=629364572 node_paths=PackedStringArray("itemReceiver", "progressBar") instance=ExtResource("1_8aytf")]
-material = SubResource("ShaderMaterial_s82at")
+material = SubResource("ShaderMaterial_qrxx1")
 script = ExtResource("2_tdr66")
 itemReceiver = NodePath("PlantItemReceiver")
 progressBar = NodePath("ProgressBar")
@@ -62,7 +62,7 @@ Filters = Array[ExtResource("6_8xx8s")]([SubResource("Resource_b3kak")])
 [node name="Sprite" parent="." index="1" unique_id=1713877530]
 position = Vector2(0, -32)
 scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_kqen7")
+sprite_frames = SubResource("SpriteFrames_s82at")
 animation = &"stage0"
 
 [node name="ProgressBar" type="ProgressBar" parent="." index="4" unique_id=311369693]
