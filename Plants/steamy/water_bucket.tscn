@@ -5,3 +5,6 @@
 
 [node name="water_bucket" unique_id=794916380 instance=ExtResource("1_stp0t")]
 script = ExtResource("2_vhjcy")
+
+[node name="Label" parent="." index="1" unique_id=2048095712]
+text = "BUCKET"

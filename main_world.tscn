@@ -5,14 +5,22 @@
 [ext_resource type="PackedScene" uid="uid://bq3gnd6nxn01p" path="res://object_spawner.tscn" id="2_uoqbt"]
 [ext_resource type="Resource" uid="uid://4andksvgn7yo" path="res://game_state/levels/level0Data.tres" id="2_uue8y"]
 [ext_resource type="Script" uid="uid://d1p357dnn4txx" path="res://time_label.gd" id="5_uue8y"]
+[ext_resource type="PackedScene" uid="uid://cl48nnwb65guv" path="res://Plants/steamy/water_bucket.tscn" id="5_v7yd6"]
 [ext_resource type="PackedScene" uid="uid://ulelhqvpd2il" path="res://Plants/plant_item_receiver.tscn" id="5_whfra"]
 [ext_resource type="Script" uid="uid://do6arsnvfb00a" path="res://request_list_view.gd" id="7_7ktct"]
 [ext_resource type="PackedScene" uid="uid://c7hl623304u1e" path="res://game_state/views/request_view.tscn" id="7_aac4l"]
 [ext_resource type="PackedScene" uid="uid://tc83aw2jaip5" path="res://interact/delivery.tscn" id="9_uks48"]
 [ext_resource type="PackedScene" uid="uid://psh2ymdga6o6" path="res://Plants/Plinko/Plinko.tscn" id="10_ko8m6"]
 [ext_resource type="Shader" uid="uid://bvni52b27fb52" path="res://Plants/base_plant.gdshader" id="11_ko8m6"]
+[ext_resource type="PackedScene" uid="uid://dygk3vngr7bt" path="res://Plants/steamy/steamy.tscn" id="13_v7yd6"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8i6ae"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wly0c"]
+resource_local_to_scene = true
+shader = ExtResource("11_ko8m6")
+shader_parameter/startTime = 0.0
+shader_parameter/animate = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xftef"]
 resource_local_to_scene = true
 shader = ExtResource("11_ko8m6")
 shader_parameter/startTime = 0.0
@@ -31,6 +39,7 @@ position = Vector2(-237, 12)
 
 [node name="ObjectSpawner" parent="." unique_id=1063420533 instance=ExtResource("2_uoqbt")]
 position = Vector2(-480, -176)
+spawnScene = ExtResource("5_v7yd6")
 
 [node name="PlantItemReceiver" parent="." unique_id=1216653505 instance=ExtResource("5_whfra")]
 position = Vector2(-344, 200)
@@ -69,8 +78,12 @@ position = Vector2(464, -200)
 [node name="Delivery" parent="." unique_id=1179291177 instance=ExtResource("9_uks48")]
 
 [node name="BasePlant" parent="." unique_id=629364572 instance=ExtResource("10_ko8m6")]
-material = SubResource("ShaderMaterial_8i6ae")
+material = SubResource("ShaderMaterial_wly0c")
 position = Vector2(153, -139)
+
+[node name="Steamy" parent="." unique_id=1841791848 instance=ExtResource("13_v7yd6")]
+material = SubResource("ShaderMaterial_xftef")
+position = Vector2(-283, -233)
 
 [connection signal="spawnedObject" from="PlantSpawner1" to="." method="on_plant_spawned"]
 [connection signal="spawnedObject" from="PlantSpawner2" to="." method="on_plant_spawned"]

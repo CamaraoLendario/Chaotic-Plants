@@ -7,14 +7,22 @@ class_name CryBaby
 
 var beAnnoyingTimeInterval: float = 1
 var ownedTeddyBears: Array[TeddyBear]
+var be_annoying_timer: Timer = Timer.new()
 
 var IsCrying: bool:
 	get():
 		return _isCrying
 	set(value):
 		_isCrying = value
-		if (_isCrying): modulate = Color.BLUE
-		else: modulate = Color.WHITE
+		if (_isCrying): 
+			modulate = Color.BLUE
+			isGrowing = false
+		else: 
+			modulate = Color.WHITE
+			isGrowing = true
+			if (be_annoying_timer.is_stopped()):
+				print("STARTING TIMER")
+				be_annoying_timer.start(beAnnoyingTimeInterval)
 	
 var _isCrying: bool = true
 
@@ -37,19 +45,20 @@ var _heldTeddyBear = -1
 func _ready() -> void:
 	super._ready()
 	
-	
-	
-	modulate = Color.BLUE
+	IsCrying = true
 	itemReceiver.picked_up_object.connect(update_held_item)
 	itemReceiver.dropped_object.connect(update_held_item)
 	
-	#AddBeAnnoyingTimer()
+	AddBeAnnoyingTimer()
 	SpawnTeddyBears()
 
+func _physics_process(delta: float) -> void:
+	super._physics_process(delta)
+	print(growProgress)
+
 func AddBeAnnoyingTimer():
-	var be_annoying_timer: Timer = new().Timer()
+	be_annoying_timer.one_shot = true
 	add_child(be_annoying_timer)
-	be_annoying_timer.start(beAnnoyingTimeInterval)
 	be_annoying_timer.timeout.connect(be_annoying)
 
 func be_annoying():
@@ -57,9 +66,11 @@ func be_annoying():
 	possibleTeddyBears.remove_at(WantedTeddyBear)
 	if(randi_range(0, 1) == 0):
 		WantedTeddyBear = possibleTeddyBears[randi_range(0, 1)]
+	else:
+		be_annoying_timer.start(beAnnoyingTimeInterval)
 
 func update_held_item(_obj: Pickable):
-	var currentHeldObject = _obj.owner
+	var currentHeldObject = itemReceiver.get_held_object()
 	print(self, " held item updated. new object: ", currentHeldObject)
 	if (currentHeldObject is TeddyBear):
 		var newTeddyBear = currentHeldObject as TeddyBear

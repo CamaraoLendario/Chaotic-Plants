@@ -15,6 +15,7 @@ interactReceiver = NodePath("InteractReceiver")
 objectHolder = NodePath("ObjectHolder")
 
 [node name="InteractReceiver" type="Area2D" parent="." unique_id=415589104 node_paths=PackedStringArray("objectHolder")]
+collision_mask = 5
 script = ExtResource("2_eqv4n")
 objectHolder = NodePath("../ObjectHolder")
 metadata/_custom_type_script = "uid://b3owvnlpfrkpo"
