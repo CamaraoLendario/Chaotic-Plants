@@ -52,4 +52,4 @@ func itemreceived(obj: Pickable):
 	
 	var waterBucket: WaterBucket = obj.owner
 	itemReceiver.objectHolder.drop().owner.queue_free()
-	itemReceiver.objectHolder.start_holding(waterBucket.pickable)
+	add_water()
