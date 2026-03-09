@@ -33,7 +33,7 @@ animations = [{
 [node name="BasePlant" type="Node2D" unique_id=629364572 node_paths=PackedStringArray("interactable", "sprite")]
 material = SubResource("ShaderMaterial_gwtbr")
 script = ExtResource("1_ha1yr")
-interactable = NodePath("")
+interactable = NodePath("Interactable")
 sprite = NodePath("Sprite")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1713877530]
