@@ -4,7 +4,7 @@ class_name Steamy
 signal stopped_growing()
 
 var min: float = 0.4
-var max: float = 0.6
+var max: float = 1
 var steamMeter: float: # goes from 0 to 1
 	get():
 		return progressBar.value
@@ -30,16 +30,17 @@ func _ready() -> void:
 	itemReceiver.picked_up_object.connect(itemreceived)
 
 func _process(delta: float) -> void:
-	steamMeter += (direction * delta / 20) * 100
-	steamMeter = clamp(steamMeter, 0, 100)
+	steamMeter += (direction * delta / 20)
+	steamMeter = clamp(steamMeter, 0, 1)
 	print(steamMeter)
 
 func _physics_process(delta: float) -> void:
 	isGrowing = (steamMeter < max and steamMeter > min)
-	if (isGrowing): sprite.animation = "stage2"
-	else: 
-		sprite.animation = "stage0"
+	if (isGrowing): 
+		sprite.animation = "stage2"
 		stopped_growing.emit()
+	else:
+		sprite.animation = "stage0"
 	super._physics_process(delta)
 	#if (isGrowing): print(growProgress)
 
@@ -51,7 +52,7 @@ func directionChange():
 		direction *= -1
 
 func add_water():
-	steamMeter += 0.2
+	steamMeter += 0.5
 
 func itemreceived(obj: Pickable):
 	if (obj.owner is not WaterBucket): return
