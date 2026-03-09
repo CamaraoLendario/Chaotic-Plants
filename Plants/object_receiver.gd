@@ -5,10 +5,16 @@ signal picked_up_object(obj: Pickable)
 signal dropped_object(obj: Pickable)
 
 @export var picker: Picker
-@export var filters: Array[InteractFilter]
+@export var Filters: Array[InteractFilter]:
+	get():
+		return filters
+	set(value):
+		filters = value
+		picker.filters = filters #bad code design, should work
+
+var filters: Array[InteractFilter]
 
 func _ready() -> void:
-	picker.filters = filters #bad code design, should work
 	picker.picked_up_pickable.connect(_on_picked_up_object)
 	picker.dropped_pickable.connect(_on_dropped_object)
 

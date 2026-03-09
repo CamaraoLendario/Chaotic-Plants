@@ -112,6 +112,10 @@ script = ExtResource("7_7ktct")
 gameController = NodePath("../..")
 requestViewScene = ExtResource("7_aac4l")
 
+[node name="PauseMenu" parent="CanvasLayer" unique_id=550477132 node_paths=PackedStringArray("gameController") instance=ExtResource("10_wly0c")]
+visible = false
+gameController = NodePath("../..")
+
 [node name="PlantSpawner1" parent="." unique_id=682720887 instance=ExtResource("2_uoqbt")]
 position = Vector2(464, 248)
 
