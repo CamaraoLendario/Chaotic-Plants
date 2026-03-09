@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://fy8elpjyd4oj"
+path="res://.godot/imported/cry baby feliz.mp3-43ea15f4c9612072bc08eaecdd0ff613.mp3str"
+
+[deps]
+
+source_file="res://assets/plants/crybaby/cry baby feliz.mp3"
+dest_files=["res://.godot/imported/cry baby feliz.mp3-43ea15f4c9612072bc08eaecdd0ff613.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

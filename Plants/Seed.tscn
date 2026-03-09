@@ -2,7 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://c4ei3qax5i842" path="res://proto_object.tscn" id="1_mplku"]
 [ext_resource type="Script" uid="uid://bmh78dre6wkak" path="res://Plants/seed.gd" id="2_l71ud"]
-[ext_resource type="Resource" uid="uid://sdu6ynmgrmka" path="res://Plants/clumsy goober/clumsy_goober_data.tres" id="3_27wqn"]
+[ext_resource type="Resource" uid="uid://bfqe2xfeq24xp" path="res://Plants/Cry Baby/cry_baby_data.tres" id="3_27wqn"]
+[ext_resource type="Texture2D" uid="uid://biexqgds3oeju" path="res://assets/seed bag-.png" id="4_7hn5v"]
 
 [node name="ProtoObject" unique_id=794916380 instance=ExtResource("1_mplku")]
 script = ExtResource("2_l71ud")

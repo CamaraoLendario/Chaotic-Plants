@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c017ejda8kl87"]
 
-[ext_resource type="Script" uid="uid://bss6ai7oemco8" path="res://Plants/seed_provider.gd" id="1_tgehr"]
+[ext_resource type="Script" path="res://Plants/seed_provider.gd" id="1_tgehr"]
 [ext_resource type="PackedScene" uid="uid://c8sd75wxygh6a" path="res://Plants/Seed.tscn" id="2_3krpd"]
 [ext_resource type="Script" uid="uid://ck4gyskvum46o" path="res://interact/object_holder.gd" id="3_gdow7"]
 [ext_resource type="Texture2D" uid="uid://chnu528uov0n" path="res://icon.svg" id="4_wvx6i"]
@@ -11,6 +11,7 @@ size = Vector2(128, 128)
 
 [node name="SeedProvider" type="Node2D" unique_id=850861519 node_paths=PackedStringArray("objectHolder", "interactable")]
 script = ExtResource("1_tgehr")
+seedScene = ExtResource("2_3krpd")
 spawnScene = ExtResource("2_3krpd")
 objectHolder = NodePath("ObjectHolder")
 interactable = NodePath("Interactable")

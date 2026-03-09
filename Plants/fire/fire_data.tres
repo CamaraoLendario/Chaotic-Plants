@@ -2,10 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://chnu528uov0n" path="res://icon.svg" id="1_iel03"]
 [ext_resource type="Script" uid="uid://ci4rkla7atypy" path="res://Plants/plant_data.gd" id="1_lmwkr"]
-[ext_resource type="PackedScene" uid="uid://dygk3vngr7bt" path="res://Plants/steamy/steamy.tscn" id="1_xi3sw"]
+[ext_resource type="PackedScene" uid="uid://boeg2lf46fjjr" path="res://Plants/Cry Baby/cry_baby.tscn" id="2_iel03"]
 
 [resource]
 script = ExtResource("1_lmwkr")
-scene = ExtResource("1_xi3sw")
+scene = ExtResource("2_iel03")
+name = "Fire"
 image = ExtResource("1_iel03")
 metadata/_custom_type_script = "uid://ci4rkla7atypy"
