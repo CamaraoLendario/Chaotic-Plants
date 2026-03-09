@@ -20,6 +20,8 @@ func _physics_process(delta: float) -> void:
 		curPickingTarget = select_current_pickable()
 
 func select_current_pickable() -> Pickable:
+	if (!monitoring):
+		return
 	var overlappingAreas = get_overlapping_areas()
 	
 	# sort by ascending distance to interactor
