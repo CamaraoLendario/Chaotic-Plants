@@ -1,7 +1,7 @@
 extends Node2D
 class_name Thrower
 
-signal
+signal threw()
 
 @export var maxThrowForce: float = 2000
 @export var minThrowForce: float = 500
@@ -41,6 +41,7 @@ func throw():
 	var pickableOwner = pickable.owner
 	if pickableOwner is RigidBody2D:
 		pickableOwner.apply_central_impulse(Vector2.from_angle(global_rotation) * currentThrowForce)
+		threw.emit()
 	else:
 		print("Tried throwing ", pickableOwner.name, " but it is not a RigidBody!")
 

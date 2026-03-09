@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ulelhqvpd2il" path="res://Plants/plant_item_receiver.tscn" id="5_x7xwt"]
 [ext_resource type="Texture2D" uid="uid://c778vh06sivaf" path="res://assets/plants/steamy/steamy-1.png" id="5_x8sog"]
 [ext_resource type="Texture2D" uid="uid://cpkk2hgd6ep4j" path="res://assets/plants/steamy/steamy-2.png" id="6_8xx8s"]
+[ext_resource type="AudioStream" uid="uid://c4a6oblifhlao" path="res://assets/plants/steamy/pressao desregularizada.mp3" id="7_8xx8s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x8sog"]
 resource_local_to_scene = true
@@ -65,5 +66,10 @@ offset_bottom = -2.0
 step = 0.001
 value = 0.5
 fill_mode = 3
+
+[node name="stoppedGrowingSound" type="AudioStreamPlayer2D" parent="." index="6" unique_id=2030621469]
+stream = ExtResource("7_8xx8s")
+
+[connection signal="stopped_growing" from="." to="stoppedGrowingSound" method="play" binds= [0.3]]
 
 [editable path="PlantItemReceiver"]

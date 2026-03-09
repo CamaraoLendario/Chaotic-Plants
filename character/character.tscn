@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://w85o2n1ed2rq" path="res://interact/picker.gd" id="7_dy06j"]
 [ext_resource type="Texture2D" uid="uid://cjccc1q24kor3" path="res://assets/cat/frame0002.png" id="7_xka47"]
 [ext_resource type="Texture2D" uid="uid://b3qlh5igah1un" path="res://assets/cat/frame0003.png" id="8_oxui7"]
-[ext_resource type="Script" path="res://interact/thrower.gd" id="8_wy5t8"]
+[ext_resource type="Script" uid="uid://bj01y5jar2hfw" path="res://interact/thrower.gd" id="8_wy5t8"]
 [ext_resource type="Texture2D" uid="uid://ccho4ewcp4tbn" path="res://assets/cat/frame0004.png" id="9_7f6i4"]
 [ext_resource type="Texture2D" uid="uid://do4mfs4iwrvug" path="res://assets/cat/frame0005.png" id="10_komqb"]
 [ext_resource type="Texture2D" uid="uid://d4ftoci7udfp6" path="res://assets/cat/frame0006.png" id="11_b862g"]
@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://d26lvvmuyxgxu" path="res://assets/cat/frame0021.png" id="26_dg8ty"]
 [ext_resource type="Texture2D" uid="uid://b8emuytc1bqhs" path="res://assets/cat/frame0022.png" id="27_ewpg8"]
 [ext_resource type="Texture2D" uid="uid://bf8t8qgpy8uq5" path="res://assets/cat/frame0023.png" id="28_e7r6o"]
+[ext_resource type="AudioStream" uid="uid://hbbn61av4yy" path="res://assets/cat/actions/atirar.mp3" id="34_yp81j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfnr8"]
 size = Vector2(40, 64)
@@ -206,3 +207,8 @@ picker = NodePath("../Picker")
 position = Vector2(4, 0)
 color = Color(0.19076216, 0.19076237, 0.19076231, 0.28235295)
 polygon = PackedVector2Array(20, -28, 84, -28, 84, 28, 20, 28)
+
+[node name="throwSound" type="AudioStreamPlayer2D" parent="." unique_id=1316152594]
+stream = ExtResource("34_yp81j")
+
+[connection signal="threw" from="Anchor/Thrower" to="throwSound" method="play" binds= [0.4]]

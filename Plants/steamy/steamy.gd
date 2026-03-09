@@ -1,6 +1,8 @@
 extends Plant
 class_name Steamy
 
+signal stopped_growing()
+
 var min: float = 0.4
 var max: float = 0.6
 var steamMeter: float: # goes from 0 to 1
@@ -35,7 +37,9 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	isGrowing = (steamMeter < max and steamMeter > min)
 	if (isGrowing): sprite.animation = "stage2"
-	else: sprite.animation = "stage0"
+	else: 
+		sprite.animation = "stage0"
+		stopped_growing.emit()
 	super._physics_process(delta)
 	#if (isGrowing): print(growProgress)
 
