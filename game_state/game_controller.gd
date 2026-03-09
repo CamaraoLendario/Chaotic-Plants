@@ -8,12 +8,17 @@ signal newPlantSpawned(plant: Plant)
 signal requestFulfilled(request: PlantRequest, plant: Plant)
 signal wrongPlantDelivered(plant: Plant)
 
+signal gamePaused()
+signal gameResumed()
+
 @export var gameTime: float = 60 # 300 = 5 minutes
 @export var levelData: LevelData
 
 @export_group("References")
 @export var plantSpawners: Array[ObjectSpawner] #TODO: remove spawners
 @export var delivery: Delivery
+
+const MAIN_MENU = preload("uid://bap8m7lddbrd7")
 
 
 var activeRequests: Array[PlantRequest]
@@ -37,8 +42,7 @@ func _process(delta: float) -> void:
 		if has_next_request():
 			setup_next_request_time()
 		else:
-			# game over
-			pass
+			get_tree().change_scene_to_packed(MAIN_MENU)
 
 func handle_request(request: PlantRequest):
 	activeRequests.append(request)
@@ -85,6 +89,21 @@ func _fulfill_request(request: PlantRequest, plant: Plant):
 func _signal_failed_request(plant: Plant):
 	print("delivery failed!")
 	plant.call_deferred("queue_free")
+
+func resume_game():
+	get_tree().paused = false
+	gameResumed.emit()
+
+func pause_game():
+	get_tree().paused = true
+	gamePaused.emit()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("Pause"):
+		if get_tree().paused:
+			resume_game()
+		else:
+			pause_game()
 
 #deprecated
 func on_plant_spawned(obj: Node2D):
