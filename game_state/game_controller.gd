@@ -10,6 +10,8 @@ signal wrongPlantDelivered(plant: Plant)
 
 signal gamePaused()
 signal gameResumed()
+signal gameWon()
+signal gameLost()
 
 @export var gameTime: float = 60 # 300 = 5 minutes
 @export var levelData: LevelData
@@ -26,6 +28,7 @@ var activeRequests: Array[PlantRequest]
 var requestIndex: int = -1
 var timeElapsed: float = 0
 var nextRequestTime: float
+var noMoreRequests: bool = false
 
 func _ready() -> void:
 	setup_next_request_time()
@@ -35,14 +38,25 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	timeElapsed += delta
 	
-	if timeElapsed >= nextRequestTime:
+	if timeElapsed >= nextRequestTime and !noMoreRequests:
 		handle_request(next_request())
 		newRequestArrived.emit(next_request())
-		print("NEW REQUEST at index ", requestIndex ,": ", next_request().plantData.name)
 		if has_next_request():
+			print("NEW REQUEST at index ", requestIndex ,": ", next_request().plantData.name)
 			setup_next_request_time()
 		else:
-			get_tree().change_scene_to_packed(MAIN_MENU)
+			noMoreRequests = true
+	if timeElapsed >= gameTime:
+		end_game()
+
+func end_game():
+	if activeRequests.size() > 0:
+		# lost
+		gameLost.emit()
+	else:
+		# won
+		gameWon.emit()
+	process_mode = Node.PROCESS_MODE_DISABLED
 
 func handle_request(request: PlantRequest):
 	activeRequests.append(request)
@@ -76,6 +90,8 @@ func _on_delivery(plant: Plant):
 		#TODO: check if plant is grown etc etc
 		if request.plantData == plant.data:
 			_fulfill_request(request, plant)
+			if noMoreRequests:
+				gameWon.emit()
 			return
 	_signal_failed_request(plant)
 
@@ -104,6 +120,10 @@ func _input(event: InputEvent) -> void:
 			resume_game()
 		else:
 			pause_game()
+
+func change_to_menu_scene():
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://menus/main_menu.tscn")
 
 #deprecated
 func on_plant_spawned(obj: Node2D):

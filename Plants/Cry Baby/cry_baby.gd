@@ -120,6 +120,10 @@ func trade_teddy_bears(teddyBear: TeddyBear):
 	tradingWith.ownedTeddyBears[bearIdx] = teddyBear
 	teddyBear.ownerBaby = tradingWith
 
+func finishGrowing():
+	super.finishGrowing()
+	remove_bears()
+
 func remove_bears() -> void:
 	for i in 3:
 		ownedTeddyBears[2-i].queue_free()

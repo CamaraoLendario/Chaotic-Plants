@@ -10,7 +10,7 @@ func _ready() -> void:
 	quit_button.pressed.connect(quit_game)
 
 func change_to_game_scene():
-	get_tree().change_scene_to_file("res://main_world.tscn")
+	get_tree().change_scene_to_file("res://main_main.tscn")
 
 func quit_game():
 	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
