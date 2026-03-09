@@ -1,22 +1,23 @@
-[gd_scene format=3 uid="uid://tc83aw2jaip5"]
+[gd_scene format=3 uid="uid://3g32u0krguc"]
 
 [ext_resource type="Script" uid="uid://cs7iwhpl5bcbl" path="res://interact/delivery.gd" id="1_nydu7"]
 [ext_resource type="Script" uid="uid://dl70irp36vey5" path="res://interact/Filters/InteractFilter.gd" id="2_gt0bn"]
 [ext_resource type="Texture2D" uid="uid://chnu528uov0n" path="res://icon.svg" id="2_hpbb6"]
-[ext_resource type="Script" uid="uid://b3owvnlpfrkpo" path="res://interact/interact_receiver.gd" id="3_gt0bn"]
-[ext_resource type="Script" uid="uid://yedfamgi7q3g" path="res://interact/Filters/plant_filter.gd" id="3_ta3k3"]
+[ext_resource type="Script" path="res://interact/Filters/plant_filter.gd" id="3_ta3k3"]
+[ext_resource type="Script" uid="uid://w85o2n1ed2rq" path="res://interact/picker.gd" id="6_l1pxt"]
+[ext_resource type="Script" uid="uid://b7af4a7l84e3p" path="res://Plants/object_receiver.gd" id="6_ta3k3"]
+[ext_resource type="Script" uid="uid://ck4gyskvum46o" path="res://interact/object_holder.gd" id="7_y6edr"]
 
 [sub_resource type="Resource" id="Resource_l1pxt"]
 script = ExtResource("3_ta3k3")
-metadata/_custom_type_script = "uid://yedfamgi7q3g"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wly0c"]
-size = Vector2(128, 128)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l1pxt"]
+size = Vector2(64, 128)
 
-[node name="Delivery" type="Node2D" unique_id=1179291177 node_paths=PackedStringArray("interactReceiver")]
+[node name="Delivery" type="Node2D" unique_id=1179291177 node_paths=PackedStringArray("objectReceiver")]
 script = ExtResource("1_nydu7")
 filters = Array[ExtResource("2_gt0bn")]([SubResource("Resource_l1pxt")])
-interactReceiver = NodePath("InteractReceiver")
+objectReceiver = NodePath("ObjectReceiver")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=197811587]
 modulate = Color(0, 0, 1, 1)
@@ -24,10 +25,25 @@ position = Vector2(32, 0)
 scale = Vector2(0.5, 1)
 texture = ExtResource("2_hpbb6")
 
-[node name="InteractReceiver" type="Area2D" parent="." unique_id=1685437662]
-collision_mask = 3
-script = ExtResource("3_gt0bn")
-metadata/_custom_type_script = "uid://b3owvnlpfrkpo"
+[node name="ObjectReceiver" type="Node2D" parent="." unique_id=459591916 node_paths=PackedStringArray("picker")]
+script = ExtResource("6_ta3k3")
+picker = NodePath("Picker")
+metadata/_custom_type_script = "uid://b7af4a7l84e3p"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractReceiver" unique_id=927215188]
-shape = SubResource("RectangleShape2D_wly0c")
+[node name="Picker" type="Area2D" parent="ObjectReceiver" unique_id=444848152 node_paths=PackedStringArray("objectHolder")]
+script = ExtResource("6_l1pxt")
+objectHolder = NodePath("ObjectHolder")
+metadata/_custom_type_script = "uid://w85o2n1ed2rq"
+
+[node name="ObjectHolder" type="Node2D" parent="ObjectReceiver/Picker" unique_id=1590153247 node_paths=PackedStringArray("objectHoldPoint", "objectDropPoint")]
+script = ExtResource("7_y6edr")
+objectHoldPoint = NodePath("Marker2D")
+objectDropPoint = NodePath("Marker2D")
+metadata/_custom_type_script = "uid://ck4gyskvum46o"
+
+[node name="Marker2D" type="Marker2D" parent="ObjectReceiver/Picker/ObjectHolder" unique_id=1039592276]
+position = Vector2(32, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectReceiver/Picker" unique_id=1206731261]
+position = Vector2(32, 0)
+shape = SubResource("RectangleShape2D_l1pxt")
