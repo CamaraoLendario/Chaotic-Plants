@@ -7,6 +7,7 @@ signal WasDropped(picker: Picker)
 var canBePicked: bool = true
 
 func can_be_picked() -> bool:
+	
 	return canBePicked
 
 func get_picked(picker: Picker):
@@ -14,7 +15,6 @@ func get_picked(picker: Picker):
 
 func get_dropped(picker: Picker):
 	WasDropped.emit(picker)
-
 
 func activate():
 	monitoring = true

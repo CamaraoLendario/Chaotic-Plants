@@ -14,6 +14,7 @@ signal finishedGrowing
 @export var sprite: AnimatedSprite2D
 @export var interactable : Interactable
 @export var pickable: Pickable
+@export var picker: Picker
 
 var isGrowing: bool = true
 
@@ -56,6 +57,7 @@ func on_interacted(_interactor: Node2D):
 func _physics_process(delta: float) -> void:
 	if (!isByStages and GrowProgress < growGoal-1 and isGrowing and !isGrown):
 		GrowProgress += (delta / growTime) * growGoal
+		print(GrowProgress)
 
 func check_grow_progress():
 	sprite.animation = "stage" +  str(int(GrowProgress))
@@ -63,6 +65,9 @@ func check_grow_progress():
 		finishGrowing()
 
 func finishGrowing():
+	print("FINISHED")
+	picker.set_deferred("monitorable", false)
+	picker.set_deferred("monitoring", false)
 	isGrown = true
 	pickable.activate()
 	finishedGrowing.emit()

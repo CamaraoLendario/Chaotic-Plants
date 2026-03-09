@@ -9,6 +9,12 @@ signal dropped_pickable(pickable: Pickable)
 @export var filters: Array[InteractFilter]
 var curPickingTarget: Pickable
 
+func _ready() -> void:
+	objectHolder.dropped_object.connect(func(obj): 
+		print("2")
+		dropped_pickable.emit(obj)
+		)
+
 func _physics_process(delta: float) -> void:
 	if !is_holding():
 		curPickingTarget = select_current_pickable()

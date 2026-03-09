@@ -10,9 +10,10 @@ var currentHoldedObject: Pickable
 
 func hold_object(pickable: Pickable): 
 	if !is_holding():
+		
 		currentHoldedObject = pickable
-		currentHoldedObject.WasPickedUp.connect(_on_pickable_was_picked)
 		currentHoldedObject.owner.reparent(objectHoldPoint)
+		currentHoldedObject.WasPickedUp.connect(_on_pickable_was_picked)
 		currentHoldedObject.owner.position = Vector2.ZERO
 		currentHoldedObject.owner.rotation = 0
 		picked_up_object.emit(currentHoldedObject)
@@ -39,8 +40,9 @@ func move_to_drop_point():
 	picked_up_object.emit(currentHoldedObject)
 
 func _on_pickable_was_picked(_picker):
+	print("1")
+	drop_object()
 	dropped_object.emit(currentHoldedObject)
-	currentHoldedObject = null
 
 func is_holding():
 	return currentHoldedObject != null

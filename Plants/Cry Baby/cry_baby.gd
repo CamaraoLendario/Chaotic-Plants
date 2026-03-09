@@ -47,7 +47,7 @@ func _ready() -> void:
 	
 	IsCrying = true
 	itemReceiver.picked_up_object.connect(update_held_item)
-	itemReceiver.dropped_object.connect(update_held_item)
+	itemReceiver.picker.dropped_pickable.connect(update_held_item)
 	
 	AddBeAnnoyingTimer()
 	SpawnTeddyBears()
@@ -69,6 +69,10 @@ func be_annoying():
 		be_annoying_timer.start(beAnnoyingTimeInterval)
 
 func update_held_item(_obj: Pickable):
+	if (itemReceiver.get_held_object() == null):
+		HeldTeddyBear = -1
+		return
+	
 	var currentHeldObject = itemReceiver.get_held_object().owner
 	print(self, " held item updated. new object: ", currentHeldObject.name)
 	if (currentHeldObject is TeddyBear):

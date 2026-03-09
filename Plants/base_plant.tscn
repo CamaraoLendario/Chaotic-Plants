@@ -34,12 +34,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_51v42"]
 size = Vector2(64, 64)
 
-[node name="BasePlant" type="Node2D" unique_id=629364572 node_paths=PackedStringArray("sprite", "interactable", "pickable")]
+[node name="BasePlant" type="Node2D" unique_id=629364572 node_paths=PackedStringArray("sprite", "interactable", "pickable", "picker")]
 material = SubResource("ShaderMaterial_gwtbr")
 script = ExtResource("1_ha1yr")
 sprite = NodePath("Sprite")
 interactable = NodePath("Interactable")
 pickable = NodePath("Pickable")
+picker = NodePath("PlantItemReceiver/Picker")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1713877530]
 use_parent_material = true

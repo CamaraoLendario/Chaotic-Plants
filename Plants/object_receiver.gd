@@ -31,8 +31,5 @@ func drop() -> Pickable:
 func drop_and_free() -> Pickable:
 	return picker.drop_and_free()
 
-func get_held_object():
-	if picker.is_holding():
-		return picker.curPickingTarget
-	else:
-		return null
+func get_held_object() -> Pickable:
+	return picker.objectHolder.currentHoldedObject

@@ -81,6 +81,7 @@ texture = ExtResource("3_bqrff")
 
 [node name="Node2D" parent="." unique_id=1793507303 instance=ExtResource("1_itk02")]
 position = Vector2(-237, 12)
+motion_mode = 0
 
 [node name="ObjectSpawner" parent="." unique_id=1063420533 instance=ExtResource("2_uoqbt")]
 position = Vector2(-480, -176)
@@ -130,12 +131,13 @@ position = Vector2(-329, -272)
 scale = Vector2(0.505, 0.505)
 filters = Array[ExtResource("14_fc1ei")]([SubResource("Resource_qrxx1")])
 
-[node name="PlantItemReceiver" parent="Steamy" index="1" unique_id=1216653505]
+[node name="Sprite" parent="Steamy" index="1" unique_id=1713877530]
+sprite_frames = SubResource("SpriteFrames_vo8r4")
+
+[node name="PlantItemReceiver" parent="Steamy" index="5" unique_id=1216653505]
+use_parent_material = false
 scale = Vector2(1, 1)
 filters = Array[ExtResource("14_fc1ei")]([])
-
-[node name="Sprite" parent="Steamy" index="2" unique_id=1713877530]
-sprite_frames = SubResource("SpriteFrames_vo8r4")
 
 [node name="Pot" parent="." unique_id=313565715 instance=ExtResource("16_bqrff")]
 position = Vector2(-18, -159)

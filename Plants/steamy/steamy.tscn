@@ -63,9 +63,9 @@ material = SubResource("ShaderMaterial_abo70")
 script = ExtResource("2_tdr66")
 itemReceiver = NodePath("PlantItemReceiver")
 progressBar = NodePath("ProgressBar")
-growTime = 20.0
+growTime = 0.1
 
-[node name="PlantItemReceiver" parent="." index="0" unique_id=1216653505 instance=ExtResource("5_x7xwt")]
+[node name="PlantItemReceiver2" parent="." index="0" unique_id=1216653505 instance=ExtResource("5_x7xwt")]
 scale = Vector2(0.505, 0.505)
 filters = Array[ExtResource("6_8xx8s")]([SubResource("Resource_qrxx1")])
 
@@ -83,3 +83,5 @@ max_value = 1.0
 step = 0.001
 value = 0.5
 fill_mode = 3
+
+[editable path="PlantItemReceiver"]
