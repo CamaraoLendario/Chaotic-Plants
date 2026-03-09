@@ -7,7 +7,7 @@ func _ready() -> void:
 	pickable.WasPickedUp.connect(_on_was_picked_up)
 	pickable.WasDropped.connect(_on_was_dropped)
 
-func _on_was_picked_up() -> void:
+func _on_was_picked_up(_pickable) -> void:
 	set_deferred("freeze", true)
 	pickable.set_deferred("monitorable", false)
 	pickable.set_deferred("monitoring", false)
@@ -15,7 +15,7 @@ func _on_was_picked_up() -> void:
 	#pickable.monitorable = false
 	#pickable.monitoring = false
 
-func _on_was_dropped() -> void:
+func _on_was_dropped(_pickable) -> void:
 	freeze = false
 	pickable.monitorable = true
 	pickable.monitoring = true

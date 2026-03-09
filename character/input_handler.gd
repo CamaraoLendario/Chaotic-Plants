@@ -1,10 +1,12 @@
 extends Node
 class_name InputHandler
 
-@onready var main: Character = get_parent(); 
-@export var interactReceiver: InteractReceiver
+@onready var main: Character = get_parent();
 
-@export_group("Nodes")
+@export_group("References")
+@export var interactor: Interactor
+@export var picker: Picker
+@export var thrower: Thrower
 @export var anchor: Node2D
 
 func _process(delta: float) -> void:
@@ -14,15 +16,17 @@ func _process(delta: float) -> void:
 		var mouseScreenPos = get_viewport().get_camera_2d().get_global_mouse_position()
 		main.aimDir = anchor.global_position.direction_to(mouseScreenPos)
 	
-	if Input.is_action_pressed("Throw"):
-		interactReceiver.start_throw(delta)
-	
+	if Input.is_action_just_pressed("Throw"):
+		thrower.start_throwing()
 	if Input.is_action_just_released("Throw"):
-		interactReceiver.stop_throw()
-
-func _input(event: InputEvent) -> void:
-	if (event is InputEventMouse): return;
+		thrower.stop_throwing()
 	
-	if interactReceiver:
-		if event.is_action_pressed("Interact"):
-			interactReceiver.try_to_interact()
+	if Input.is_action_just_pressed("Interact"):
+		interactor.start_interacting()
+	if Input.is_action_just_released("Interact"):
+		interactor.stop_interacting()
+	
+	if Input.is_action_just_pressed("PickUp") and !picker.is_holding():
+		picker.pick_up_pickable()
+	elif Input.is_action_just_pressed("Drop") and picker.is_holding():
+		picker.drop_pickable()

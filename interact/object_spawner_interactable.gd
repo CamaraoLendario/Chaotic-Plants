@@ -1,22 +1,20 @@
-extends Interactable
+extends Node2D
 class_name ObjectSpawner
 
 signal spawnedObject(obj: Node2D)
 
 @export var spawnScene: PackedScene
 @export var objectHolder: ObjectHolder
+@export var interactable: Interactable
 
-func interact(interactor: InteractReceiver) -> void:
-	if can_spawn():
-		spawn()
-	else:
-		var otherObjectHolder: ObjectHolder = interactor.objectHolder
-		objectHolder.place(otherObjectHolder)
+func _ready() -> void:
+	interactable.interactionStarted.connect(
+		func (_interactor): if can_spawn(): spawn())
 
 func spawn(sceneToSpawn: PackedScene = spawnScene):
 	var spawn = sceneToSpawn.instantiate()
 	add_child(spawn)
-	objectHolder.start_holding(spawn.get_node("Pickable"))
+	objectHolder.hold_object(spawn.get_node("Pickable"))
 	
 	spawnedObject.emit(spawn)
 

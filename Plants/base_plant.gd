@@ -37,7 +37,7 @@ var GrowProgress : float: ## How far the plant is in the growing progress. from 
 var growProgress: float = 0
 
 func _ready() -> void:
-	interactable.wasInteracted.connect(on_interacted)
+	interactable.interactionStarted.connect(on_interacted)
 	if data == null:
 		printerr("Plant ", name, " does not have data set. Null errors will occur!")
 	(material as ShaderMaterial).set_shader_parameter("startTime", randf() * 2 * PI) ## doesnt really get any time, but this is simpler and does the same effect

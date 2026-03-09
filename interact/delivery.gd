@@ -14,8 +14,9 @@ func _ready() -> void:
 	interactReceiver.filters = filters
 
 func _on_interactable_in_range(interactable: Interactable):
-	if interactable is Pickable:
-		pick_up(interactable)
+	#if interactable is Pickable:
+	#	pick_up(interactable)
+	pass
 
 func pick_up(interactable: Interactable):
 	interactable.interact(interactReceiver)

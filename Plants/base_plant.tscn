@@ -45,12 +45,11 @@ use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_87s3t")
 animation = &"stage2"
 
-[node name="Interactable" type="Area2D" parent="." unique_id=825575324]
+[node name="Interactable" type="Area2D" parent="." unique_id=1060280475]
 script = ExtResource("2_87s3t")
 metadata/_custom_type_script = "uid://cvc5atuup46p2"
 
-[node name="Pickable" type="Area2D" parent="." unique_id=1570847046]
-collision_layer = 2
+[node name="Pickable" type="Area2D" parent="." unique_id=927396171]
 monitoring = false
 monitorable = false
 script = ExtResource("3_evnqr")

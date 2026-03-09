@@ -8,7 +8,6 @@ class_name Character
 @export_group("References")
 @export var anchor: Node2D
 @export var objectHolder: ObjectHolder
-@export var interactReceiver: InteractReceiver
 
 var wishDir : Vector2 = Vector2.ZERO
 var aimDir : Vector2 = Vector2.ZERO
