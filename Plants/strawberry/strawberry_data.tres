@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PlantData" format=3 uid="uid://dxn32rviv11v7"]
+
+[ext_resource type="PackedScene" uid="uid://bcmea4aa2xtrn" path="res://Plants/strawberry/strawberry.tscn" id="1_m6oye"]
+[ext_resource type="Texture2D" uid="uid://chnu528uov0n" path="res://icon.svg" id="1_p0pln"]
+[ext_resource type="Script" uid="uid://ci4rkla7atypy" path="res://Plants/plant_data.gd" id="1_qvjkj"]
+
+[resource]
+script = ExtResource("1_qvjkj")
+scene = ExtResource("1_m6oye")
+name = "Strawberry"
+image = ExtResource("1_p0pln")
+metadata/_custom_type_script = "uid://ci4rkla7atypy"

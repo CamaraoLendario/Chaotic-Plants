@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://5maqs1n31c0m"]
+
+[ext_resource type="PackedScene" uid="uid://dopujk04ltt6d" path="res://character/character.tscn" id="1_tewtn"]
+[ext_resource type="PackedScene" uid="uid://c6fl0jwao178t" path="res://Map/map.tscn" id="1_tjivk"]
+[ext_resource type="Script" uid="uid://r5uwf3yaolik" path="res://game_state/game_controller.gd" id="1_xdjt8"]
+[ext_resource type="PackedScene" uid="uid://c017ejda8kl87" path="res://Plants/seed_provider.tscn" id="2_0gepa"]
+[ext_resource type="Resource" uid="uid://4andksvgn7yo" path="res://game_state/levels/level0Data.tres" id="2_nv1kf"]
+[ext_resource type="Resource" uid="uid://bfqe2xfeq24xp" path="res://Plants/Cry Baby/cry_baby_data.tres" id="3_sbs22"]
+[ext_resource type="PackedScene" uid="uid://c8sd75wxygh6a" path="res://Plants/Seed.tscn" id="4_10hon"]
+[ext_resource type="Texture2D" uid="uid://b88ny3l1g3r33" path="res://assets/cry.png" id="5_10hon"]
+[ext_resource type="Resource" uid="uid://bpu8508lecwfe" path="res://Plants/fire/fire_data.tres" id="6_2ug5f"]
+[ext_resource type="Texture2D" uid="uid://bruyc2jnco6qb" path="res://assets/fire.png" id="6_43ng5"]
+[ext_resource type="Texture2D" uid="uid://bb0s7pjmpx1t" path="res://assets/morango.png" id="7_814oc"]
+[ext_resource type="Texture2D" uid="uid://xwyd4wq1d5qb" path="res://assets/steam.png" id="8_jhyi7"]
+[ext_resource type="Resource" uid="uid://dxn32rviv11v7" path="res://Plants/strawberry/strawberry_data.tres" id="8_k2naj"]
+[ext_resource type="Resource" uid="uid://cft718dyjbqlm" path="res://Plants/steamy/steamy_data.tres" id="10_tjivk"]
+[ext_resource type="PackedScene" uid="uid://3g32u0krguc" path="res://interact/delivery.tscn" id="12_tjivk"]
+[ext_resource type="PackedScene" uid="uid://cl48nnwb65guv" path="res://Plants/steamy/water_bucket.tscn" id="14_j6xwl"]
+[ext_resource type="Script" uid="uid://d1p357dnn4txx" path="res://time_label.gd" id="17_ngqs5"]
+[ext_resource type="Script" uid="uid://do6arsnvfb00a" path="res://request_list_view.gd" id="18_30cgy"]
+[ext_resource type="PackedScene" uid="uid://c7hl623304u1e" path="res://game_state/views/request_view.tscn" id="19_ugm1s"]
+[ext_resource type="PackedScene" uid="uid://xb3su83dk73f" path="res://menus/pause_menu.tscn" id="20_2frtd"]
+
+[node name="MainMain" type="Node2D" unique_id=1864495549 node_paths=PackedStringArray("delivery") groups=["World"]]
+script = ExtResource("1_xdjt8")
+levelData = ExtResource("2_nv1kf")
+delivery = NodePath("Delivery")
+
+[node name="Map" parent="." unique_id=482214701 instance=ExtResource("1_tjivk")]
+
+[node name="CrySeedProvider" parent="." unique_id=850861519 instance=ExtResource("2_0gepa")]
+position = Vector2(-640, -64)
+plantData = ExtResource("3_sbs22")
+seedScene = ExtResource("4_10hon")
+metadata/_edit_group_ = true
+
+[node name="ObjectHoldPoint" parent="CrySeedProvider/ObjectHolder" parent_id_path=PackedInt32Array(850861519, 771054364) index="0" unique_id=745123367]
+position = Vector2(48, 0)
+
+[node name="Sprite2D" parent="CrySeedProvider" index="1" unique_id=1752078076]
+texture = ExtResource("5_10hon")
+
+[node name="Label" parent="CrySeedProvider" index="2" unique_id=1309990035]
+visible = false
+
+[node name="MorangoSeedProvider" parent="." unique_id=1225960084 instance=ExtResource("2_0gepa")]
+position = Vector2(-752, 16)
+plantData = ExtResource("8_k2naj")
+seedScene = ExtResource("4_10hon")
+metadata/_edit_group_ = true
+
+[node name="ObjectHoldPoint" parent="MorangoSeedProvider/ObjectHolder" parent_id_path=PackedInt32Array(1225960084, 771054364) index="0" unique_id=745123367]
+position = Vector2(56, 0)
+
+[node name="Sprite2D" parent="MorangoSeedProvider" index="1" unique_id=1752078076]
+texture = ExtResource("7_814oc")
+
+[node name="Label" parent="MorangoSeedProvider" index="2" unique_id=1309990035]
+visible = false
+
+[node name="SteamySeedProvider" parent="." unique_id=594415602 instance=ExtResource("2_0gepa")]
+position = Vector2(-776, 152)
+plantData = ExtResource("10_tjivk")
+seedScene = ExtResource("4_10hon")
+metadata/_edit_group_ = true
+
+[node name="ObjectHoldPoint" parent="SteamySeedProvider/ObjectHolder" parent_id_path=PackedInt32Array(594415602, 771054364) index="0" unique_id=745123367]
+position = Vector2(56, 0)
+
+[node name="Sprite2D" parent="SteamySeedProvider" index="1" unique_id=1752078076]
+texture = ExtResource("8_jhyi7")
+
+[node name="Label" parent="SteamySeedProvider" index="2" unique_id=1309990035]
+visible = false
+
+[node name="FireSeedProvider" parent="." unique_id=972055902 instance=ExtResource("2_0gepa")]
+position = Vector2(-720, 280)
+plantData = ExtResource("6_2ug5f")
+seedScene = ExtResource("4_10hon")
+metadata/_edit_group_ = true
+
+[node name="ObjectHoldPoint" parent="FireSeedProvider/ObjectHolder" parent_id_path=PackedInt32Array(972055902, 771054364) index="0" unique_id=745123367]
+position = Vector2(56, 0)
+
+[node name="Sprite2D" parent="FireSeedProvider" index="1" unique_id=1752078076]
+texture = ExtResource("6_43ng5")
+
+[node name="Label" parent="FireSeedProvider" index="2" unique_id=1309990035]
+visible = false
+
+[node name="character" parent="." unique_id=1793507303 instance=ExtResource("1_tewtn")]
+position = Vector2(-512, 168)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=398864617]
+position = Vector2(576, 328)
+
+[node name="Delivery" parent="." unique_id=1179291177 instance=ExtResource("12_tjivk")]
+position = Vector2(752, 168)
+
+[node name="CollisionShape2D" parent="Delivery/ObjectReceiver/Picker" parent_id_path=PackedInt32Array(1179291177, 444848152) index="1" unique_id=1206731261]
+position = Vector2(-248, 0)
+
+[node name="water_bucket" parent="." unique_id=794916380 instance=ExtResource("14_j6xwl")]
+position = Vector2(360, 168)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=944473250]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1143146213 node_paths=PackedStringArray("gameController")]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+script = ExtResource("17_ngqs5")
+gameController = NodePath("../..")
+
+[node name="RequestListView" type="HBoxContainer" parent="CanvasLayer" unique_id=1757200869 node_paths=PackedStringArray("gameController")]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 16.0
+offset_top = 20.0
+offset_right = -16.0
+offset_bottom = 135.00003
+grow_horizontal = 2
+script = ExtResource("18_30cgy")
+gameController = NodePath("../..")
+requestViewScene = ExtResource("19_ugm1s")
+
+[node name="PauseMenu" parent="CanvasLayer" unique_id=550477132 node_paths=PackedStringArray("gameController") instance=ExtResource("20_2frtd")]
+visible = false
+gameController = NodePath("../..")
+
+[editable path="CrySeedProvider"]
+[editable path="MorangoSeedProvider"]
+[editable path="SteamySeedProvider"]
+[editable path="FireSeedProvider"]
+[editable path="Delivery"]

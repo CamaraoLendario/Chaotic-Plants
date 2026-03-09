@@ -38,6 +38,7 @@ var GrowProgress : float: ## How far the plant is in the growing progress. from 
 var growProgress: float = 0
 
 func _ready() -> void:
+	IsPlanted = true
 	interactable.interactionStarted.connect(on_interacted)
 	if data == null:
 		printerr("Plant ", name, " does not have data set. Null errors will occur!")
@@ -57,7 +58,7 @@ func on_interacted(_interactor: Node2D):
 func _physics_process(delta: float) -> void:
 	if (!isByStages and GrowProgress < growGoal-1 and isGrowing and !isGrown):
 		GrowProgress += (delta / growTime) * growGoal
-		print(GrowProgress)
+		#print(GrowProgress)
 
 func check_grow_progress():
 	sprite.animation = "stage" +  str(int(GrowProgress))

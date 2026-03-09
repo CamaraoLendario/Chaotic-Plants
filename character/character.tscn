@@ -3,30 +3,43 @@
 [ext_resource type="Script" uid="uid://w0bpjmca2sr" path="res://character/character.gd" id="1_pjt0s"]
 [ext_resource type="Script" uid="uid://cyx4c3n3hm0kb" path="res://character/input_handler.gd" id="2_wa5vi"]
 [ext_resource type="Texture2D" uid="uid://b5q66cqeq8ns0" path="res://character/Sprite/spritesheet-characters-default.png" id="3_hx151"]
-[ext_resource type="Script" uid="uid://bhydcfunpkj7m" path="res://character/character_animation.gd" id="4_0rvpn"]
+[ext_resource type="Script" path="res://character/character_animation.gd" id="4_0rvpn"]
+[ext_resource type="Texture2D" uid="uid://b61rfphkpj1vm" path="res://assets/cat/gato parado.png" id="4_5tbnp"]
 [ext_resource type="Script" uid="uid://ck4gyskvum46o" path="res://interact/object_holder.gd" id="4_hx151"]
+[ext_resource type="Texture2D" uid="uid://dq0lkpkp33yu5" path="res://assets/cat/frame0000.png" id="5_yp81j"]
+[ext_resource type="Texture2D" uid="uid://2a5kxkrbrh55" path="res://assets/cat/frame0001.png" id="6_cx1fd"]
 [ext_resource type="Script" path="res://interact/interactor.gd" id="6_wy5t8"]
 [ext_resource type="Script" uid="uid://w85o2n1ed2rq" path="res://interact/picker.gd" id="7_dy06j"]
+[ext_resource type="Texture2D" uid="uid://cjccc1q24kor3" path="res://assets/cat/frame0002.png" id="7_xka47"]
+[ext_resource type="Texture2D" uid="uid://b3qlh5igah1un" path="res://assets/cat/frame0003.png" id="8_oxui7"]
 [ext_resource type="Script" path="res://interact/thrower.gd" id="8_wy5t8"]
+[ext_resource type="Texture2D" uid="uid://ccho4ewcp4tbn" path="res://assets/cat/frame0004.png" id="9_7f6i4"]
+[ext_resource type="Texture2D" uid="uid://do4mfs4iwrvug" path="res://assets/cat/frame0005.png" id="10_komqb"]
+[ext_resource type="Texture2D" uid="uid://d4ftoci7udfp6" path="res://assets/cat/frame0006.png" id="11_b862g"]
+[ext_resource type="Texture2D" uid="uid://cjkaesug4crp2" path="res://assets/cat/frame0007.png" id="12_0l5d1"]
+[ext_resource type="Texture2D" uid="uid://c2uglp8gmik60" path="res://assets/cat/frame0008.png" id="13_6y17u"]
+[ext_resource type="Texture2D" uid="uid://bxme7xl8cyj4u" path="res://assets/cat/frame0009.png" id="14_4mbdx"]
+[ext_resource type="Texture2D" uid="uid://vu5y8tqww7cx" path="res://assets/cat/frame0010.png" id="15_s2csv"]
+[ext_resource type="Texture2D" uid="uid://cba74v5iriss3" path="res://assets/cat/frame0011.png" id="16_nl6b6"]
+[ext_resource type="Texture2D" uid="uid://bjhnxxt1xxrgv" path="res://assets/cat/frame0012.png" id="17_flvo5"]
+[ext_resource type="Texture2D" uid="uid://nrgougvvymq0" path="res://assets/cat/frame0013.png" id="18_2yldb"]
+[ext_resource type="Texture2D" uid="uid://dpmotpfndqxf" path="res://assets/cat/frame0014.png" id="19_6ynxc"]
+[ext_resource type="Texture2D" uid="uid://dxbs0cfbimiit" path="res://assets/cat/frame0015.png" id="20_blitr"]
+[ext_resource type="Texture2D" uid="uid://gtqs1wc3l8yt" path="res://assets/cat/frame0016.png" id="21_1hmya"]
+[ext_resource type="Texture2D" uid="uid://bcos7bw16ar6w" path="res://assets/cat/frame0017.png" id="22_54gay"]
+[ext_resource type="Texture2D" uid="uid://dk0pu0mm37ayl" path="res://assets/cat/frame0018.png" id="23_upvyv"]
+[ext_resource type="Texture2D" uid="uid://dbo6p070goyex" path="res://assets/cat/frame0019.png" id="24_j0gbq"]
+[ext_resource type="Texture2D" uid="uid://c6mdaguoicnp6" path="res://assets/cat/frame0020.png" id="25_wpbs7"]
+[ext_resource type="Texture2D" uid="uid://d26lvvmuyxgxu" path="res://assets/cat/frame0021.png" id="26_dg8ty"]
+[ext_resource type="Texture2D" uid="uid://b8emuytc1bqhs" path="res://assets/cat/frame0022.png" id="27_ewpg8"]
+[ext_resource type="Texture2D" uid="uid://bf8t8qgpy8uq5" path="res://assets/cat/frame0023.png" id="28_e7r6o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfnr8"]
-size = Vector2(86, 105)
+size = Vector2(40, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o6jyn"]
 atlas = ExtResource("3_hx151")
 region = Rect2(387, 516, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tgjim"]
-atlas = ExtResource("3_hx151")
-region = Rect2(258, 516, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wy5t8"]
-atlas = ExtResource("3_hx151")
-region = Rect2(774, 516, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dy06j"]
-atlas = ExtResource("3_hx151")
-region = Rect2(0, 645, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qkjfd"]
 animations = [{
@@ -40,26 +53,92 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tgjim")
+"texture": ExtResource("4_5tbnp")
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 5.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wy5t8")
+"texture": ExtResource("5_yp81j")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dy06j")
+"texture": ExtResource("6_cx1fd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xka47")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_oxui7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7f6i4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_komqb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_b862g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_0l5d1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_6y17u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_4mbdx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_s2csv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_nl6b6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_flvo5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_2yldb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_6ynxc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_blitr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_1hmya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_54gay")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_upvyv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_j0gbq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_wpbs7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_dg8ty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_ewpg8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_e7r6o")
 }],
 "loop": true,
 "name": &"Moving",
-"speed": 5.0
+"speed": 24.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hx151"]
-size = Vector2(84, 104)
+size = Vector2(58, 56)
 
 [node name="character" type="CharacterBody2D" unique_id=1793507303 node_paths=PackedStringArray("anchor", "picker", "objectHolder") groups=["Player"]]
 motion_mode = 1
@@ -69,7 +148,7 @@ picker = NodePath("Anchor/Picker")
 objectHolder = NodePath("Anchor/Picker/ObjectHolder")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=955575041]
-position = Vector2(0, -52.5)
+position = Vector2(4, -56)
 shape = SubResource("RectangleShape2D_wfnr8")
 
 [node name="InputHandler" type="Node" parent="." unique_id=371800208 node_paths=PackedStringArray("interactor", "picker", "thrower", "anchor") groups=["Player"]]
@@ -80,10 +159,11 @@ thrower = NodePath("../Anchor/Thrower")
 anchor = NodePath("../Anchor")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1146572227 node_paths=PackedStringArray("character")]
-position = Vector2(0, -64)
+position = Vector2(-8.000001, -52)
+scale = Vector2(0.045, 0.045)
 sprite_frames = SubResource("SpriteFrames_qkjfd")
-animation = &"Idle"
-frame_progress = 0.67625856
+animation = &"Moving"
+frame_progress = 0.19289659
 script = ExtResource("4_0rvpn")
 character = NodePath("..")
 
@@ -94,7 +174,7 @@ position = Vector2(0, -52)
 script = ExtResource("6_wy5t8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor/Interactor" unique_id=1154653871]
-position = Vector2(88, 0)
+position = Vector2(56, 0)
 shape = SubResource("RectangleShape2D_hx151")
 
 [node name="Picker" type="Area2D" parent="Anchor" unique_id=525664322 node_paths=PackedStringArray("objectHolder")]
@@ -115,9 +195,14 @@ position = Vector2(88, 0)
 position = Vector2(88, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor/Picker" unique_id=803047688]
-position = Vector2(88, 0)
+position = Vector2(56, 0)
 shape = SubResource("RectangleShape2D_hx151")
 
 [node name="Thrower" type="Node2D" parent="Anchor" unique_id=126903160 node_paths=PackedStringArray("picker")]
 script = ExtResource("8_wy5t8")
 picker = NodePath("../Picker")
+
+[node name="Polygon2D" type="Polygon2D" parent="Anchor" unique_id=522168742]
+position = Vector2(4, 0)
+color = Color(0.19076216, 0.19076237, 0.19076231, 0.28235295)
+polygon = PackedVector2Array(20, -28, 84, -28, 84, 28, 20, 28)

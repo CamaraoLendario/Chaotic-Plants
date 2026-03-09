@@ -3,11 +3,18 @@
 [ext_resource type="PackedScene" uid="uid://c4ei3qax5i842" path="res://proto_object.tscn" id="1_mplku"]
 [ext_resource type="Script" uid="uid://bmh78dre6wkak" path="res://Plants/seed.gd" id="2_l71ud"]
 [ext_resource type="Resource" uid="uid://bfqe2xfeq24xp" path="res://Plants/Cry Baby/cry_baby_data.tres" id="3_27wqn"]
+[ext_resource type="Texture2D" uid="uid://biexqgds3oeju" path="res://assets/seed bag-.png" id="4_7hn5v"]
 
 [node name="ProtoObject" unique_id=794916380 instance=ExtResource("1_mplku")]
 script = ExtResource("2_l71ud")
 plantData = ExtResource("3_27wqn")
 
+[node name="Sprite2D" parent="." index="0" unique_id=1409405554]
+modulate = Color(1, 1, 1, 1)
+scale = Vector2(0.945, 0.945)
+texture = ExtResource("4_7hn5v")
+
 [node name="Label" parent="." index="1" unique_id=2048095712]
+visible = false
 text = "Seed"
 horizontal_alignment = 1

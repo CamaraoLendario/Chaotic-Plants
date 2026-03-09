@@ -9,7 +9,7 @@ var steamMeter: float: # goes from 0 to 1
 	set(value):
 		progressBar.value = value
 
-var direction: int = 1
+var direction: int = -1
 var timer: Timer = Timer.new()
 var directionChangeInterval: float = 1.5
 
@@ -28,8 +28,9 @@ func _ready() -> void:
 	itemReceiver.picked_up_object.connect(itemreceived)
 
 func _process(delta: float) -> void:
-	steamMeter += direction * delta / 20
-	clamp(steamMeter, 0, 1)
+	steamMeter += (direction * delta / 20) * 100
+	steamMeter = clamp(steamMeter, 0, 100)
+	print(steamMeter)
 
 func _physics_process(delta: float) -> void:
 	isGrowing = (steamMeter < max and steamMeter > min)
@@ -39,6 +40,7 @@ func _physics_process(delta: float) -> void:
 	#if (isGrowing): print(growProgress)
 
 func directionChange():
+	return
 	timer.start(directionChangeInterval)
 	
 	if (randf() < 0.75):

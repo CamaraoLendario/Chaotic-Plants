@@ -1,53 +1,61 @@
 [gd_scene format=3 uid="uid://boeg2lf46fjjr"]
 
 [ext_resource type="PackedScene" uid="uid://be4ptkje88wa3" path="res://Plants/base_plant.tscn" id="1_kl575"]
-[ext_resource type="Texture2D" uid="uid://cglnwvhgtug5d" path="res://Plants/Cry Baby/Sprites/CryBabySketch.png" id="2_jprbr"]
 [ext_resource type="Script" uid="uid://dcb0yk42253op" path="res://Plants/Cry Baby/cry_baby.gd" id="2_lwu54"]
 [ext_resource type="Shader" uid="uid://bvni52b27fb52" path="res://Plants/base_plant.gdshader" id="2_nfd76"]
 [ext_resource type="PackedScene" uid="uid://8eryyeve3m57" path="res://Plants/Cry Baby/teddy_bear.tscn" id="3_ef3al"]
+[ext_resource type="Texture2D" uid="uid://ci82dhknnxual" path="res://assets/plants/crybaby/CRY_BABY-1.png" id="5_ly2n0"]
+[ext_resource type="Texture2D" uid="uid://dfhk78idc8xqq" path="res://assets/plants/crybaby/CRY_BABY-2.png" id="6_r0fhf"]
+[ext_resource type="Texture2D" uid="uid://bwidhgg7ope1i" path="res://assets/plants/crybaby/CRY_BABY-3.png" id="7_lowvt"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ef3al"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lowvt"]
 resource_local_to_scene = true
 shader = ExtResource("2_nfd76")
 shader_parameter/startTime = 0.0
 shader_parameter/animate = false
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lwu54"]
-atlas = ExtResource("2_jprbr")
-region = Rect2(0, 0, 198, 215)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_nfd76"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_dn3mv"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lwu54")
+"texture": ExtResource("5_ly2n0")
 }],
 "loop": true,
 "name": &"stage0",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_r0fhf")
+}],
 "loop": true,
 "name": &"stage1",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_lowvt")
+}],
 "loop": true,
 "name": &"stage2",
 "speed": 5.0
 }]
 
 [node name="Cry Baby" unique_id=629364572 node_paths=PackedStringArray("itemReceiver") instance=ExtResource("1_kl575")]
-material = SubResource("ShaderMaterial_ef3al")
+material = SubResource("ShaderMaterial_lowvt")
 script = ExtResource("2_lwu54")
 itemReceiver = NodePath("PlantItemReceiver")
 teddyBearScene = ExtResource("3_ef3al")
 growTime = 15.0
 
 [node name="Sprite" parent="." index="0" unique_id=1713877530]
-scale = Vector2(0.16161616, 0.15813954)
-sprite_frames = SubResource("SpriteFrames_nfd76")
+position = Vector2(0, -48)
+scale = Vector2(0.4, 0.39)
+sprite_frames = SubResource("SpriteFrames_dn3mv")
 animation = &"stage0"
+
+[node name="Label" parent="PlantItemReceiver" parent_id_path=PackedInt32Array(1216653505) index="1" unique_id=2084353703]
+visible = false
 
 [editable path="PlantItemReceiver"]

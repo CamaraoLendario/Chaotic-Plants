@@ -12,6 +12,7 @@ func on_picked_up_object(obj: Pickable):
 	if (obj.owner is not Seed): return
 	var seed: Seed = obj.owner
 	var plant: Plant = seed.plantData.scene.instantiate()
+	plant.set_data(seed.plantData)
 	add_child(plant)
 	itemReceiver.drop_and_free()
 	var successfulPickup = itemReceiver.try_to_pick_up(plant.pickable)

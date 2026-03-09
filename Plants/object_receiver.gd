@@ -1,5 +1,5 @@
 extends Node2D
-class_name  PlantItemReceiver
+class_name PlantItemReceiver
 
 signal picked_up_object(obj: Pickable)
 signal dropped_object(obj: Pickable)

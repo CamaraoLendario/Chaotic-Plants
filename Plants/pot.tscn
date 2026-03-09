@@ -2,6 +2,12 @@
 
 [ext_resource type="Script" uid="uid://bpc1r8awb18sy" path="res://Plants/pot.gd" id="1_3pvev"]
 [ext_resource type="PackedScene" uid="uid://ulelhqvpd2il" path="res://Plants/plant_item_receiver.tscn" id="2_m5gll"]
+[ext_resource type="Script" uid="uid://dl70irp36vey5" path="res://interact/Filters/InteractFilter.gd" id="3_ex2om"]
+[ext_resource type="Script" uid="uid://blkjhgw6u7o1i" path="res://interact/Filters/seed_filter.gd" id="4_pan73"]
+
+[sub_resource type="Resource" id="Resource_ex2om"]
+script = ExtResource("4_pan73")
+metadata/_custom_type_script = "uid://blkjhgw6u7o1i"
 
 [node name="Pot" type="Node2D" unique_id=313565715 node_paths=PackedStringArray("itemReceiver")]
 script = ExtResource("1_3pvev")
@@ -11,6 +17,10 @@ itemReceiver = NodePath("PlantItemReceiver")
 
 [node name="PlantItemReceiver" parent="." unique_id=1216653505 instance=ExtResource("2_m5gll")]
 scale = Vector2(0.5, 0.5)
+Filters = Array[ExtResource("3_ex2om")]([SubResource("Resource_ex2om")])
+
+[node name="Label" parent="PlantItemReceiver" index="1" unique_id=2084353703]
+visible = false
 
 [node name="ObjectHolder" parent="PlantItemReceiver/Picker" parent_id_path=PackedInt32Array(1216653505, 978685116) index="1" unique_id=1250314402]
 position = Vector2(0, 0)

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://c017ejda8kl87"]
+
+[ext_resource type="Script" uid="uid://bss6ai7oemco8" path="res://Plants/seed_provider.gd" id="1_tgehr"]
+[ext_resource type="PackedScene" uid="uid://c8sd75wxygh6a" path="res://Plants/Seed.tscn" id="2_3krpd"]
+[ext_resource type="Script" uid="uid://ck4gyskvum46o" path="res://interact/object_holder.gd" id="3_gdow7"]
+[ext_resource type="Texture2D" uid="uid://chnu528uov0n" path="res://icon.svg" id="4_wvx6i"]
+[ext_resource type="Script" uid="uid://cvc5atuup46p2" path="res://interact/interactable.gd" id="5_ajsld"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jhinc"]
+size = Vector2(128, 128)
+
+[node name="SeedProvider" type="Node2D" unique_id=850861519 node_paths=PackedStringArray("objectHolder", "interactable")]
+script = ExtResource("1_tgehr")
+spawnScene = ExtResource("2_3krpd")
+objectHolder = NodePath("ObjectHolder")
+interactable = NodePath("Interactable")
+
+[node name="ObjectHolder" type="Node2D" parent="." unique_id=771054364 node_paths=PackedStringArray("objectHoldPoint")]
+script = ExtResource("3_gdow7")
+objectHoldPoint = NodePath("ObjectHoldPoint")
+metadata/_custom_type_script = "uid://ck4gyskvum46o"
+
+[node name="ObjectHoldPoint" type="Marker2D" parent="ObjectHolder" unique_id=745123367]
+position = Vector2(0, -104)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1752078076]
+texture = ExtResource("4_wvx6i")
+
+[node name="Label" type="Label" parent="." unique_id=1309990035]
+offset_left = -56.0
+offset_top = 64.0
+offset_right = 67.0
+offset_bottom = 87.0
+text = "Object Spawner"
+
+[node name="Interactable" type="Area2D" parent="." unique_id=1030117249]
+script = ExtResource("5_ajsld")
+metadata/_custom_type_script = "uid://cvc5atuup46p2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=705518261]
+shape = SubResource("RectangleShape2D_jhinc")

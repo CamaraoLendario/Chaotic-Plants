@@ -7,3 +7,9 @@ func _ready() -> void:
 	super._ready()
 	self.name = plantData.name + " seed"
 	$Label.text = name
+
+func set_data(plantData):
+	self.plantData = plantData
+	
+	self.name = plantData.name + " seed"
+	$Label.text = name

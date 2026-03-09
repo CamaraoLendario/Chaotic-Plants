@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cs7iwhpl5bcbl" path="res://interact/delivery.gd" id="1_nydu7"]
 [ext_resource type="Script" uid="uid://dl70irp36vey5" path="res://interact/Filters/InteractFilter.gd" id="2_gt0bn"]
-[ext_resource type="Script" uid="uid://yedfamgi7q3g" path="res://interact/Filters/plant_filter.gd" id="3_ta3k3"]
+[ext_resource type="Script" path="res://interact/Filters/plant_filter.gd" id="3_ta3k3"]
 [ext_resource type="Script" uid="uid://w85o2n1ed2rq" path="res://interact/picker.gd" id="6_l1pxt"]
 [ext_resource type="Script" uid="uid://b7af4a7l84e3p" path="res://Plants/object_receiver.gd" id="6_ta3k3"]
 [ext_resource type="Script" uid="uid://ck4gyskvum46o" path="res://interact/object_holder.gd" id="7_y6edr"]
@@ -11,7 +11,7 @@
 script = ExtResource("3_ta3k3")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l1pxt"]
-size = Vector2(464, 284)
+size = Vector2(200, 208)
 
 [node name="Delivery" type="Node2D" unique_id=1179291177 node_paths=PackedStringArray("objectReceiver")]
 script = ExtResource("1_nydu7")

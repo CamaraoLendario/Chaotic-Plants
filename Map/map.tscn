@@ -1,8 +1,6 @@
-[gd_scene format=3 uid="uid://davkwmtkdp26x"]
+[gd_scene format=3 uid="uid://c6fl0jwao178t"]
 
 [ext_resource type="Texture2D" uid="uid://d0nldpod0jqq0" path="res://Map/background.png" id="1_ro55w"]
-[ext_resource type="PackedScene" uid="uid://3g32u0krguc" path="res://interact/delivery.tscn" id="2_njngi"]
-[ext_resource type="PackedScene" uid="uid://dopujk04ltt6d" path="res://character/character.tscn" id="3_6yc6o"]
 [ext_resource type="PackedScene" uid="uid://cmtqujxfgqtjl" path="res://Plants/pot.tscn" id="4_86j4t"]
 
 [node name="Map" type="Node2D" unique_id=482214701]
@@ -14,19 +12,10 @@ flip_h = true
 [node name="Camera2D" type="Camera2D" parent="." unique_id=330180093]
 zoom = Vector2(0.6, 0.6)
 
-[node name="Delivery" parent="." unique_id=1179291177 instance=ExtResource("2_njngi")]
-position = Vector2(617, -31)
-
-[node name="CollisionShape2D" parent="Delivery/ObjectReceiver/Picker" parent_id_path=PackedInt32Array(1179291177, 444848152) index="1" unique_id=1206731261]
-position = Vector2(4, -28)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1312805093]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=332754961]
-polygon = PackedVector2Array(-703, -97, -828, 10, -876, 250, -759, 366, 186, 367, 398, 243, 946, 229, 947, 91, 376, 89, 295, -42, 155, -130, 29, -174, -549, -174, -645, -141, -703, -97, -1020, -629, 1123, -639, 1239, 668, -1064, 689, -1020, -629)
-
-[node name="character" parent="StaticBody2D" unique_id=1793507303 instance=ExtResource("3_6yc6o")]
-position = Vector2(-447, 153)
+polygon = PackedVector2Array(-703, -97, -828, 10, -876, 250, -759, 366, -680, 368, -656, 320, -632, 296, 112, 304, 186, 367, 398, 243, 946, 229, 947, 91, 376, 89, 295, -42, 160, -128, 96, -128, -592, -136, -645, -141, -703, -97, -1020, -629, 1123, -639, 1239, 668, -1064, 689, -1020, -629)
 
 [node name="Pot" parent="StaticBody2D" unique_id=313565715 instance=ExtResource("4_86j4t")]
 position = Vector2(-487, -140)
@@ -46,4 +35,5 @@ position = Vector2(-257, 310)
 [node name="Pot6" parent="StaticBody2D" unique_id=245679238 instance=ExtResource("4_86j4t")]
 position = Vector2(-513, 308)
 
-[editable path="Delivery"]
+[editable path="StaticBody2D/Pot"]
+[editable path="StaticBody2D/Pot/PlantItemReceiver"]

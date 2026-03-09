@@ -2,9 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://c4ei3qax5i842" path="res://proto_object.tscn" id="1_stp0t"]
 [ext_resource type="Script" uid="uid://cggko14aigf3r" path="res://Plants/steamy/water_bucket.gd" id="2_vhjcy"]
+[ext_resource type="Texture2D" uid="uid://b6nik6qhdpgb4" path="res://assets/bucket.png" id="3_uh5nw"]
 
 [node name="water_bucket" unique_id=794916380 instance=ExtResource("1_stp0t")]
 script = ExtResource("2_vhjcy")
 
+[node name="Sprite2D" parent="." index="0" unique_id=1409405554]
+modulate = Color(1, 1, 1, 1)
+scale = Vector2(0.41558442, 0.41558442)
+texture = ExtResource("3_uh5nw")
+
 [node name="Label" parent="." index="1" unique_id=2048095712]
+visible = false
 text = "BUCKET"
