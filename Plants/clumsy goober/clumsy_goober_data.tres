@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PlantData" format=3 uid="uid://sdu6ynmgrmka"]
+
+[ext_resource type="Texture2D" uid="uid://cglnwvhgtug5d" path="res://Plants/Cry Baby/Sprites/CryBabySketch.png" id="1_wy0cl"]
+[ext_resource type="PackedScene" uid="uid://cej3k5yxlvvk7" path="res://Plants/clumsy goober/clumsy_goober.tscn" id="2_ww1cu"]
+[ext_resource type="Script" uid="uid://ci4rkla7atypy" path="res://Plants/plant_data.gd" id="3_vn56m"]
+
+[resource]
+script = ExtResource("3_vn56m")
+scene = ExtResource("2_ww1cu")
+name = "Clumsy Goober"
+image = ExtResource("1_wy0cl")
+metadata/_custom_type_script = "uid://ci4rkla7atypy"
