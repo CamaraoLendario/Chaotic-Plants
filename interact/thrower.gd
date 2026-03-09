@@ -1,6 +1,7 @@
 extends Node2D
 class_name Thrower
 
+signal
 
 @export var maxThrowForce: float = 2000
 @export var minThrowForce: float = 500

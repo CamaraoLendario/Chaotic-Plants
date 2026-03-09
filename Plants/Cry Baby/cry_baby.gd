@@ -1,6 +1,9 @@
 extends Plant
 class_name CryBaby
 
+signal isCrying()
+signal isHappy()
+
 @export_category("Nodes")
 @export var itemReceiver: PlantItemReceiver
 @export var teddyBearScene: PackedScene
@@ -17,12 +20,14 @@ var IsCrying: bool:
 		if (_isCrying): 
 			modulate = Color.BLUE
 			isGrowing = false
+			isCrying.emit()
 		else: 
 			modulate = Color.WHITE
 			isGrowing = true
 			if (be_annoying_timer.is_stopped()):
 				print("STARTING TIMER")
 				be_annoying_timer.start(beAnnoyingTimeInterval)
+			isHappy.emit()
 	
 var _isCrying: bool = true
 
