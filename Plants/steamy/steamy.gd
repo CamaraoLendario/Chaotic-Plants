@@ -33,6 +33,8 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	isGrowing = (steamMeter < max and steamMeter > min)
+	if (isGrowing): sprite.animation = "stage2"
+	else: sprite.animation = "stage0"
 	super._physics_process(delta)
 	#if (isGrowing): print(growProgress)
 
@@ -51,3 +53,6 @@ func itemreceived(obj: Pickable):
 	var waterBucket: WaterBucket = obj.owner
 	itemReceiver.drop_and_free()
 	add_water()
+
+func check_grow_progress():
+	pass
