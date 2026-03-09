@@ -1,14 +1,16 @@
 [gd_scene format=3 uid="uid://bcmea4aa2xtrn"]
 
-[ext_resource type="Script" uid="uid://w0bpjmca2sr" path="res://character/character.gd" id="1_6cjpo"]
+[ext_resource type="Script" uid="uid://bqkislyyss146" path="res://Plants/strawberry/strawberry.gd" id="1_cbahg"]
 [ext_resource type="Script" uid="uid://cc1c77pfsl8dh" path="res://ai/run_away_from_player_ai.gd" id="2_nimrw"]
 [ext_resource type="Texture2D" uid="uid://chnu528uov0n" path="res://icon.svg" id="3_nimrw"]
 [ext_resource type="Script" uid="uid://d5sfdadk20ij" path="res://interact/pickable.gd" id="4_cbahg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nimrw"]
 
-[node name="Strawberry" type="CharacterBody2D" unique_id=352578681 node_paths=PackedStringArray("anchor")]
-script = ExtResource("1_6cjpo")
+[node name="Strawberry" type="CharacterBody2D" unique_id=352578681 node_paths=PackedStringArray("pickable", "input", "anchor")]
+script = ExtResource("1_cbahg")
+pickable = NodePath("Pickable")
+input = NodePath("RunAwayAI")
 maxSpeed = 400.0
 anchor = NodePath("Anchor")
 metadata/_custom_type_script = "uid://w0bpjmca2sr"
