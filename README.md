@@ -6,9 +6,9 @@ Take care of wacky plants (including one that is really particular about which t
 
 Keys:
 
-    Movement - WASD 
-    Interact - E
-    Pick and drop objects - F
-    Throw - Left Mouse Button (hold & release) 
+* Movement - WASD
+* Interact - E
+* Pick and drop objects - F
+* Throw - Left Mouse Button (hold & release) 
 
 (fire plant was not implemented in time) 
