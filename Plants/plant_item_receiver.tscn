@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://w85o2n1ed2rq" path="res://interact/picker.gd" id="6_vaqse"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eqv4n"]
-size = Vector2(64, 64)
+size = Vector2(220, 64)
 
 [node name="PlantItemReceiver" type="Node2D" unique_id=1216653505 node_paths=PackedStringArray("picker")]
 script = ExtResource("2_u1vm2")
