@@ -10,18 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://ulelhqvpd2il" path="res://Plants/plant_item_receiver.tscn" id="5_whfra"]
 [ext_resource type="Script" uid="uid://do6arsnvfb00a" path="res://request_list_view.gd" id="7_7ktct"]
 [ext_resource type="PackedScene" uid="uid://c7hl623304u1e" path="res://game_state/views/request_view.tscn" id="7_aac4l"]
-[ext_resource type="PackedScene" path="res://interact/delivery.tscn" id="9_uks48"]
+[ext_resource type="PackedScene" uid="uid://tc83aw2jaip5" path="res://interact/delivery.tscn" id="9_uks48"]
 [ext_resource type="Shader" uid="uid://bvni52b27fb52" path="res://Plants/base_plant.gdshader" id="11_ko8m6"]
 [ext_resource type="PackedScene" uid="uid://dygk3vngr7bt" path="res://Plants/steamy/steamy.tscn" id="13_v7yd6"]
-[ext_resource type="PackedScene" uid="uid://boeg2lf46fjjr" path="res://Plants/Cry Baby/cry_baby.tscn" id="13_wly0c"]
+[ext_resource type="Texture2D" uid="uid://uf8nm2xoea25" path="res://Plants/steamy/Steamy.png" id="15_ju1fa"]
+[ext_resource type="Texture2D" uid="uid://80x8gpkb8n4v" path="res://Plants/steamy/SteamyDone.png" id="16_fc1ei"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v7yd6"]
-resource_local_to_scene = true
-shader = ExtResource("11_ko8m6")
-shader_parameter/startTime = 0.0
-shader_parameter/animate = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wly0c"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xftef"]
 resource_local_to_scene = true
 shader = ExtResource("11_ko8m6")
 shader_parameter/startTime = 0.0
@@ -39,7 +34,7 @@ region = Rect2(0, 0, 183, 186)
 atlas = ExtResource("16_fc1ei")
 region = Rect2(0, 0, 176, 200)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_72mcj"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_bqrff"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
@@ -122,12 +117,11 @@ position = Vector2(464, -200)
 [node name="Delivery" parent="." unique_id=1179291177 instance=ExtResource("9_uks48")]
 
 [node name="Steamy" parent="." unique_id=1634396651 instance=ExtResource("13_v7yd6")]
-material = SubResource("ShaderMaterial_v7yd6")
+material = SubResource("ShaderMaterial_xftef")
 position = Vector2(-329, -272)
 
-[node name="Cry Baby" parent="." unique_id=629364572 instance=ExtResource("13_wly0c")]
-material = SubResource("ShaderMaterial_wly0c")
-position = Vector2(-105, -221)
+[node name="Sprite" parent="Steamy" index="1" unique_id=1713877530]
+sprite_frames = SubResource("SpriteFrames_bqrff")
 
 [connection signal="spawnedObject" from="PlantSpawner1" to="." method="on_plant_spawned"]
 [connection signal="spawnedObject" from="PlantSpawner2" to="." method="on_plant_spawned"]
