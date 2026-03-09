@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://b88ny3l1g3r33" path="res://assets/cry.png" id="5_10hon"]
 [ext_resource type="Resource" uid="uid://bpu8508lecwfe" path="res://Plants/fire/fire_data.tres" id="6_2ug5f"]
 [ext_resource type="Texture2D" uid="uid://bruyc2jnco6qb" path="res://assets/fire.png" id="6_43ng5"]
-[ext_resource type="Texture2D" uid="uid://bb0s7pjmpx1t" path="res://assets/morango.png" id="7_814oc"]
 [ext_resource type="Texture2D" uid="uid://xwyd4wq1d5qb" path="res://assets/steam.png" id="8_jhyi7"]
 [ext_resource type="Resource" uid="uid://dxn32rviv11v7" path="res://Plants/strawberry/strawberry_data.tres" id="8_k2naj"]
 [ext_resource type="Resource" uid="uid://cft718dyjbqlm" path="res://Plants/steamy/steamy_data.tres" id="10_tjivk"]
@@ -20,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://c7hl623304u1e" path="res://game_state/views/request_view.tscn" id="19_ugm1s"]
 [ext_resource type="PackedScene" uid="uid://xb3su83dk73f" path="res://menus/pause_menu.tscn" id="20_2frtd"]
 [ext_resource type="PackedScene" uid="uid://bq3gnd6nxn01p" path="res://object_spawner.tscn" id="20_ngqs5"]
+[ext_resource type="AudioStream" uid="uid://bn5k7aa2njhit" path="res://assets/music/music.mp3" id="21_30cgy"]
 
 [node name="MainMain" type="Node2D" unique_id=1864495549 node_paths=PackedStringArray("delivery") groups=["World"]]
 script = ExtResource("1_xdjt8")
@@ -37,11 +37,11 @@ metadata/_edit_group_ = true
 [node name="ObjectHoldPoint" parent="CrySeedProvider/ObjectHolder" parent_id_path=PackedInt32Array(850861519, 771054364) index="0" unique_id=745123367]
 position = Vector2(48, 0)
 
-[node name="Sprite2D" parent="CrySeedProvider" index="1" unique_id=1752078076]
-texture = ExtResource("5_10hon")
-
-[node name="Label" parent="CrySeedProvider" index="2" unique_id=1309990035]
+[node name="Label" parent="CrySeedProvider" index="1" unique_id=1309990035]
 visible = false
+
+[node name="Sprite2D" parent="CrySeedProvider" index="4" unique_id=1752078076]
+texture = ExtResource("5_10hon")
 
 [node name="MorangoSeedProvider" parent="." unique_id=1225960084 instance=ExtResource("2_0gepa")]
 position = Vector2(-752, 16)
@@ -51,10 +51,7 @@ metadata/_edit_group_ = true
 [node name="ObjectHoldPoint" parent="MorangoSeedProvider/ObjectHolder" parent_id_path=PackedInt32Array(1225960084, 771054364) index="0" unique_id=745123367]
 position = Vector2(56, 0)
 
-[node name="Sprite2D" parent="MorangoSeedProvider" index="1" unique_id=1752078076]
-texture = ExtResource("7_814oc")
-
-[node name="Label" parent="MorangoSeedProvider" index="2" unique_id=1309990035]
+[node name="Label" parent="MorangoSeedProvider" index="1" unique_id=1309990035]
 visible = false
 
 [node name="SteamySeedProvider" parent="." unique_id=594415602 instance=ExtResource("2_0gepa")]
@@ -65,11 +62,11 @@ metadata/_edit_group_ = true
 [node name="ObjectHoldPoint" parent="SteamySeedProvider/ObjectHolder" parent_id_path=PackedInt32Array(594415602, 771054364) index="0" unique_id=745123367]
 position = Vector2(56, 0)
 
-[node name="Sprite2D" parent="SteamySeedProvider" index="1" unique_id=1752078076]
-texture = ExtResource("8_jhyi7")
-
-[node name="Label" parent="SteamySeedProvider" index="2" unique_id=1309990035]
+[node name="Label" parent="SteamySeedProvider" index="1" unique_id=1309990035]
 visible = false
+
+[node name="Sprite2D" parent="SteamySeedProvider" index="4" unique_id=1752078076]
+texture = ExtResource("8_jhyi7")
 
 [node name="FireSeedProvider" parent="." unique_id=972055902 instance=ExtResource("2_0gepa")]
 position = Vector2(-720, 280)
@@ -79,11 +76,11 @@ metadata/_edit_group_ = true
 [node name="ObjectHoldPoint" parent="FireSeedProvider/ObjectHolder" parent_id_path=PackedInt32Array(972055902, 771054364) index="0" unique_id=745123367]
 position = Vector2(56, 0)
 
-[node name="Sprite2D" parent="FireSeedProvider" index="1" unique_id=1752078076]
-texture = ExtResource("6_43ng5")
-
-[node name="Label" parent="FireSeedProvider" index="2" unique_id=1309990035]
+[node name="Label" parent="FireSeedProvider" index="1" unique_id=1309990035]
 visible = false
+
+[node name="Sprite2D" parent="FireSeedProvider" index="4" unique_id=1752078076]
+texture = ExtResource("6_43ng5")
 
 [node name="character" parent="." unique_id=1793507303 instance=ExtResource("1_tewtn")]
 position = Vector2(-512, 168)
@@ -228,6 +225,11 @@ offset_right = 276.77777
 offset_bottom = -78.66664
 theme_override_font_sizes/font_size = 64
 text = "Bucket Spawner"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=977248961]
+stream = ExtResource("21_30cgy")
+volume_db = -25.0
+autoplay = true
 
 [connection signal="gameLost" from="." to="CanvasLayer/GameLost" method="show"]
 [connection signal="gameWon" from="." to="CanvasLayer/GameWon" method="show"]

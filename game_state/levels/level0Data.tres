@@ -3,15 +3,45 @@
 [ext_resource type="Script" uid="uid://dslo03u4ehh3c" path="res://game_state/levels/plant_request.gd" id="1_82x0u"]
 [ext_resource type="Resource" uid="uid://bfqe2xfeq24xp" path="res://Plants/Cry Baby/cry_baby_data.tres" id="2_b5mtq"]
 [ext_resource type="Script" uid="uid://c1m01xcb18u38" path="res://game_state/levels/level_data.gd" id="2_wguby"]
+[ext_resource type="Resource" uid="uid://dxn32rviv11v7" path="res://Plants/strawberry/strawberry_data.tres" id="3_4ehky"]
+[ext_resource type="Resource" uid="uid://cft718dyjbqlm" path="res://Plants/steamy/steamy_data.tres" id="4_6olw2"]
 
 [sub_resource type="Resource" id="Resource_6olw2"]
 script = ExtResource("1_82x0u")
 requestTime = 0.04
-requestDuration = 0.436
+requestDuration = 1.0
+plantData = ExtResource("2_b5mtq")
+metadata/_custom_type_script = "uid://dslo03u4ehh3c"
+
+[sub_resource type="Resource" id="Resource_wguby"]
+script = ExtResource("1_82x0u")
+requestTime = 0.165
+requestDuration = 1.0
+plantData = ExtResource("2_b5mtq")
+metadata/_custom_type_script = "uid://dslo03u4ehh3c"
+
+[sub_resource type="Resource" id="Resource_b5mtq"]
+script = ExtResource("1_82x0u")
+requestTime = 0.24
+requestDuration = 1.0
+plantData = ExtResource("3_4ehky")
+metadata/_custom_type_script = "uid://dslo03u4ehh3c"
+
+[sub_resource type="Resource" id="Resource_kxkib"]
+script = ExtResource("1_82x0u")
+requestTime = 0.35
+requestDuration = 1.0
+plantData = ExtResource("4_6olw2")
+metadata/_custom_type_script = "uid://dslo03u4ehh3c"
+
+[sub_resource type="Resource" id="Resource_h3o3w"]
+script = ExtResource("1_82x0u")
+requestTime = 0.425
+requestDuration = 1.0
 plantData = ExtResource("2_b5mtq")
 metadata/_custom_type_script = "uid://dslo03u4ehh3c"
 
 [resource]
 script = ExtResource("2_wguby")
-requests = Array[ExtResource("1_82x0u")]([SubResource("Resource_6olw2")])
+requests = Array[ExtResource("1_82x0u")]([SubResource("Resource_6olw2"), SubResource("Resource_wguby"), SubResource("Resource_b5mtq"), SubResource("Resource_b5mtq"), SubResource("Resource_b5mtq"), SubResource("Resource_kxkib"), SubResource("Resource_h3o3w"), SubResource("Resource_h3o3w")])
 metadata/_custom_type_script = "uid://c1m01xcb18u38"

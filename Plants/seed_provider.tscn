@@ -3,13 +3,10 @@
 [ext_resource type="Script" path="res://Plants/seed_provider.gd" id="1_tgehr"]
 [ext_resource type="PackedScene" uid="uid://c8sd75wxygh6a" path="res://Plants/Seed.tscn" id="2_3krpd"]
 [ext_resource type="Script" uid="uid://ck4gyskvum46o" path="res://interact/object_holder.gd" id="3_gdow7"]
-[ext_resource type="Texture2D" uid="uid://chnu528uov0n" path="res://icon.svg" id="4_wvx6i"]
+[ext_resource type="Texture2D" uid="uid://bb0s7pjmpx1t" path="res://assets/morango.png" id="4_tgehr"]
 [ext_resource type="Script" uid="uid://cvc5atuup46p2" path="res://interact/interactable.gd" id="5_ajsld"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jhinc"]
-size = Vector2(128, 128)
-
-[node name="SeedProvider" type="Node2D" unique_id=850861519 node_paths=PackedStringArray("objectHolder", "interactable")]
+[node name="SeedProvider" type="StaticBody2D" unique_id=140967502 node_paths=PackedStringArray("objectHolder", "interactable")]
 script = ExtResource("1_tgehr")
 seedScene = ExtResource("2_3krpd")
 spawnScene = ExtResource("2_3krpd")
@@ -24,9 +21,6 @@ metadata/_custom_type_script = "uid://ck4gyskvum46o"
 [node name="ObjectHoldPoint" type="Marker2D" parent="ObjectHolder" unique_id=745123367]
 position = Vector2(0, -104)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1752078076]
-texture = ExtResource("4_wvx6i")
-
 [node name="Label" type="Label" parent="." unique_id=1309990035]
 offset_left = -56.0
 offset_top = 64.0
@@ -38,5 +32,11 @@ text = "Object Spawner"
 script = ExtResource("5_ajsld")
 metadata/_custom_type_script = "uid://cvc5atuup46p2"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=705518261]
-shape = SubResource("RectangleShape2D_jhinc")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Interactable" unique_id=1421184294]
+polygon = PackedVector2Array(-11.5, -83.8, -13.5, -82.7, -13.5, -81.3, -16.5, -78.3, -16.5, -72.3, -26.8, -70.5, -37.5, -70.5, -41.5, -65.5, -43.8, -65.5, -40.5, -43.2, -40.5, -41.1, -35.5, -39.2, -35.5, -37.6, -16.5, -36.6, -16.5, -31.099998, -33.6, -26.5, -46.1, -26.5, -52.5, -22.400002, -56.5, -24.7, -56.5, -25.7, -58.7, -26.8, -63.2, -23.5, -66.3, -23.5, -63.7, -15.599998, -66.5, -13.599998, -66.5, -7.300003, -58, -2.5, -56.3, -2.5, -54.5, 9.800003, -54.5, 15.5, -59.2, 19.5, -60.9, 19.5, -56, 42, -47, 50, -30, 54, -18, 57, 0, 58, 24, 53, 40, 48, 41, 41, 39, 32, 37.800003, 20.900002, 38.5, 17.699997, 38.5, 10.300003, 44.300003, 4.5, 45.699997, 4.5, 50.699997, -5.5, 53.300003, -5.5, 51.5, -10.900002, 51.5, -13.300003, 48.300003, -16.5, 43.699997, -16.5, 39.699997, -12.5, 39, -12.5, 17.5, -24.7, 17.5, -26, -2.199997, -31.5, -2.5, -36.7, 11.599998, -37.5, 16.199997, -37.5, 21.199997, -41.5, 23.699997, -41.5, 21.5, -69.7, 21.5, -71.6, 18.5, -73.6, 18.5, -75.7, -0.69999695, -73.5, -4.5, -73.5, -4.5, -79.6)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1971049474]
+polygon = PackedVector2Array(-11.5, -83.8, -13.5, -82.7, -13.5, -81.3, -16.5, -78.3, -16.5, -72.3, -26.8, -70.5, -37.5, -70.5, -41.5, -65.5, -43.8, -65.5, -40.5, -43.2, -40.5, -41.1, -35.5, -39.2, -35.5, -37.6, -16.5, -36.6, -16.5, -31.099998, -33.6, -26.5, -46.1, -26.5, -52.5, -22.400002, -56.5, -24.7, -56.5, -25.7, -58.7, -26.8, -63.2, -23.5, -66.3, -23.5, -63.7, -15.599998, -66.5, -13.599998, -66.5, -7.300003, -58, -2.5, -56.3, -2.5, -54.5, 9.800003, -54.5, 15.5, -59.2, 19.5, -60.9, 19.5, -56, 42, -47, 50, -30, 54, -18, 57, 0, 58, 24, 53, 40, 48, 41, 41, 39, 32, 37.800003, 20.900002, 38.5, 17.699997, 38.5, 10.300003, 44.300003, 4.5, 45.699997, 4.5, 50.699997, -5.5, 53.300003, -5.5, 51.5, -10.900002, 51.5, -13.300003, 48.300003, -16.5, 43.699997, -16.5, 39.699997, -12.5, 39, -12.5, 17.5, -24.7, 17.5, -26, -2.199997, -31.5, -2.5, -36.7, 11.599998, -37.5, 16.199997, -37.5, 21.199997, -41.5, 23.699997, -41.5, 21.5, -69.7, 21.5, -71.6, 18.5, -73.6, 18.5, -75.7, -0.69999695, -73.5, -4.5, -73.5, -4.5, -79.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1752078076]
+texture = ExtResource("4_tgehr")
