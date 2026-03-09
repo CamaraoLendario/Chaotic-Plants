@@ -50,7 +50,4 @@ scale = Vector2(0.16161616, 0.15813954)
 sprite_frames = SubResource("SpriteFrames_nfd76")
 animation = &"stage0"
 
-[node name="Marker2D" parent="PlantItemReceiver/Picker/ObjectHolder" parent_id_path=PackedInt32Array(1216653505, 1250314402) index="1" unique_id=1933339639]
-position = Vector2(90, -8)
-
 [editable path="PlantItemReceiver"]

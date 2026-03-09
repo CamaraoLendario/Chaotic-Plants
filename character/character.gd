@@ -8,10 +8,20 @@ class_name Character
 
 @export_group("References")
 @export var anchor: Node2D
+@export var picker: Picker
 @export var objectHolder: ObjectHolder
 
 var wishDir : Vector2 = Vector2.ZERO
 var aimDir : Vector2 = Vector2.ZERO
+
+func _ready() -> void:
+	picker.picked_up_pickable.connect(func(pickable: Pickable):
+		pickable.canBePicked = false
+		)
+	
+	picker.dropped_pickable.connect(func(pickable: Pickable):
+		pickable.canBePicked = true
+		)
 
 func _physics_process(delta: float) -> void:
 	var initialVelDir : Vector2 = velocity.normalized()

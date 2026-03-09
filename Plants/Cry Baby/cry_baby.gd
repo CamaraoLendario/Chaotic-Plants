@@ -69,18 +69,22 @@ func be_annoying():
 		be_annoying_timer.start(beAnnoyingTimeInterval)
 
 func update_held_item(_obj: Pickable):
-	var currentHeldObject = itemReceiver.get_held_object()
-	print(self, " held item updated. new object: ", currentHeldObject)
+	var currentHeldObject = itemReceiver.get_held_object().owner
+	print(self, " held item updated. new object: ", currentHeldObject.name)
 	if (currentHeldObject is TeddyBear):
+		print("ohh! a teddy bear!")
 		var newTeddyBear = currentHeldObject as TeddyBear
 		HeldTeddyBear = newTeddyBear.representedBear
 		
 		if (newTeddyBear.ownerBaby != self):
 			trade_teddy_bears(newTeddyBear)
 	
-	else: HeldTeddyBear = -1
+	else:
+		print("not a teddy bear")
+		HeldTeddyBear = -1
 
 func checkIsCrying():
+	print("Checking is crying. wanted: ", WantedTeddyBear, " Held: ", HeldTeddyBear)
 	if (WantedTeddyBear == HeldTeddyBear):
 		IsCrying = false
 	else: IsCrying = true

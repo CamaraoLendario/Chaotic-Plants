@@ -43,7 +43,7 @@ func pick_up_pickable(pickable: Pickable = null) -> bool:
 		return false
 	if (has_target() and pickable == null and curPickingTarget != pickable):
 		pickable = curPickingTarget
-	if (pickable == null):
+	if (pickable == null or !pickable.can_be_picked()):
 		return false
 	
 	pickable.get_picked(self)

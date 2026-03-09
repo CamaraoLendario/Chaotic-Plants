@@ -4,8 +4,10 @@ class_name Pickable
 signal WasPickedUp(picker: Picker)
 signal WasDropped(picker: Picker)
 
+var canBePicked: bool = true
+
 func can_be_picked() -> bool:
-	return true
+	return canBePicked
 
 func get_picked(picker: Picker):
 	WasPickedUp.emit(picker)

@@ -35,7 +35,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="ProtoObject" unique_id=794916380 node_paths=PackedStringArray("sprite") instance=ExtResource("1_o350w")]
+[node name="TeddyBear" unique_id=794916380 node_paths=PackedStringArray("sprite") instance=ExtResource("1_o350w")]
 script = ExtResource("2_8op5b")
 sprite = NodePath("AnimatedSprite2D")
 

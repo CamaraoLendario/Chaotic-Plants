@@ -8,11 +8,6 @@ signal dropped_object(obj: Pickable)
 
 var currentHoldedObject: Pickable
 
-func _physics_process(delta: float) -> void:
-	if is_holding():
-		currentHoldedObject.owner.position = Vector2.ZERO
-		currentHoldedObject.owner.rotation = 0
-
 func hold_object(pickable: Pickable): 
 	if !is_holding():
 		currentHoldedObject = pickable
