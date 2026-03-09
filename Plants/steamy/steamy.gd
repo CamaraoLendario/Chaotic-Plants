@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	isGrowing = (steamMeter < max and steamMeter > min)
 	super._physics_process(delta)
-	if (isGrowing): print(growProgress)
+	#if (isGrowing): print(growProgress)
 
 func directionChange():
 	print("changing direction...")
@@ -51,5 +51,5 @@ func itemreceived(obj: Pickable):
 	if (obj.owner is not WaterBucket): return
 	
 	var waterBucket: WaterBucket = obj.owner
-	itemReceiver.objectHolder.drop().owner.queue_free()
+	itemReceiver.drop_and_free()
 	add_water()

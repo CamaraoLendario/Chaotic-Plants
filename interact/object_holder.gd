@@ -23,9 +23,19 @@ func drop_object():
 		currentHoldedObject.WasPickedUp.disconnect(_on_pickable_was_picked)
 		currentHoldedObject = null
 
+func drop_and_free():
+	if is_holding():
+		currentHoldedObject.WasPickedUp.disconnect(_on_pickable_was_picked)
+		currentHoldedObject.owner.call_deferred("queue_free")
+		currentHoldedObject = null
+
 func move_to_drop_point():
-	currentHoldedObject.owner.reparent(get_tree().current_scene)
-	currentHoldedObject.owner.global_position = objectDropPoint.global_position
+	if objectDropPoint:
+		currentHoldedObject.owner.global_position = objectDropPoint.global_position
+		currentHoldedObject.owner.reparent(get_tree().current_scene)
+	else:
+		currentHoldedObject.owner.global_position = objectHoldPoint.global_position
+		currentHoldedObject.owner.reparent(get_tree().current_scene)
 	picked_up_object.emit(currentHoldedObject)
 
 func _on_pickable_was_picked(_picker):

@@ -4,23 +4,18 @@ class_name  PlantItemReceiver
 signal picked_up_object(obj: Pickable)
 signal dropped_object(obj: Pickable)
 
-@export var interactReceiver: InteractReceiver
-@export var objectHolder: ObjectHolder
-@export var filters: Array[InteractFilter]:
-	get():
-		return interactReceiver.filters
-	set(value):
-		interactReceiver.filters = value
+@export var picker: Picker
+@export var filters: Array[InteractFilter]
 
 func _ready() -> void:
-	interactReceiver.interactableInRange.connect(_on_interactable_in_range)
-	objectHolder.picked_up_object.connect(_on_picked_up_object)
-	objectHolder.dropped_object.connect(_on_dropped_object)
+	picker.filters = filters #bad code design, should work
+	picker.picked_up_pickable.connect(_on_picked_up_object)
+	picker.dropped_pickable.connect(_on_dropped_object)
 
-func _on_interactable_in_range(interactable: Interactable):
-#	if interactable is Pickable:
-#		interactable.interact(interactReceiver)
-	pass
+func _process(delta: float) -> void:
+	#TODO: costly but it should work
+	try_to_pick_up()
+
 
 func _on_picked_up_object(obj: Pickable):
 	picked_up_object.emit(obj)
@@ -28,6 +23,18 @@ func _on_picked_up_object(obj: Pickable):
 func _on_dropped_object(obj: Pickable):
 	dropped_object.emit(obj)
 
+func try_to_pick_up():
+	if picker.has_target(): 
+		picker.pick_up_pickable()
+
+func drop() -> Pickable:
+	return picker.drop_pickable()
+
+func drop_and_free() -> Pickable:
+	return picker.drop_and_free()
+
 func get_held_object():
-	if (!objectHolder.objectHoldPoint.get_child_count() > 0): return null
-	return objectHolder.objectHoldPoint.get_child(0) 
+	if picker.is_holding():
+		return picker.curPickingTarget
+	else:
+		return null
