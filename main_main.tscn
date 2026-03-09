@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://bj1p35tx6o770"]
+[gd_scene format=3 uid="uid://cq4iumvocybcl"]
 
 [ext_resource type="PackedScene" uid="uid://dopujk04ltt6d" path="res://character/character.tscn" id="1_tewtn"]
-[ext_resource type="PackedScene" uid="uid://c6fl0jwao178t" path="res://Map/map.tscn" id="1_tjivk"]
+[ext_resource type="PackedScene" path="res://Map/map.tscn" id="1_tjivk"]
 [ext_resource type="Script" uid="uid://r5uwf3yaolik" path="res://game_state/game_controller.gd" id="1_xdjt8"]
 [ext_resource type="PackedScene" uid="uid://c017ejda8kl87" path="res://Plants/seed_provider.tscn" id="2_0gepa"]
 [ext_resource type="Resource" uid="uid://4andksvgn7yo" path="res://game_state/levels/level0Data.tres" id="2_nv1kf"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://xb3su83dk73f" path="res://menus/pause_menu.tscn" id="20_2frtd"]
 [ext_resource type="PackedScene" uid="uid://bq3gnd6nxn01p" path="res://object_spawner.tscn" id="20_ngqs5"]
 [ext_resource type="AudioStream" uid="uid://bn5k7aa2njhit" path="res://assets/music/music.mp3" id="21_30cgy"]
+[ext_resource type="Texture2D" uid="uid://chnu528uov0n" path="res://icon.svg" id="21_ugm1s"]
 
 [node name="MainMain" type="Node2D" unique_id=1864495549 node_paths=PackedStringArray("delivery") groups=["World"]]
 script = ExtResource("1_xdjt8")
@@ -230,6 +231,12 @@ text = "Bucket Spawner"
 stream = ExtResource("21_30cgy")
 volume_db = -25.0
 autoplay = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1403434936]
+modulate = Color(1, 1, 1, 0.3529412)
+position = Vector2(503.5, 169)
+scale = Vector2(1.5703125, 1.625)
+texture = ExtResource("21_ugm1s")
 
 [connection signal="gameLost" from="." to="CanvasLayer/GameLost" method="show"]
 [connection signal="gameWon" from="." to="CanvasLayer/GameWon" method="show"]

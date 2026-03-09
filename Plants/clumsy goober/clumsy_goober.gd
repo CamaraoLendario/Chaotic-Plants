@@ -47,6 +47,7 @@ func strawBerrySpawn():
 	strawberryImage.hide()
 	strawberry.global_position = strawberrySpawn.global_position
 	strawberry.input.enable()
+	strawberry.moranguinhosound.play(0)
 
 func strawBerryTake():
 	isGrowing = true
@@ -54,6 +55,7 @@ func strawBerryTake():
 	strawberryImage.show()
 	strawberry.global_position = Vector2.ONE * 10000
 	strawberry.input.disable()
+	strawberry.moranguinhosound.stop()
 
 func finishGrowing():
 	super.finishGrowing()

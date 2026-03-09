@@ -23,6 +23,7 @@ metadata/_custom_type_script = "uid://b3owvnlpfrkpo"
 shape = SubResource("RectangleShape2D_eqv4n")
 
 [node name="Label" type="Label" parent="." unique_id=2084353703]
+visible = false
 offset_left = -53.0
 offset_top = 64.0
 offset_right = 53.0

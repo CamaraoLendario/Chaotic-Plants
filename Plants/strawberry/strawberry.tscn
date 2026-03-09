@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cc1c77pfsl8dh" path="res://ai/run_away_from_player_ai.gd" id="2_nimrw"]
 [ext_resource type="Texture2D" uid="uid://7fhbj632nl24" path="res://Plants/clumsy goober/sprites/strawberry.png" id="3_cbahg"]
 [ext_resource type="Script" uid="uid://d5sfdadk20ij" path="res://interact/pickable.gd" id="4_cbahg"]
+[ext_resource type="AudioStream" uid="uid://c34a5md4bg5ls" path="res://assets/plants/moranguinho/moranguinho.mp3" id="5_s8csp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nimrw"]
 
@@ -43,6 +44,9 @@ metadata/_custom_type_script = "uid://d5sfdadk20ij"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pickable" unique_id=1064375646]
 shape = SubResource("CircleShape2D_nimrw")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=66846189]
+stream = ExtResource("5_s8csp")
 
 [connection signal="WasDropped" from="Pickable" to="RunAwayAI" method="enable" unbinds=1]
 [connection signal="WasDropped" from="Pickable" to="CollisionShape2D" method="set_disabled" unbinds=1 binds= [false]]
